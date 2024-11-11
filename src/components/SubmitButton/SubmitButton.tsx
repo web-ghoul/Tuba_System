@@ -14,14 +14,13 @@ const SubmitButton = ({
 
   const chosenButton = (
     <PrimaryButton
-      title={'Submit Form'}
-      loadingPosition={'center'}
+      title={"Submit Form"}
+      loadingPosition={"center"}
       loading={loading}
       loadingIndicator={loadingIcon}
-      type={'submit'}
-      sx={{ width: 'fit-content' }}
+      type={"submit"}
       onClick={handling}
-      className={`${className}`}
+      className={className}
     >
       {children}
     </PrimaryButton>

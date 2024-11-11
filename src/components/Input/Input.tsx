@@ -19,7 +19,6 @@ function getError<T extends FieldValues>(
 const Input = ({
   register,
   name,
-  placeholder,
   errors,
   label,
   type,
@@ -35,7 +34,7 @@ const Input = ({
   labeledColor,
 }: InputTypes) => {
   const [showPassword, setShowPassword] = useState(false);
-  const handleClickShowPassword = () => setShowPassword(show => !show);
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
   };
@@ -45,7 +44,7 @@ const Input = ({
   const labeledBox = (
     <Typography
       variant="h6"
-      className={`${labeledColor || '!text-primary'} !font-[700]`}
+      className={`${labeledColor || "!text-primary"} !font-[700]`}
     >
       {labeled}
     </Typography>
@@ -53,8 +52,8 @@ const Input = ({
 
   return (
     <Box className={`grid justify-stretch w-full items-center gap-1`}>
-      <Typography variant="h6" className={`!font-[400]`}>
-        {type === 'search' ? 'Search' : label}
+      <Typography variant="h6" className={`!font-[600]`}>
+        {type === "search" ? "Search" : label}
       </Typography>
       {select ? (
         labeled ? (
@@ -64,14 +63,13 @@ const Input = ({
             disabled={disabled}
             fullWidth
             select
-            placeholder={placeholder || ''}
             SelectProps={{
               native: true,
-              'aria-label': label,
+              "aria-label": label,
             }}
             {...register(name)}
             onChange={(
-              e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+              e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
             ) => {
               if (change) {
                 change(e.target.value);
@@ -80,7 +78,7 @@ const Input = ({
             error={error}
             helperText={helperText}
           >
-            <option value={''}>{`Select ${label}`}</option>
+            <option value={""}>{label}</option>
             {options &&
               options.map((option: string, i: number) => (
                 <option
@@ -98,35 +96,35 @@ const Input = ({
           labeledBox
         ) : (
           <Box
-            component={'textarea'}
+            component={"textarea"}
             sx={{
-              padding: '8px !important',
-              fontSize: '15px',
-              minWidth: '300px !important',
-              minHeight: '40px !important',
-              transition: 'ease-in-out all 0.3',
-              backgroundColor: theme => theme.palette.common.white,
-              boxShadow: theme => theme.shadows['2'],
-              borderRadius: '4px',
-              border: '1px solid #ddd',
-              '&:placeholder': {
-                fontSize: '16px',
-                lineHeight: '1 !important',
-                backgroundColor: 'transparent !important',
+              padding: "8px !important",
+              fontSize: "15px",
+              minWidth: "300px !important",
+              minHeight: "40px !important",
+              transition: "ease-in-out all 0.3",
+              backgroundColor: (theme) => theme.palette.common.white,
+              boxShadow: (theme) => theme.shadows["2"],
+              borderRadius: "4px",
+              border: "1px solid #ddd",
+              "&:placeholder": {
+                fontSize: "16px",
+                lineHeight: "1 !important",
+                backgroundColor: "transparent !important",
               },
-              '&:not(:placeholder-shown)': {
-                fontWeight: '600',
+              "&:not(:placeholder-shown)": {
+                fontWeight: "600",
               },
             }}
             {...register(name)}
             onChange={(
-              e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+              e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
             ) => {
               if (change) {
                 change(e.target.value);
               }
             }}
-            placeholder={`Enter ${label}`}
+            placeholder={label}
           />
         )
       ) : labeled ? (
@@ -139,15 +137,15 @@ const Input = ({
           {...register(name)}
           type={
             type
-              ? type === 'password'
+              ? type === "password"
                 ? showPassword
-                  ? 'text'
-                  : 'password'
+                  ? "text"
+                  : "password"
                 : type
-              : 'text'
+              : "text"
           }
           InputProps={
-            type === 'password'
+            type === "password"
               ? {
                   endAdornment: (
                     <InputAdornment position="end">
@@ -168,15 +166,9 @@ const Input = ({
                 }
               : {}
           }
-          placeholder={
-            type !== 'date'
-              ? type === 'search'
-                ? label
-                : `Enter ${label}`
-              : ''
-          }
+          placeholder={type !== "date" ? label : ""}
           onChange={(
-            e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+            e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
           ) => {
             if (change) {
               change(e.target.value);

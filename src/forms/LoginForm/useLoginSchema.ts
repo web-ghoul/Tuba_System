@@ -1,17 +1,20 @@
-import * as yup from 'yup';
+import * as yup from "yup";
 
 const useLoginSchema = () => {
   const LoginSchema = yup.object({
-    email: yup.string().email('Email is InValid').required('Email is required'),
-    password: yup
+    usr: yup
       .string()
-      .min(8, 'Password should be of minimum 8 characters length')
-      .required('Password is required'),
+      .email("البريد الالكترونى غير صحيح")
+      .required("البريد الالكترونى مطلوب"),
+    pwd: yup
+      .string()
+      .min(7, "كلمة المرور لا تقل عن 7 احرف")
+      .required("كلمة المرور مطلوبة"),
   });
 
   const LoginInitialValues = {
-    email: '',
-    password: '',
+    usr: "",
+    pwd: "",
   };
 
   return { LoginSchema, LoginInitialValues };

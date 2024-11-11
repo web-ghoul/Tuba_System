@@ -19,15 +19,15 @@ const useLoginSubmit = () => {
   const login = async (values: LoginFormTypes) => {
     handleOpenFormsLoading();
     await server
-      .post(`/login`, values)
-      .then(res => {
-        handleAlert({ msg: 'Login Successfully', status: 'success' });
+      .post(`/method/login_password`, values)
+      .then((res) => {
+        handleAlert({ msg: "Login Successfully", status: "success" });
         navigate(`${import.meta.env.VITE_DASHBOARD_ROUTE}`);
         dispatch(
-          loginAction({ token: res.data.token, userId: res.data.userId }),
+          loginAction({ token: res.data.token, userId: res.data.userId })
         );
       })
-      .catch(err => {
+      .catch((err) => {
         handleCatchError(err);
       });
     handleCloseFormsLoading();

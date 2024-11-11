@@ -1,12 +1,11 @@
-import axios from 'axios';
-import Cookies from 'js-cookie';
+import axios from "axios";
 
-const useAxios = (t?: string) => {
-  const token = Cookies.get(`${import.meta.env.VITE_TOKEN_TITLE}`);
+const useAxios = () => {
   const server = axios.create({
     baseURL: `${import.meta.env.VITE_SERVER_URL}`,
     headers: {
-      Authorization: `Bearer ${t || token}`,
+      Referer: "https://cp-staging.gettuba.com/",
+      "Referrer-Policy": "strict-origin-when-cross-origin", // Set the Referrer-Policy header
     },
   });
   return { server };

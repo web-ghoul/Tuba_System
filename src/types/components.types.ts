@@ -11,7 +11,6 @@ interface LogoTypes {
 interface InputTypes {
   register: UseFormRegister<AllFormsTypes>;
   name: Path<AllFormsTypes>;
-  placeholder?: string;
   errors: FieldErrors<AllFormsTypes>;
   label?: string;
   type?: string;

@@ -13,8 +13,8 @@ interface FormsTypes {
 
 //Login
 interface LoginFormTypes {
-  username: string;
-  password: string;
+  usr: string;
+  pwd: string;
 }
 //Login
 
@@ -39,7 +39,7 @@ interface OTPFormTypes {
 //OTP
 
 //Delete
-interface DeleteFormTypes {}
+type DeleteFormTypes = object;
 //Delete
 
 type AllFormsTypes =
