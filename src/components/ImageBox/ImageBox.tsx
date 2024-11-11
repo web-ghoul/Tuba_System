@@ -30,18 +30,18 @@ const ImageBox = ({
   return (
     <Box
       className={`${className} ${
-        !lazy && 'bg-cover bg-center bg-no-repeat'
+        !lazy && "bg-cover bg-center bg-no-repeat"
       } relative`}
       sx={{
         backgroundImage: `${!lazy && !hasError && `url(${src})`}`,
-        '& img':
-          variant === 'product'
+        "& img":
+          variant === "product"
             ? {
-                position: 'absolute',
-                top: '0',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                borderRadius: '8px',
+                position: "absolute",
+                top: "0",
+                left: "50%",
+                transform: "translateX(-50%)",
+                borderRadius: "8px",
               }
             : {},
       }}
@@ -50,15 +50,15 @@ const ImageBox = ({
         <>
           {loading && (
             <>
-              {variant === 'product' ? (
+              {variant === "product" ? (
                 <Skeleton
                   className={`!h-[200px] w-full absolute left-[50%] translate-x-[-50%] translate-y-[-50%] top-[50%] z-[0]`}
-                  variant={'rectangular'}
+                  variant={"rectangular"}
                 />
-              ) : variant === 'ads' ? (
+              ) : variant === "ads" ? (
                 <Skeleton
                   className={`!h-[238.32px] w-full absolute left-[50%] translate-x-[-50%] translate-y-[-50%] top-[50%] z-[0]`}
-                  variant={'rectangular'}
+                  variant={"rectangular"}
                 />
               ) : (
                 <Box
@@ -67,9 +67,9 @@ const ImageBox = ({
                   <CircularProgress
                     className={`!w-[40px] !h-[40px] md:w-[35px] md:h-[35px] sm:!w-[30px] sm:!h-[30px]`}
                     sx={{
-                      '&>svg': {
-                        color: theme => theme.palette.primary.main,
-                        zIndex: '1000',
+                      "&>svg": {
+                        color: (theme) => theme.palette.primary.main,
+                        zIndex: "1000",
                       },
                     }}
                   />
@@ -80,6 +80,7 @@ const ImageBox = ({
           <LazyLoadImage
             src={src}
             alt={alt}
+            className="w-full h-full"
             beforeLoad={() => setLoading(true)}
             afterLoad={() => setLoading(false)}
             onError={() => {

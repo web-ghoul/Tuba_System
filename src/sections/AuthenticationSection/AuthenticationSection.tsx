@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import ImageBox from "../../components/ImageBox/ImageBox";
+import Logo from "../../components/Logo/Logo";
 import Forms from "../../forms/Forms";
 import { PrimaryBox } from "../../mui/boxes/PrimaryBox";
 import { PrimaryContainer } from "../../mui/containers/PrimaryContainer";
@@ -15,16 +16,12 @@ const AuthenticationSection = () => {
         <ImageBox
           lazy
           src={"/images/auth_circle_1.svg"}
-          className="absolute top-0 left-0 flex justify-end items-start"
+          className="absolute top-0 right-[50%] flex justify-end items-start w-[50%]"
         />
         <Box
           className={`grid justify-center items-center gap-10 text-center h-full px-8 lg:px-6 md:px-3 sm:!px-2`}
         >
-          <ImageBox
-            lazy
-            src={"/images/logo_arabic_light.svg"}
-            className="m-auto"
-          />
+          <Logo className="w-[200px] m-auto" />
           <Box className={`grid justify-stretch items-center gap-4`}>
             <Typography variant="h3" className={`!font-[700]`}>
               مرحبا فى طوبى !
@@ -41,7 +38,7 @@ const AuthenticationSection = () => {
         <ImageBox
           lazy
           src={"/images/auth_circle_2.svg"}
-          className="absolute bottom-0 right-0 flex justify-start items-end"
+          className="absolute bottom-0 right-0 flex justify-start items-end w-[50%]"
         />
       </Box>
       <PrimaryBox className={`!grid justify-stretch items-center`}>
