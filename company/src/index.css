@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --primary: rgb(86, 67, 225);
+  --primary_bg: #f3f5f9;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--primary_bg);
+  font-family: "El Messiri", sans-serif;
+  min-height: 100vh;
+  min-width: 100vw;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+main {
+  min-height: 100vh;
+  min-width: 100vw;
+  width: 100vw;
+  display: grid;
+  align-items: center;
+  justify-content: stretch;
+}
+
+@layer components {
+  .paper {
+    @apply !rounded-[12px] bg-white p-6 border border-gray-300 !shadow-none grid justify-stretch items-center gap-4;
+  }
+}
