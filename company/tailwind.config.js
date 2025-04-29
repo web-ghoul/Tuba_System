@@ -15,7 +15,18 @@ export default {
         primary: "#5643E1",
         primary_light:"#EFEDFD",
         primary_bg: "#F3F5F9",
-        tuba_gray:"#82808D"
+        counter_card_red:'rgba(255, 40, 40, 1)',
+        counter_card_red_light:'rgba(255, 240, 240, 1)',
+        counter_card_cyan:'rgba(42, 210, 197, 1)',
+        counter_card_cyan_light:'rgba(234, 251, 249, 1)',
+        counter_card_purple:'rgba(90, 70, 230, 1)',
+        counter_card_purple_light:'rgba(239, 237, 253, 1)',
+        counter_card_green:'rgba(30, 201, 64, 1)',
+        counter_card_green_light:'rgba(240, 253, 242, 1)',
+        available_balance_card:"rgba(234, 251, 249, 1)",
+        total_balance_card:"rgba(239, 237, 253, 1)",
+        remain_balance_card:"rgba(255, 240, 240, 1)",
+        tuba_gray:"#82808D",
       },
       boxShadow: {
         primary:

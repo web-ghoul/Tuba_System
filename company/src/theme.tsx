@@ -25,7 +25,7 @@ export const theme = createTheme({
     unit: "px",
   },
   typography: {
-    fontFamily: "El Messiri",
+    fontFamily: "Cairo",
     h1: {
       fontSize: "32px",
       "@media (max-width: 1200px)": {

@@ -61,6 +61,22 @@ interface ProfileAvatarTypes {
   image: string;
 }
 
+interface CounterCardTypes {
+  icon: ReactNode;
+  number: string;
+  unit: string;
+  title: string;
+  back: string;
+  back_icon_color: string;
+}
+
+interface BalanceCardTypes {
+  number: string;
+  title: string;
+  bgColor: string;
+  btn?: string;
+}
+
 export type {
   ButtonTypes,
   ImageBoxTypes,
@@ -69,4 +85,6 @@ export type {
   SubmitButtonTypes,
   ProfileTitleTypes,
   ProfileAvatarTypes,
+  CounterCardTypes,
+  BalanceCardTypes,
 };

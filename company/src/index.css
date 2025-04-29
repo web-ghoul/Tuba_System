@@ -37,4 +37,12 @@ main {
   .paper {
     @apply !rounded-[12px] bg-white p-6 border border-gray-300 !shadow-none grid justify-stretch items-center gap-4;
   }
+
+  .counter_card{
+    @apply bg-white relative rounded-xl p-4 !shadow-none grid justify-stretch items-center gap-5
+  }
+
+  .balance_card{
+    @apply rounded-xl p-4 !shadow-none grid justify-stretch items-center gap-5
+  }
 }
