@@ -12,6 +12,7 @@ import { Approval } from "@mui/icons-material";
 import Approvals from "./pages/Approvals.tsx";
 import Package from "./pages/Package.tsx";
 import Packages from "./pages/Packages.tsx";
+import Invoices from "./pages/Invoices.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ export const router = createBrowserRouter([
       {
         path: `${import.meta.env.VITE_APPROVALS_ROUTE}/:id`,
         element: <Approval />,
+      },
+      {
+        path: `${import.meta.env.VITE_INVOICES_ROUTE}`,
+        element: <Invoices />,
       },
       {
         path: `${import.meta.env.VITE_NETWORKS_ROUTE}`,

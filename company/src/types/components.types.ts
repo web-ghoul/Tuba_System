@@ -92,7 +92,7 @@ interface DotTypes {
 }
 
 interface StatusBoxTypes {
-  status: "active" | "inactive" | "";
+  status: "active" | "inactive" | "not paid";
 }
 
 interface TableIconButtonTypes {
