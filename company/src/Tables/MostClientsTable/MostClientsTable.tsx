@@ -8,22 +8,28 @@ const MostClientsTable = () => {
     <PrimaryTable>
       <TableHead>
         <TableRow>
-          <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-          <StyledTableCell align="right">Calories</StyledTableCell>
-          <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
-          <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
-          <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
+          <StyledTableCell>اسم المزود</StyledTableCell>
+          <StyledTableCell align="center">عدد المطالبات</StyledTableCell>
+          <StyledTableCell align="center">معتمدة جزئيا</StyledTableCell>
+          <StyledTableCell align="right">معتمدة </StyledTableCell>
         </TableRow>
       </TableHead>
       <TableBody>
         <StyledTableRow>
           <StyledTableCell component="th" scope="row">
-            {"Mahmoud"}
+            مستشفى الملك فيصل التخصصي
           </StyledTableCell>
-          <StyledTableCell align="right">{"12"}</StyledTableCell>
-          <StyledTableCell align="right">{"2"}</StyledTableCell>
-          <StyledTableCell align="right">{"23"}</StyledTableCell>
-          <StyledTableCell align="right">{"13"}</StyledTableCell>
+          <StyledTableCell align="center">36</StyledTableCell>
+          <StyledTableCell align="center">12</StyledTableCell>
+          <StyledTableCell align="right">36</StyledTableCell>
+        </StyledTableRow>
+        <StyledTableRow>
+          <StyledTableCell component="th" scope="row">
+            مستشفى الملك فيصل التخصصي
+          </StyledTableCell>
+          <StyledTableCell align="center">36</StyledTableCell>
+          <StyledTableCell align="center">12</StyledTableCell>
+          <StyledTableCell align="center">36</StyledTableCell>
         </StyledTableRow>
       </TableBody>
     </PrimaryTable>

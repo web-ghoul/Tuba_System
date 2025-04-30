@@ -1,25 +1,25 @@
 import { Paper,Box } from "@mui/material";
 import BalanceCard from "../../components/BalanceCard/BalanceCard";
 
-const ActiveBalanceDetailsSection = () => {
+const SubscriptionBalanceDetailsSection = () => {
   return (
     <Paper className={`paper`}>
-      <h6 className="!font-[700] paper_head">تفاصيل رصيد التنشيط</h6>
+      <h6 className="!font-[700] paper_head">تفاصيل رصيد الإشتراك</h6>
       <Box className={`grid justify-stretch items-center gap-2`}>
         <Box className={`grid justify-stretch items-center grid-cols-2 gap-4`}>
           <BalanceCard
-            title={"الرصيد المتاح"}
+            title={"الرصيد المتاح للإشتراك"}
             bgColor={"bg-available_balance_card"}
             number={"1200"}
           />
           <BalanceCard
-            title={"الرصيد الكلي المطلوب "}
-            bgColor={"bg-total_balance_card"}
+            title={"الرصيد المطلوب للإشتراك "}
+            bgColor={"bg-required_balance_card"}
             number={"1000"}
           />
         </Box>
         <BalanceCard
-          title={"المتبقي للتنشيط"}
+          title={"الرصيد المتبقي للإشتراك"}
           bgColor={"bg-remain_balance_card"}
           number={"200"}
         />
@@ -28,4 +28,4 @@ const ActiveBalanceDetailsSection = () => {
   );
 };
 
-export default ActiveBalanceDetailsSection;
+export default SubscriptionBalanceDetailsSection;

@@ -5,7 +5,7 @@ import { PrimaryTableTypes } from "../types/tables.types";
 
 const PrimaryTable = ({ children }: PrimaryTableTypes) => {
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} className="!shadow-none border-[1px] border-solid border-table_border !rounded-lg">
       <Table aria-label="customized table">
         {children}
       </Table>

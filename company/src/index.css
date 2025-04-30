@@ -9,7 +9,7 @@
 }
 
 :root {
-  --primary: rgb(86, 67, 225);
+  --primary: #5643e1;
   --primary_bg: #f3f5f9;
 }
 
@@ -33,11 +33,11 @@ main {
   justify-content: stretch;
 }
 
-.ltr{
+.ltr {
   direction: ltr;
 }
 
-.rtl{
+.rtl {
   direction: rtl;
 }
 
@@ -61,15 +61,15 @@ main {
     @apply !rounded-[12px] !border-none bg-white p-4 border border-gray-300 !shadow-none grid justify-stretch items-center gap-4;
   }
 
-  .profile_employees_paper{
+  .profile_employees_paper {
     @apply !rounded-[12px] !border-none bg-white border border-gray-300 !shadow-none grid justify-stretch items-center content-between gap-4;
   }
 
-  .counter_card{
+  .counter_card {
     @apply bg-white relative rounded-xl p-4 !shadow-none grid justify-stretch items-center gap-5
   }
 
-  .balance_card{
+  .balance_card {
     @apply rounded-xl p-4 !shadow-none grid justify-stretch items-center gap-5
   }
 }

@@ -3,7 +3,7 @@ import { PrimaryBox } from "../mui/boxes/PrimaryBox";
 import { PrimaryContainer } from "../mui/containers/PrimaryContainer";
 import CounterCardsSection from "../sections/CounterCardsSection/CounterCardsSection";
 import BalanceDetailsSection from "../sections/BalanceDetailsSection/BalanceDetailsSection";
-import ActiveBalanceDetailsSection from "../sections/ActiveBalanceDetailsSection/ActiveBalanceDetailsSection";
+import SubscriptionBalanceDetailsSection from "../sections/SubscriptionBalanceDetailsSection/SubscriptionBalanceDetailsSection";
 import EmployeesBalanceDetailsSection from "../sections/EmployeesBalanceDetailsSection/EmployeesBalanceDetailsSection";
 import ApprovalsSection from "../sections/ApprovalsSection/ApprovalsSection";
 import MostClientsSection from "../sections/MostClientsSection/MostClientsSection";
@@ -17,7 +17,7 @@ const Dashboard = () => {
         <CounterCardsSection />
         <BalanceDetailsSection />
         <Box className={`grid justify-stretch items-start grid-cols-2 gap-4`}>
-          <ActiveBalanceDetailsSection />
+          <SubscriptionBalanceDetailsSection />
           <EmployeesBalanceDetailsSection />
         </Box>
         <Box className={`grid justify-stretch items-start grid-cols-2 gap-4`}>

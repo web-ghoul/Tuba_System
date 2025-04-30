@@ -1,18 +1,15 @@
 import { Box } from '@mui/material';
-import { useContext, useEffect, useState } from 'react';
+import {  useEffect, useState } from 'react';
 import OTPInput from '../../components/Input/OTPInput';
 import SubmitButton from '../../components/SubmitButton/SubmitButton';
-import { FormsContext } from '../../contexts/FormsContext';
 import { FormiksTypes } from '../../types/forms.types';
 
-const OTPForm = ({ setValue }: FormiksTypes) => {
-  const { formsLoading } = useContext(FormsContext);
+const OTPForm = ({ formik }: FormiksTypes) => {
   const [otp, setOtp] = useState('');
+
   useEffect(() => {
-    if (setValue) {
-      setValue('otp', otp);
-    }
-  }, [setValue, otp]);
+    console.log(formik)
+  }, []);
 
   return (
     <Box
@@ -28,7 +25,7 @@ const OTPForm = ({ setValue }: FormiksTypes) => {
       </Box>
 
       <Box className={`m-auto`}>
-        <SubmitButton loading={formsLoading}>Send</SubmitButton>
+        <SubmitButton loading={false}>Send</SubmitButton>
       </Box>
     </Box>
   );

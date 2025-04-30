@@ -6,8 +6,8 @@ interface FormsTypes {
 }
 
 interface LoginFormTypes {
-  usr: string;
-  pwd: string;
+  username: string;
+  password: string;
 }
 
 interface LoginFormikTypes {
@@ -45,6 +45,11 @@ interface FormiksTypes {
   type?: string;
 }
 
+interface LoginFormiksTypes {
+  formik: FormikProps<LoginFormikTypes>;
+  type?: string;
+}
+
 interface CatchErrorTypes {
   response: {
     data: {
@@ -63,4 +68,5 @@ export type {
   FormsTypes,
   LoginFormikTypes,
   LoginFormTypes,
+  LoginFormiksTypes,
 };

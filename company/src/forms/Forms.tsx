@@ -1,32 +1,20 @@
-import { Box } from '@mui/material';
-import useSubmitForm from '../hooks/useSubmitForm';
-import { FormsTypes } from '../types/forms.types';
-import DeleteForm from './DeleteForm/DeleteForm';
-import ForgotPasswordForm from './ForgotPasswordForm/ForgotPasswordForm';
-import LoginForm from './LoginForm/LoginForm';
-import OTPForm from './OTPForm/OTPForm';
-import ResetPasswordForm from './ResetPasswordForm/ResetPasswordForm';
+import { Box } from "@mui/material";
+import DeleteForm from "./DeleteForm/DeleteForm";
+import LoginForm from "./LoginForm/LoginForm";
+import { FormsTypes } from "../types/forms.types";
+import useSubmitForm from "../hooks/useSubmitForm";
 
 const Forms = ({ type }: FormsTypes) => {
-  const { register, handleSubmitForm, errors, setValue, getValues } =
-    useSubmitForm(type);
+  const { formik } = useSubmitForm(type);
 
   return (
-    <Box component={'form'} onSubmit={handleSubmitForm}>
+    <Box component={"form"} onSubmit={formik.handleSubmit}>
       {/* Delete */}
-      {type === 'delete' && <DeleteForm />}
+      {type === "delete" && <DeleteForm />}
       {/* Delete */}
 
       {/* Authentication */}
-      {type === 'login' && (
-        <LoginForm
-          register={register}
-          errors={errors}
-          setValue={setValue}
-          getValues={getValues}
-          type={type}
-        />
-      )}
+      {type === "login" && <LoginForm formik={formik} type={type} />}
       {/* Authentication */}
     </Box>
   );

@@ -87,6 +87,23 @@ interface ProfileManagerCardTypes {
   phone: string;
 }
 
+interface DotTypes {
+  color?: string;
+}
+
+interface StatusBoxTypes {
+  status: "active" | "inactive" | "";
+}
+
+interface TableIconButtonTypes {
+  children: ReactNode;
+  className?: string;
+}
+
+interface CustomMenuTypes {
+  children: ReactNode;
+}
+
 export type {
   ButtonTypes,
   ImageBoxTypes,
@@ -99,4 +116,8 @@ export type {
   BalanceCardTypes,
   ProfileEmployeeCardTypes,
   ProfileManagerCardTypes,
+  DotTypes,
+  StatusBoxTypes,
+  TableIconButtonTypes,
+  CustomMenuTypes,
 };
