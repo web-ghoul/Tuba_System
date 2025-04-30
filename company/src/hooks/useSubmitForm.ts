@@ -1,71 +1,50 @@
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm } from 'react-hook-form';
-import { ObjectSchema } from 'yup';
-import useDeleteSchema from '../forms/DeleteForm/useDeleteSchema';
-import useForgotPasswordSchema from '../forms/ForgotPasswordForm/useForgotPasswordSchema';
-import useLoginSchema from '../forms/LoginForm/useLoginSchema';
-import useOTPSchema from '../forms/OTPForm/useOTPSchema';
-import useResetPasswordSchema from '../forms/ResetPasswordForm/useResetPasswordSchema';
-import { AllFormsTypes } from '../types/forms.types';
-import useSubmitFunction from './useSubmitFunction';
+import { FormikProps, useFormik } from "formik";
+import { useMemo } from "react";
+import useDeleteSchema from "../forms/DeleteForm/useDeleteSchema";
+import LoginSchema from "../forms/LoginForm/useLoginSchema";
+import LoginInitailValues from "../forms/LoginForm/useLoginSchema";
+import useSubmitFunction from "./useSubmitFunction";
+import {
+  AllFormiksTypes,
+  AllFormsTypes,
+  DeleteFormikTypes,
+  DeleteFormTypes,
+  LoginFormikTypes,
+  LoginFormTypes,
+} from "../types/forms.types";
 
 const useSubmitForm = (type: string) => {
-  const { submitFunction } = useSubmitFunction(type);
-  const { LoginSchema, LoginInitialValues } = useLoginSchema();
-  const { ForgotPasswordSchema, ForgotPasswordInitialValues } =
-    useForgotPasswordSchema();
-  const { OTPSchema, OTPInitialValues } = useOTPSchema();
-  const { ResetPasswordSchema, ResetPasswordInitialValues } =
-    useResetPasswordSchema();
-  const { DeleteSchema, DeleteInitialValues } = useDeleteSchema();
+  const { handleSubmit } = useSubmitFunction(type);
+  const { DeleteInitialValues, DeleteSchema } = useDeleteSchema();
 
-  const schemas: { [key: string]: ObjectSchema<AllFormsTypes> } = {
-    //Authentication
-    login: LoginSchema,
-    otp: OTPSchema,
-    forgotPassword: ForgotPasswordSchema,
-    resetPassword: ResetPasswordSchema,
-    //Authentication
-
-    //Delete
-    delete: DeleteSchema,
-    //Delete
-  };
-
-  const initialValues: { [key: string]: AllFormsTypes } = {
-    //Authentication
-    login: LoginInitialValues,
-    otp: OTPInitialValues,
-    forgotPassword: ForgotPasswordInitialValues,
-    resetPassword: ResetPasswordInitialValues,
-    //Authentication
-
-    //Delete
-    delete: DeleteInitialValues,
-    //Delete
-  };
-
-  const chosenSchema = schemas[type];
-
-  const chosenInitialValues = initialValues[type];
-
-  const {
-    handleSubmit,
-    register,
-    setValue,
-    getValues,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(chosenSchema),
-    defaultValues: chosenInitialValues,
-  });
+  const chosenFormik = useMemo(
+    () => (): AllFormiksTypes => {
+      switch (type) {
+        case "login":
+          return {
+            initialValues: LoginInitailValues,
+            validationSchema: LoginSchema,
+            onSubmit: (values: LoginFormTypes) => {
+              handleSubmit(values);
+            },
+          } as unknown as LoginFormikTypes;
+        default:
+          return {
+            initialValues: DeleteInitialValues,
+            validationSchema: DeleteSchema,
+            onSubmit: (values: DeleteFormTypes) => {
+              handleSubmit(values);
+            },
+          } as unknown as DeleteFormikTypes;
+      }
+    },
+    [DeleteInitialValues, DeleteSchema, handleSubmit, type]
+  );
 
   return {
-    register,
-    errors,
-    setValue,
-    getValues,
-    handleSubmitForm: handleSubmit(submitFunction),
+    formik: useFormik<AllFormsTypes>(
+      chosenFormik()
+    ) as FormikProps<AllFormsTypes>,
   };
 };
 

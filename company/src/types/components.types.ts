@@ -1,6 +1,4 @@
 import { ReactNode } from "react";
-import { FieldErrors, Path, UseFormRegister } from "react-hook-form";
-import { AllFormsTypes } from "./forms.types";
 
 interface LogoTypes {
   color?: string;
@@ -9,9 +7,7 @@ interface LogoTypes {
 }
 
 interface InputTypes {
-  register: UseFormRegister<AllFormsTypes>;
-  name: Path<AllFormsTypes>;
-  errors: FieldErrors<AllFormsTypes>;
+  name: string;
   label?: string;
   type?: string;
   select?: boolean;
@@ -61,6 +57,36 @@ interface ProfileAvatarTypes {
   image: string;
 }
 
+interface CounterCardTypes {
+  icon: ReactNode;
+  number: string;
+  unit: string;
+  title: string;
+  back: string;
+  back_icon_color: string;
+}
+
+interface BalanceCardTypes {
+  number: string;
+  title: string;
+  bgColor: string;
+  btn?: string;
+}
+
+interface ProfileEmployeeCardTypes {
+  title: string;
+  number: string;
+  rate: number;
+}
+
+interface ProfileManagerCardTypes {
+  image: string;
+  title: string;
+  name: string;
+  email: string;
+  phone: string;
+}
+
 export type {
   ButtonTypes,
   ImageBoxTypes,
@@ -69,4 +95,8 @@ export type {
   SubmitButtonTypes,
   ProfileTitleTypes,
   ProfileAvatarTypes,
+  CounterCardTypes,
+  BalanceCardTypes,
+  ProfileEmployeeCardTypes,
+  ProfileManagerCardTypes,
 };

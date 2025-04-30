@@ -1,10 +1,15 @@
-import { CatchErrorTypes } from '../types/forms.types';
-import { handleAlert } from './handleAlert';
+import { AxiosError } from "axios";
+import { handleToaster } from "./handleToaster";
 
-export const handleCatchError = (err: CatchErrorTypes) => {
-  try {
-    handleAlert({ msg: err.response.data?.message, status: 'error' });
-  } catch (error) {
-    handleAlert({ msg: 'An error occurred.', status: 'error' });
+export const handleCatchError = (error: unknown) => {
+  if (error instanceof AxiosError) {
+    handleToaster({ msg: "Axios Error" });
+    console.log(error.response?.data || error.message);
+  } else if (error instanceof Error) {
+    handleToaster({ msg: "General Error" });
+    console.log(error.message);
+  } else {
+    handleToaster({ msg: "Unknown Error" });
+    console.log(error);
   }
 };

@@ -1,61 +1,48 @@
-import {
-  FieldErrors,
-  UseFormGetValues,
-  UseFormRegister,
-  UseFormSetValue,
-} from 'react-hook-form';
+import { FormikProps } from "formik";
 
 interface FormsTypes {
   type: string;
   index?: number;
-  tType?: string;
 }
 
-//Login
 interface LoginFormTypes {
   usr: string;
   pwd: string;
 }
-//Login
 
-//Reset Password
-interface ResetPasswordFormTypes {
-  otp: string;
-  password: string;
-  confirmPassword: string;
+interface LoginFormikTypes {
+  touched: LoginFormTypes;
+  errors: LoginFormTypes;
+  initialValues: LoginFormTypes;
+  validationSchema: unknown;
+  onSubmit: (values: unknown) => void;
+  handleChange: (event: unknown) => void;
+  handleBlur: (event: unknown) => void;
+  values: LoginFormTypes;
 }
-//Reset Password
 
-//Forgot Password
-interface ForgotPasswordFormTypes {
-  email: string;
+interface DeleteFormTypes {
+  type: string;
 }
-//Forgot Password
 
-//OTP
-interface OTPFormTypes {
-  otp: string;
+interface DeleteFormikTypes {
+  touched: DeleteFormTypes;
+  errors: DeleteFormTypes;
+  initialValues: DeleteFormTypes;
+  validationSchema: unknown;
+  onSubmit: (values: unknown) => void;
+  handleChange: (event: unknown) => void;
+  handleBlur: (event: unknown) => void;
+  values: DeleteFormTypes;
 }
-//OTP
 
-//Delete
-type DeleteFormTypes = object;
-//Delete
+type AllFormsTypes = LoginFormTypes | DeleteFormTypes;
 
-type AllFormsTypes =
-  | LoginFormTypes
-  | ResetPasswordFormTypes
-  | ForgotPasswordFormTypes
-  | DeleteFormTypes
-  | OTPFormTypes;
+type AllFormiksTypes = LoginFormikTypes | DeleteFormikTypes;
 
 interface FormiksTypes {
-  register: UseFormRegister<AllFormsTypes>;
-  errors: FieldErrors<AllFormsTypes>;
-  setValue: UseFormSetValue<AllFormsTypes>;
-  getValues: UseFormGetValues<AllFormsTypes>;
+  formik: FormikProps<AllFormiksTypes>;
   type?: string;
-  tType?: string;
 }
 
 interface CatchErrorTypes {
@@ -67,12 +54,13 @@ interface CatchErrorTypes {
 }
 
 export type {
+  AllFormiksTypes,
   AllFormsTypes,
   CatchErrorTypes,
-  ForgotPasswordFormTypes,
+  DeleteFormikTypes,
+  DeleteFormTypes,
   FormiksTypes,
   FormsTypes,
+  LoginFormikTypes,
   LoginFormTypes,
-  OTPFormTypes,
-  ResetPasswordFormTypes,
 };

@@ -1,14 +1,12 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useContext } from "react";
 import Input from "../../components/Input/Input";
 import SubmitButton from "../../components/SubmitButton/SubmitButton";
 import { FormsContext } from "../../contexts/FormsContext";
-import { ModalsContext } from "../../contexts/ModalsContext";
 import { FormiksTypes } from "../../types/forms.types";
 
-const LoginForm = ({ register, errors }: FormiksTypes) => {
+const LoginForm = ({ formik }: FormiksTypes) => {
   const { formsLoading } = useContext(FormsContext);
-  const { handleOpenForgotPasswordModal } = useContext(ModalsContext);
 
   return (
     <Box
@@ -26,15 +24,13 @@ const LoginForm = ({ register, errors }: FormiksTypes) => {
         className={`grid justify-stretch items-start gap-8 sm:flex sm:flex-wrap sm:justify-center`}
       >
         <Input
-          register={register}
-          errors={errors}
+          formik={formik}
           type={"email"}
           name={"usr"}
           label={"البريد الالكترونى"}
         />
         <Input
-          register={register}
-          errors={errors}
+          formik={formik}
           label={"كلمة المرور"}
           type={"password"}
           name={"pwd"}

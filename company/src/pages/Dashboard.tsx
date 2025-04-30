@@ -1,73 +1,31 @@
-import { Box, Paper, Typography } from "@mui/material";
-import Dropdown from "../components/Dropdown/Dropdown";
+import { Box } from "@mui/material";
 import { PrimaryBox } from "../mui/boxes/PrimaryBox";
 import { PrimaryContainer } from "../mui/containers/PrimaryContainer";
-import HeroBannerSection from "../sections/HeroBannerSection/HeroBannerSection";
+import CounterCardsSection from "../sections/CounterCardsSection/CounterCardsSection";
+import BalanceDetailsSection from "../sections/BalanceDetailsSection/BalanceDetailsSection";
+import ActiveBalanceDetailsSection from "../sections/ActiveBalanceDetailsSection/ActiveBalanceDetailsSection";
+import EmployeesBalanceDetailsSection from "../sections/EmployeesBalanceDetailsSection/EmployeesBalanceDetailsSection";
+import ApprovalsSection from "../sections/ApprovalsSection/ApprovalsSection";
+import MostClientsSection from "../sections/MostClientsSection/MostClientsSection";
+import MostSellerService from "../sections/MostSellerService/MostSellerService";
+import UsedMembersSection from "../sections/UsedMembersSection/UsedMembersSection";
 
 const Dashboard = () => {
   return (
     <PrimaryBox>
       <PrimaryContainer className={`!grid justify-stretch items-start gap-8`}>
-        <HeroBannerSection />
-        <Box
-          className={`grid justify-stretch items-center gap-8 grid-cols-[30%,1fr]`}
-        >
-          <Paper className={`paper`}>
-            <Box className={`flex justify-between items-center gap-4`}>
-              <Typography variant="h6" className={`!font-[700]`}>
-                معلومات الرصيد
-              </Typography>
-              <Dropdown />
-            </Box>
-          </Paper>
-          <Paper className={`paper`}>
-            <Box className={`flex justify-between items-center gap-4`}>
-              <Typography variant="h6" className={`!font-[700]`}>
-                عدد المطالبات 2024
-              </Typography>
-              <Dropdown />
-            </Box>
-          </Paper>
+        <CounterCardsSection />
+        <BalanceDetailsSection />
+        <Box className={`grid justify-stretch items-start grid-cols-2 gap-4`}>
+          <ActiveBalanceDetailsSection />
+          <EmployeesBalanceDetailsSection />
         </Box>
-        <Box
-          className={`grid justify-stretch items-center gap-8 grid-cols-[1fr,25%]`}
-        >
-          <Paper className={`paper`}>
-            <Box className={`flex justify-between items-center gap-4`}>
-              <Typography variant="h6" className={`!font-[700]`}>
-                الموظفون والمطالبات
-              </Typography>
-              <Box className={`flex justify-end items-center gap-2`}>
-                <Dropdown />
-                <Dropdown />
-              </Box>
-            </Box>
-          </Paper>
-          <Paper className={`paper`}>
-            <Typography variant="h6" className={`!font-[700]`}>
-              استخدام الأعضاء
-            </Typography>
-          </Paper>
+        <Box className={`grid justify-stretch items-start grid-cols-2 gap-4`}>
+          <UsedMembersSection />
+          <MostSellerService />
         </Box>
-        <Box
-          className={`grid justify-stretch items-center gap-8 grid-cols-[1fr,40%]`}
-        >
-          <Paper className={`paper`}>
-            <Typography variant="h6" className={`!font-[700]`}>
-              أكثر المزودين تعاملا مع الشركة
-            </Typography>
-          </Paper>
-          <Paper className={`paper`}>
-            <Typography variant="h6" className={`!font-[700]`}>
-              الوصفات الأكثر طلبا
-            </Typography>
-          </Paper>
-        </Box>
-        <Paper className={`paper`}>
-          <Typography variant="h6" className={`!font-[700]`}>
-            اخر المطالبات
-          </Typography>
-        </Paper>
+        <MostClientsSection />
+        <ApprovalsSection />
       </PrimaryContainer>
     </PrimaryBox>
   );
