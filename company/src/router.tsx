@@ -35,7 +35,7 @@ export const router = createBrowserRouter([
         element: <Employees />,
       },
       {
-        path: `${import.meta.env.VITE_EMPLOYEE_ROUTE}`,
+        path: `${import.meta.env.VITE_EMPLOYEES_ROUTE}/:id`,
         element: <Employee />,
       },
       {
@@ -43,7 +43,7 @@ export const router = createBrowserRouter([
         element: <Packages />,
       },
       {
-        path: `${import.meta.env.VITE_PACKAGE_ROUTE}`,
+        path: `${import.meta.env.VITE_PACKAGES_ROUTE}/:id`,
         element: <Package />,
       },
       {
@@ -51,7 +51,7 @@ export const router = createBrowserRouter([
         element: <Approvals />,
       },
       {
-        path: `${import.meta.env.VITE_APPROVAL_ROUTE}`,
+        path: `${import.meta.env.VITE_APPROVALS_ROUTE}/:id`,
         element: <Approval />,
       },
       {
@@ -59,7 +59,7 @@ export const router = createBrowserRouter([
         element: <Networks />,
       },
       {
-        path: `${import.meta.env.VITE_NETWORK_ROUTE}`,
+        path: `${import.meta.env.VITE_NETWORKS_ROUTE}/:id`,
         element: <Network />,
       },
       {

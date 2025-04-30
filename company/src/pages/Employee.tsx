@@ -1,9 +1,13 @@
+import EmployeeDetailsSection from "../sections/EmployeeDetailsSection/EmployeeDetailsSection";
+import EmployeeSection from "../sections/EmployeeSections/EmployeeSection";
+
 const Employee = () => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <>
+      <EmployeeSection />
+      <EmployeeDetailsSection />
+    </>
+  );
+};
 
-export default Employee
+export default Employee;

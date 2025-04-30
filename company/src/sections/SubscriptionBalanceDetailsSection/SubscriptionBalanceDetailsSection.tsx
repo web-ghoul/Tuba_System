@@ -9,7 +9,7 @@ const SubscriptionBalanceDetailsSection = () => {
         <Box className={`grid justify-stretch items-center grid-cols-2 gap-4`}>
           <BalanceCard
             title={"الرصيد المتاح للإشتراك"}
-            bgColor={"bg-available_balance_card"}
+            bgColor={"bg-primary_light"}
             number={"1200"}
           />
           <BalanceCard
