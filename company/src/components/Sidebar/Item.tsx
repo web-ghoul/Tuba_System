@@ -23,9 +23,8 @@ const Item = ({
           logout ? "bg-red-600" : "bg-primary"
         } hidden group-hover:flex ${pathname === link && "!flex"}`}
       />
-
       <PrimaryContainer
-        className={`!flex justify-stretch items-center gap-3 py-2 transition-all [&>svg]:text-[20px] [&>svg]:hover:text-[22px] ${
+        className={`!flex justify-stretch items-center gap-3 py-2 transition-all [&>svg]:text-[20px] ${
           logout
             ? "[&>svg]:hover:text-red-600  hover:bg-red-200"
             : "[&>svg]:hover:text-primary  hover:bg-primary_light"
@@ -40,10 +39,10 @@ const Item = ({
       >
         {icon}
         <Typography
-          variant="subtitle1"
+          variant="subtitle2"
           className={`transition-all ${
             logout ? "group-hover:text-red-600" : "group-hover:text-primary"
-          } group-hover:!font-[600] ${
+          } ${
             pathname === link &&
             `${
               logout ? "text-red-600" : "text-primary"

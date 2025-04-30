@@ -1,12 +1,12 @@
-import { Box, Typography } from "@mui/material";
+import { Paper } from "@mui/material";
+import MostSellerTable from "../../Tables/MostSellerTable/MostSellerTable";
 
 const MostSellerService = () => {
   return (
-    <Box className={`paper`}>
-      <Typography variant="h6" className={`!font-[700]`}>
-        الوصفات الأكثر طلبا
-      </Typography>
-    </Box>
+    <Paper className={`paper`}>
+      <h6 className={`!font-[700] paper_head`}>الوصفات الأكثر طلبا</h6>
+      <MostSellerTable />
+    </Paper>
   );
 };
 

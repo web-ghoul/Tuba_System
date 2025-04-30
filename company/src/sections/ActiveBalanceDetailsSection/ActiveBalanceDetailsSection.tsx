@@ -1,12 +1,10 @@
-import { Box, Typography } from "@mui/material";
+import { Paper,Box } from "@mui/material";
 import BalanceCard from "../../components/BalanceCard/BalanceCard";
 
 const ActiveBalanceDetailsSection = () => {
   return (
-    <Box className={`paper`}>
-      <Typography variant="h6" className="!font-[700]">
-        تفاصيل رصيد التنشيط
-      </Typography>
+    <Paper className={`paper`}>
+      <h6 className="!font-[700] paper_head">تفاصيل رصيد التنشيط</h6>
       <Box className={`grid justify-stretch items-center gap-2`}>
         <Box className={`grid justify-stretch items-center grid-cols-2 gap-4`}>
           <BalanceCard
@@ -26,7 +24,7 @@ const ActiveBalanceDetailsSection = () => {
           number={"200"}
         />
       </Box>
-    </Box>
+    </Paper>
   );
 };
 

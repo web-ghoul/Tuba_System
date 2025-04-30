@@ -19,7 +19,7 @@ const CounterCard = ({
       </Icon>
 
       <Box className={`grid justify-stretch items-center gap-2`}>
-        <Typography variant="h6" className="!font-[600]">
+        <Typography variant="h6" className="!font-[700]">
           {number} {unit}
         </Typography>
         <Typography variant="subtitle1" className="!font-[400]">

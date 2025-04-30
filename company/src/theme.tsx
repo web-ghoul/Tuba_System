@@ -1,4 +1,4 @@
-import { createTheme } from '@mui/material';
+import { createTheme } from "@mui/material";
 
 export const theme = createTheme({
   palette: {
@@ -27,81 +27,66 @@ export const theme = createTheme({
   typography: {
     fontFamily: "Cairo",
     h1: {
-      fontSize: "32px",
-      "@media (max-width: 1200px)": {
-        fontSize: "30px",
-      },
-      "@media (max-width: 992px)": {
-        fontSize: "29px",
-      },
-      "@media (max-width: 768px)": {
-        fontSize: "28px",
-      },
-      "@media (max-width: 540px)": {
-        fontSize: "27px",
-      },
-    },
-    h2: {
       fontSize: "30px",
       "@media (max-width: 1200px)": {
         fontSize: "28px",
       },
       "@media (max-width: 992px)": {
-        fontSize: "27px",
-      },
-      "@media (max-width: 768px)": {
         fontSize: "26px",
-      },
-      "@media (max-width: 540px)": {
-        fontSize: "25px",
-      },
-    },
-    h3: {
-      fontSize: "27.5px",
-      "@media (max-width: 1200px)": {
-        fontSize: "26px",
-      },
-      "@media (max-width: 992px)": {
-        fontSize: "25px",
       },
       "@media (max-width: 768px)": {
         fontSize: "24px",
       },
       "@media (max-width: 540px)": {
-        fontSize: "23px",
-      },
-    },
-    h4: {
-      fontSize: "24px",
-      "@media (max-width: 1200px)": {
-        fontSize: "23px",
-      },
-      "@media (max-width: 992px)": {
         fontSize: "22px",
       },
+    },
+    h2: {
+      fontSize: "28px",
+      "@media (max-width: 1200px)": {
+        fontSize: "26px",
+      },
+      "@media (max-width: 992px)": {
+        fontSize: "24px",
+      },
       "@media (max-width: 768px)": {
-        fontSize: "21px",
+        fontSize: "22px",
       },
       "@media (max-width: 540px)": {
         fontSize: "20px",
       },
     },
-    h5: {
-      fontSize: "20px",
+    h3: {
+      fontSize: "26px",
       "@media (max-width: 1200px)": {
-        fontSize: "19px",
+        fontSize: "24px",
       },
       "@media (max-width: 992px)": {
-        fontSize: "18px",
+        fontSize: "22px",
       },
       "@media (max-width: 768px)": {
-        fontSize: "17px",
+        fontSize: "20px",
       },
       "@media (max-width: 540px)": {
-        fontSize: "16px",
+        fontSize: "19px",
       },
     },
-    h6: {
+    h4: {
+      fontSize: "22px",
+      "@media (max-width: 1200px)": {
+        fontSize: "21px",
+      },
+      "@media (max-width: 992px)": {
+        fontSize: "20px",
+      },
+      "@media (max-width: 768px)": {
+        fontSize: "19px",
+      },
+      "@media (max-width: 540px)": {
+        fontSize: "17px",
+      },
+    },
+    h5: {
       fontSize: "18px",
       "@media (max-width: 1200px)": {
         fontSize: "17px",
@@ -116,8 +101,23 @@ export const theme = createTheme({
         fontSize: "14px",
       },
     },
-    subtitle1: {
+    h6: {
       fontSize: "16px",
+      "@media (max-width: 1200px)": {
+        fontSize: "15px",
+      },
+      "@media (max-width: 992px)": {
+        fontSize: "14px",
+      },
+      "@media (max-width: 768px)": {
+        fontSize: "13px",
+      },
+      "@media (max-width: 540px)": {
+        fontSize: "12px",
+      },
+    },
+    subtitle1: {
+      fontSize: "15px",
       lineHeight: "1",
       "@media (max-width: 1200px)": {
         fontSize: "14px",
@@ -154,19 +154,19 @@ export const theme = createTheme({
       fontSize: "12px",
     },
     button: {
-      fontSize: "16px",
+      fontSize: "14px",
       textTransform: "capitalize",
       "@media (max-width: 1200px)": {
-        fontSize: "15px",
-      },
-      "@media (max-width: 992px)": {
-        fontSize: "14px",
-      },
-      "@media (max-width: 768px)": {
         fontSize: "13px",
       },
-      "@media (max-width: 540px)": {
+      "@media (max-width: 992px)": {
         fontSize: "12px",
+      },
+      "@media (max-width: 768px)": {
+        fontSize: "11px",
+      },
+      "@media (max-width: 540px)": {
+        fontSize: "10px",
       },
     },
   },

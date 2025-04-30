@@ -4,7 +4,7 @@ import { ProfileAvatarTypes } from "../../types/components.types";
 
 const ProfileAvatar = ({ image }: ProfileAvatarTypes) => {
   return (
-    <Box className={`relative w-[200px] h-[200px] rounded-full bg-gray-300`}>
+    <Box className={`relative w-[200px] h-[200px] m-auto rounded-full bg-gray-300`}>
       <Box
         className={`bg-cover bg-center bg-no-repeat overflow-hidden`}
         sx={{ backgroundImage: `url(${image})` }}

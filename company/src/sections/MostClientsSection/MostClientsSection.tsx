@@ -1,11 +1,15 @@
-import { Box, Typography } from '@mui/material'
+import { Paper } from "@mui/material";
+import MostClientsTable from "../../Tables/MostClientsTable/MostClientsTable";
 
 const MostClientsSection = () => {
   return (
-    <Box className={`paper`}>
-      <Typography variant='h6' className={`!font-[700]`}>أكثر المزودين تعاملا مع الشركة</Typography>
-    </Box>
-  )
-}
+    <Paper className={`paper`}>
+      <h6 className={`!font-[700] paper_head`}>
+        أكثر المزودين تعاملا مع الشركة
+      </h6>
+      <MostClientsTable />
+    </Paper>
+  );
+};
 
-export default MostClientsSection
+export default MostClientsSection;

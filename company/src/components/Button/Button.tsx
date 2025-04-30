@@ -1,8 +1,8 @@
-import { CircularProgress, Typography } from '@mui/material';
-import { handleAlert } from '../../functions/handleAlert';
-import { PrimaryButton } from '../../mui/buttons/PrimaryButton';
-import { PrimaryIconButton } from '../../mui/buttons/PrimaryIconButton';
-import { ButtonTypes } from '../../types/components.types';
+import { CircularProgress, Typography } from "@mui/material";
+import { handleToaster } from "../../functions/handleToaster";
+import { PrimaryButton } from "../../mui/buttons/PrimaryButton";
+import { PrimaryIconButton } from "../../mui/buttons/PrimaryIconButton";
+import { ButtonTypes } from "../../types/components.types";
 
 const Button = ({
   title,
@@ -14,28 +14,28 @@ const Button = ({
   loading,
 }: ButtonTypes) => {
   const classes = `${
-    bg === 'excel'
+    bg === "excel"
       ? `!bg-excel hover:!bg-green-950`
-      : bg && `${bg} hover:${bg.replace('5', '6')}`
+      : bg && `${bg} hover:${bg.replace("5", "6")}`
   }`;
 
   const handleClick = () => {
     const newVar = variant?.toLowerCase();
-    if (newVar === 'under development') {
-      handleAlert({ msg: 'Under Development...' });
+    if (newVar === "under development") {
+      handleToaster({ msg: "Under Development..." });
     }
   };
 
   const loadingIcon = (
-    <CircularProgress sx={{ color: theme => theme.palette.common.white }} />
+    <CircularProgress sx={{ color: (theme) => theme.palette.common.white }} />
   );
 
   return title ? (
     <PrimaryButton
-      type={type || 'button'}
+      type={type || "button"}
       onClick={handling || handleClick}
       className={classes}
-      loadingPosition={'center'}
+      loadingPosition={"center"}
       loading={loading}
       loadingIndicator={loadingIcon}
     >
@@ -45,7 +45,7 @@ const Button = ({
   ) : (
     <PrimaryIconButton
       onClick={handling}
-      loadingPosition={'center'}
+      loadingPosition={"center"}
       loading={loading}
       loadingIndicator={loadingIcon}
       className={classes}

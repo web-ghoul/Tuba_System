@@ -1,12 +1,10 @@
-import { Box, Typography } from "@mui/material";
+import { Paper } from "@mui/material";
 
 const UsedMembersSection = () => {
   return (
-    <Box className={`paper`}>
-      <Typography variant="h6" className={`!font-[700]`}>
-        استخدام الاعضاء
-      </Typography>
-    </Box>
+    <Paper className={`paper`}>
+      <h6 className={`!font-[700] paper_head`}>استخدام الاعضاء</h6>
+    </Paper>
   );
 };
 

@@ -1,14 +1,12 @@
-import { Box, Typography } from "@mui/material";
+import { Paper } from "@mui/material";
 import DoughnutChart from "../../charts/DoughnutChart";
 
 const EmployeesBalanceDetailsSection = () => {
   return (
-    <Box className={`paper`}>
-      <Typography variant="h6" className={`!font-[700]`}>
-        تفاصيل رصيد الموظفين
-      </Typography>
-      <DoughnutChart/>
-    </Box>
+    <Paper className={`paper`}>
+      <h6 className={`!font-[700] paper_head`}>تفاصيل رصيد الموظفين</h6>
+      <DoughnutChart />
+    </Paper>
   );
 };
 

@@ -21,6 +21,7 @@
     "@reduxjs/toolkit": "^2.3.0",
     "axios": "^1.7.7",
     "chart.js": "^4.4.9",
+    "formik": "^2.4.6",
     "frappe-react-sdk": "^1.9.0",
     "js-cookie": "^3.0.5",
     "react": "^18.3.1",
@@ -36,7 +37,7 @@
     "stylis": "^4.3.4",
     "stylis-plugin-rtl": "^2.1.1",
     "tubasystemwithreact": "file:",
-    "yup": "^1.4.0"
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",

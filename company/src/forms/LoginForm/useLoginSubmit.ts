@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { FormsContext } from '../../contexts/FormsContext';
-import { handleAlert } from '../../functions/handleAlert';
+import { handleAlert } from '../../functions/handleToaster';
 import { handleCatchError } from '../../functions/handleCatchError';
 import useAxios from '../../hooks/useAxios';
 import { login as loginAction } from '../../store/authSlice';
