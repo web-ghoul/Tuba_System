@@ -1,0 +1,327 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+  --primary: #5A46E6;
+  --secondary: #2AD2C5;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--primary_bg);
+  font-family: "El Messiri", sans-serif;
+  min-height: 100vh;
+  min-width: 100vw;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+main {
+  min-height: 100vh;
+  min-width: 100vw;
+  width: 100vw;
+  display: grid;
+  align-items: center;
+  justify-content: stretch;
+}
+
+@layer components {
+  .paper {
+    @apply !rounded-[12px] bg-white p-6 border border-gray-300 !shadow-none grid justify-stretch items-center gap-4;
+  }
+}
+
+/* Flip image in RTL mode */
+[dir="ltr"] .rtl-flip {
+  transform: scaleX(-1);
+}
+[dir="ltr"] .rtl-flip {
+  transform: scaleX(-1);
+  
+  /* Horizontally flip the image */
+}
+.tuba_card{
+  border:1px solid #E5E7EB;
+}
+[dir="ltr"] .tuba_card {
+padding-right: 0 !important; /* Remove right padding */
+overflow: hidden; /* Ensure no overflow creates space */
+padding-left: 8px
+}
+/* Update the left side with gradient background div */
+.tuba_card .relative.overflow-hidden.rounded-lg {
+display: flex;
+justify-content: flex-end; /* Always align to the end in LTR */
+padding-right: 0; /* Remove any right padding */
+margin-right: 0; /* Remove any right margin */
+width: 1/3; /* Keep your existing width */
+}
+
+
+
+	/* Custom CSS */
+	.custom-label {
+		margin-right: 10px;
+		/* Adjust this value as needed */
+	}
+
+
+	.swal-wide {
+		width: 80% !important;
+		max-width: 800px !important;
+	}
+
+	.swal-html-container-wide {
+		width: 100% !important;
+		max-width: 100% !important;
+		padding: 0 !important;
+	}
+
+	.error-container {
+		width: 100%;
+		max-height: 70vh;
+		overflow-y: auto;
+		padding: 1rem;
+	}
+	/* Style for the gradient buttons */
+	.btn-gradient {
+		color: #fff;
+		font-weight: bold;
+		font-size: 14px;
+		height: 45px;
+	}
+	.dataTables_filter {
+		display: none; /* Hide the search bar */
+	}
+	.btn-outline-primary {
+		border-color: #6c63ff;
+		color: #6c63ff;
+		background-color: transparent;
+	}
+
+	.btn-outline-primary:hover {
+		background-color: #f0f0f0;
+	}
+
+	/* Add hover effect for the primary gradient button */
+	.btn-primary.btn-gradient:hover {
+		background: linear-gradient(to right, #00bfff, #1e90ff);
+	}
+
+	/* Styling for form inputs and selects */
+	.form-control-solid,
+	.form-select-solid {
+		background-color: #f9f9f9;
+		border: 1px solid #ddd;
+		padding: 10px;
+		border-radius: 8px;
+		font-size: 14px;
+	}
+
+	/* Add placeholder styling if needed */
+	.form-control::placeholder,
+	.form-select::placeholder {
+		color: #c0c0c0;
+	}
+
+	.filter-btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border: 1px solid #DBDDE0; /* Light gray border */
+		border-radius: 8px; /* Rounded corners */
+		background-color: transparent; /* Transparent background */
+		padding: 8px 12px; /* Padding for spacing */
+		font-size: 14px;
+		color: #82808D; /* Light gray color for the text */
+		cursor: pointer; /* Pointer cursor for better UX */
+		font-size: 13px;
+	}
+
+	.filter-icon {
+		width: 18px; /* Set width for the icon */
+		height: 18px; /* Set height for the icon */
+		margin-left: 5px; /* Space between icon and text */
+	}
+
+	.filter-btn:hover {
+		border-color: #aaa; /* Slightly darker border on hover */
+		color: #333; /* Darker text color on hover */
+	}
+	.btn-export-xls{
+		background: linear-gradient(90deg, #19D2C5 0%, #5A46E6 100%);
+		width: Hug (119px)px;
+		height: Fixed (44px)px;
+		padding: 40px 16px 40px 16px;
+		gap: 8px;
+		border-radius: 8px;
+		opacity: 0px;
+		color:#FFFFFF !important;
+
+	}
+	.btn-export-pdf{
+		background: #5A46E6 !important;
+		width: Hug (120px)px;
+		height: Fixed (44px)px;
+		padding: 40px 16px 40px 16px;
+		gap: 8px;
+		border-radius: 8px ;
+		opacity: 0px;
+		color:#FFFFFF !important;
+
+	}
+
+	.rows-text {
+		margin-top: 9px;
+		font-size: 12px; /* Adjust size as needed */
+		white-space: nowrap; /* Prevent text wrapping */
+		color:#82808D;
+
+	}
+	.active-badge{
+		background: #DEFCEE;
+		color: #28A745  !important;;
+		width: 53px;
+		height:23px;
+		padding: 13px !important;
+		gap: 10px;
+		border-radius: 8px;
+		opacity: 0px;
+
+
+	}
+  .no-pad-box{
+    padding: 0px !important;
+  }
+	.nonactive-badge{
+		background:  #FFDDDD;
+		color:#DC3545 !important;
+		width: 53px;
+		height:23px;
+		padding: 13px !important;
+		gap: 10px;
+		border-radius: 8px;
+		opacity: 0px;
+
+
+
+	}
+	.datatable-length-menu{
+		border: 1px solid #DBDDE0;
+		border-radius: 8px;
+		width: 69px;
+		height: 37px;
+		gap: 8px;
+		padding: 8px 12px; /* Padding for spacing */
+		align-items: center;
+		cursor: pointer;
+		opacity: 0px;
+
+	}
+	.custom-select{
+		border: none;
+		color: #8D8E8F;
+
+
+	}
+
+
+	.table td, .table th {
+		max-width: 150px; /* Adjust width as needed */
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+
+	/* Table styling */
+	.table {
+		font-size: 0.875rem; /* Smaller font size */
+		border-collapse: collapse; /* Remove spacing between cells */
+		width: 100%; /* Make sure the table takes full width */
+		overflow-x: auto; /* Remove horizontal scroll */
+	}
+
+	/* Table header */
+	.table th {
+		background-color: #FAFAFA !important ;  /* Header background */
+		padding: 10px; /* Adjust padding for the header */
+		text-align: left; /* Align text to the left */
+
+	}
+
+	/* Table rows */
+	.table td {
+		/* padding: 8px; Reduce padding for smaller space */
+	}
+
+	/* Stripe effect for rows */
+	.table tr:nth-child(even) {
+		background-color: #F6F7F9; /* Stripe color */
+	}
+
+	/* Remove horizontal scroll by restricting table width */
+	.table-container {
+		width: 100%;
+		overflow-x: hidden; /* Ensure no horizontal scroll */
+		border-radius: 8px; /* Apply border radius to the container */
+	}
+	.table{
+		border: 1px solid #F2F2F2;
+		border-radius:8px;
+	}
+
+	.table {
+		width: 100%; /* Make the table take up the full width of the container */
+	}
+
+	.table th,
+	.table td {
+		width: 150px; /* Adjust the cell width as needed */
+	}
+	.table th,
+	.table td {
+		font-size: 14px; /* Adjust the font size as needed */
+		font-weight: 500; /* Adjust the font weight as needed */
+	}
+	.table th,
+	.table td {
+		text-align: center; /* Center the content horizontally */
+	}
+
+	.table th,
+	.table td {
+		padding: 12px; /* Adjust the padding value as needed */
+		vertical-align: middle; /* This will help center the content vertically */
+	}
+	.btn-gradient {
+    background: linear-gradient(90deg, #19D2C5 0%, #5A46E6 100%);
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    width:173px;
+height: 44px;
+border-radius: 8px;
+opacity: 0px;
+border:none;
+
+}
+.btn-outline-primary {
+width: 80px;
+height: 30px;
+border-radius: 8px;
+border: 1px 0px 0px 0px;
+opacity: 0px;
+border: 1px solid #5A46E6;
+color: #5A46E6;
+}
+
+
