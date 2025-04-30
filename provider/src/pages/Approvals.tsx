@@ -69,7 +69,8 @@ const ApprovalsPage: React.FC = () => {
 
 
     return (
-        <PrimaryContainer className="!grid gap-4">
+
+        <PrimaryContainer className="!grid gap-4 ">
             {/* Toolbar */}
             <Box className="flex items-center gap-3">
                 <Typography className="whitespace-nowrap">عرض الصفوف</Typography>
@@ -88,16 +89,19 @@ const ApprovalsPage: React.FC = () => {
                 </TextField>
 
 
-                <Button variant="outlined" startIcon={<FilterListIcon />} onClick={handleOpenFilter}>
+                <Button className='border rounded-lg' variant="outlined" startIcon={<FilterListIcon />} onClick={handleOpenFilter}>
                     فلترة
                 </Button>
 
                 <Box flexGrow={1} />
 
-                <Button variant="contained" startIcon={<GetAppIcon />} color="success">
-                    تصدير Excel
+                <Button variant="contained"  startIcon={<GetAppIcon />}  className="bg-gradient-to-r from-[#5A46E6] to-[#2AD2C9] hover:from-[#4936ca] hover:to-[#23b3ac] 
+                 rounded-3xl border-none py-2 px-6 text-white font-semibold shadow-md
+                 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5
+                 normal-case">
+                    تصدير XlS
                 </Button>
-                <Button variant="contained" startIcon={<GetAppIcon />} color="error">
+                <Button variant="contained" startIcon={<GetAppIcon />}  className='bg-#5A46E6 border rounded-3xl'>
                     تصدير PDF
                 </Button>
             </Box>

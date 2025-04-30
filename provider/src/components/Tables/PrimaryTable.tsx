@@ -1,12 +1,16 @@
 import React from 'react';
 import { ClaimRecord } from '../../types/claimRecord';
 import { CLAIM_REQUEST_STATUSES } from '../../constants/claimStatus';
+import { useNavigate } from 'react-router-dom';
+
 
 interface PrimaryTableProps {
   data: ClaimRecord[];
 }
 
 const PrimaryTable: React.FC<PrimaryTableProps> = ({ data }) => {
+    const navigate = useNavigate();
+
   return (
     <table className="table align-middle table-hover" >
       <thead>
@@ -48,7 +52,7 @@ const PrimaryTable: React.FC<PrimaryTableProps> = ({ data }) => {
                 </span>
               </td>
               <td className="text-end min-w-70px">
-                <button className="btn btn-sm btn-outline-primary">عرض</button>
+                <button className="btn btn-sm btn-outline-primary"   onClick={() => navigate(`/approvals/${item.id}`)}>عرض</button>
               </td>
             </tr>
           );

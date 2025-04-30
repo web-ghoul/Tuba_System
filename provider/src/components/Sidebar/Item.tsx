@@ -29,21 +29,25 @@ const Item: React.FC<ItemProps> = ({ icon, title, link, logout }) => {
     return (
       <Box
         onClick={handleLogout}
-        className="relative group cursor-pointer"
+        className="relative group cursor-pointer transition-all duration-200"
       >
-        {/* Active bar when hovered or active */}
+        {/* Active indicator bar */}
         <Box
-          className="absolute right-0 top-0 h-full w-[6px] bg-red-600 hidden group-hover:flex"
+          className="absolute right-0 top-0 h-full w-[6px] bg-red-600 
+                     opacity-0 group-hover:opacity-100 transition-opacity duration-200"
         />
         <PrimaryContainer
-          className="!flex items-center gap-3 py-2 
-                     transition-all [&>svg]:text-[20px] [&>svg]:hover:text-[22px]
-                     [&>svg]:hover:text-red-600 hover:bg-red-200"
+          className="!flex justify-start items-center gap-3 py-3 px-4
+                     transition-all duration-200
+                     group-hover:bg-red-100/70"
         >
-          {icon}
+          <Box className="text-gray-600 transition-all duration-200 group-hover:text-red-600">
+            {icon}
+          </Box>
           <Typography
             variant="subtitle1"
-            className="group-hover:text-red-600 group-hover:font-semibold"
+            className="text-gray-700 transition-all duration-200
+                       group-hover:text-red-600 group-hover:font-semibold"
           >
             {title}
           </Typography>
@@ -54,36 +58,44 @@ const Item: React.FC<ItemProps> = ({ icon, title, link, logout }) => {
 
   // --- NORMAL NAVIGATION CASE ---
   return (
-    <Box
-      component={NavLink}
+    <NavLink
       to={link}
       end
-      className={({ isActive }) =>
-        `relative group cursor-pointer 
-         ${isActive ? "bg-primary_light !font-bold [&>svg]:text-primary" : ""}
-         hover:bg-primary_light`
-      }
+      className={({ isActive }) => `block relative group cursor-pointer transition-all duration-200`}
     >
-      <Box
-        className={`absolute right-0 top-0 h-full w-[6px] bg-primary 
-                    hidden group-hover:flex ${window.location.pathname === link ? "!flex" : ""}`}
-      />
-      <PrimaryContainer
-        className="!flex items-center gap-3 py-2 
-                   transition-all [&>svg]:text-[20px] [&>svg]:hover:text-[22px] 
-                   hover:[&>svg]:text-primary"
-      >
-        {icon}
-        <Typography
-          variant="subtitle1"
-          className={`transition-all 
-                     ${window.location.pathname === link ? "text-primary font-semibold" : ""}
-                     group-hover:font-semibold`}
-        >
-          {title}
-        </Typography>
-      </PrimaryContainer>
-    </Box>
+      {({ isActive }) => (
+        <>
+          {/* Active indicator bar */}
+          <Box
+            className={`absolute right-0 top-0 h-full w-[6px] bg-primary
+                        transition-opacity duration-200
+                        ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
+          />
+          <PrimaryContainer
+            className={`!flex justify-start items-center gap-3 py-3 px-4
+                         transition-all duration-200
+                         ${isActive ? 'bg-primary_light/80' : ''}
+                         group-hover:bg-primary_light/60`}
+          >
+            <Box 
+              className={`transition-all duration-200
+                          ${isActive ? 'text-primary' : 'text-gray-600'} 
+                          group-hover:text-primary`}
+            >
+              {icon}
+            </Box>
+            <Typography
+              variant="subtitle1"
+              className={`transition-all duration-200
+                           ${isActive ? 'text-primary font-semibold' : 'text-gray-700'} 
+                           group-hover:text-primary group-hover:font-medium`}
+            >
+              {title}
+            </Typography>
+          </PrimaryContainer>
+        </>
+      )}
+    </NavLink>
   );
 };
 
