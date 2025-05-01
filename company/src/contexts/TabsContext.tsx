@@ -4,8 +4,7 @@ type TabsState = {
   employeeTab: number;
 };
 
-type TabsAction = 
-  | { type: "EMPLOYEE"; payload: number };
+type TabsAction = { type: "EMPLOYEE"; payload: number };
 
 type TabsContextType = {
   state: TabsState;

@@ -8,12 +8,13 @@ import Employees from "./pages/Employees.tsx";
 import Employee from "./pages/Employee.tsx";
 import Network from "./pages/Network.tsx";
 import Networks from "./pages/Networks.tsx";
-import { Approval } from "@mui/icons-material";
 import Approvals from "./pages/Approvals.tsx";
 import Package from "./pages/Package.tsx";
 import Packages from "./pages/Packages.tsx";
 import Invoices from "./pages/Invoices.tsx";
 import Payment from "./pages/Payment.tsx";
+import Permissions from "./pages/Permissions.tsx";
+import Approval from "./pages/Approval.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -71,6 +72,10 @@ export const router = createBrowserRouter([
       {
         path: `${import.meta.env.VITE_NETWORKS_ROUTE}/:id`,
         element: <Network />,
+      },
+      {
+        path: `${import.meta.env.VITE_PERMISSIONS_ROUTE}`,
+        element: <Permissions />,
       },
       {
         path: "*",

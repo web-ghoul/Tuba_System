@@ -4,6 +4,7 @@ import { FiEdit } from "react-icons/fi";
 import { IoArrowBackSharp, IoArrowForwardSharp } from "react-icons/io5";
 import { GradientButton } from "../../mui/buttons/GradientButton";
 import { useTabs } from "../../contexts/TabsContext";
+import TextLabel from "../../components/TextLabel/TextLabel";
 
 const EmployeeMedicalCoverageSection = () => {
   const { dispatch } = useTabs();
@@ -16,6 +17,15 @@ const EmployeeMedicalCoverageSection = () => {
           تعديل
           <FiEdit />
         </BasicButton>
+      </Box>
+
+      <Box className={`grid justify-stretch items-center gap-4 grid-cols-2`}>
+        <TextLabel
+          title={"وثيقة التغطية الطبية "}
+          value={"DOC-202400120 - (DOC-202400120)"}
+          variant="employee"
+        />
+        <TextLabel title={"الباقة الحالية"} value={"Tuba Primary - (PKG-10)"} variant="employee" />
       </Box>
 
       <Box className={`flex justify-between items-center gap-4 flex-wrap`}>

@@ -3,7 +3,7 @@ import CounterCardsSection from "../sections/CounterCardsSection/CounterCardsSec
 import BalanceDetailsSection from "../sections/BalanceDetailsSection/BalanceDetailsSection";
 import SubscriptionBalanceDetailsSection from "../sections/SubscriptionBalanceDetailsSection/SubscriptionBalanceDetailsSection";
 import EmployeesBalanceDetailsSection from "../sections/EmployeesBalanceDetailsSection/EmployeesBalanceDetailsSection";
-import ApprovalsSection from "../sections/ApprovalsSection/ApprovalsSection";
+import ApprovalsCountSection from "../sections/ApprovalsCountSection/ApprovalsCountSection";
 import MostClientsSection from "../sections/MostClientsSection/MostClientsSection";
 import MostSellerService from "../sections/MostSellerService/MostSellerService";
 import UsedMembersSection from "../sections/UsedMembersSection/UsedMembersSection";
@@ -13,7 +13,7 @@ import { PrimaryButton } from "../mui/buttons/PrimaryButton";
 const Dashboard = () => {
   const { state, dispatch } = useModals();
   console.log(state);
-  
+
   return (
     <>
       <PrimaryButton
@@ -32,7 +32,7 @@ const Dashboard = () => {
         <MostSellerService />
       </Box>
       <MostClientsSection />
-      <ApprovalsSection />
+      <ApprovalsCountSection />
     </>
   );
 };

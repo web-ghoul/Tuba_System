@@ -14,7 +14,7 @@ const EmployeeDetailsSection = () => {
     <CustomTabs
       tabsTitles={[
         "المعلومات الشخصية",
-        "معلومات العمل ",
+        "معلومات العمل",
         "التغطية الطبية",
         "التابعين",
       ]}

@@ -27,13 +27,13 @@ const Item = ({
         className={`!flex justify-stretch items-center gap-3 py-2 transition-all [&>svg]:text-[20px] ${
           logout
             ? "[&>svg]:hover:text-red-600  hover:bg-red-200"
-            : "[&>svg]:hover:text-primary  hover:bg-primary_light"
+            : "[&>svg]:hover:text-primary  hover:bg-primary_100"
         } ${
           pathname === link &&
           `${
             logout
               ? "[&>svg]:text-red-600  bg-red-200"
-              : "[&>svg]:text-primary  bg-primary_light"
+              : "[&>svg]:text-primary  bg-primary_100"
           }`
         }`}
       >

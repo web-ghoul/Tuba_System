@@ -107,6 +107,13 @@ interface CustomMenuTypes {
 interface TextLabelTypes {
   title: string;
   value: string;
+  variant?: "employee" | "payment";
+}
+
+interface TextLineTypes {
+  title: string;
+  value: string;
+  valueColor?:string
 }
 
 export type {
@@ -126,4 +133,5 @@ export type {
   TableIconButtonTypes,
   CustomMenuTypes,
   TextLabelTypes,
+  TextLineTypes,
 };

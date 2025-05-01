@@ -13,16 +13,16 @@ const EmployeesBalanceDetailsSection = () => {
             <Dot />
             <Typography
               variant="subtitle1"
-              className={`text-balance_card_text`}
+              className={`text-neutral_400`}
             >
               الرصيد المستهلك
             </Typography>
           </Box>
           <Box className={`flex justify-center items-center gap-1`}>
-            <Dot color={"bg-primary_light"} />
+            <Dot color={"bg-primary_100"} />
             <Typography
               variant="subtitle1"
-              className={`text-balance_card_text`}
+              className={`text-neutral_400`}
             >
               الرصيد المتاح للإستخدام الطبي
             </Typography>

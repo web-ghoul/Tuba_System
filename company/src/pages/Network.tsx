@@ -1,11 +1,5 @@
-import React from 'react'
-
 const Network = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  return <></>;
+};
 
-export default Network
+export default Network;

@@ -49,14 +49,14 @@ const CustomTabs = ({ variant, tabsTitles, children }: CustomTabsTypes) => {
               label={
                 <Box
                   className={`grid justify-start items-center grid-cols-[auto,1fr] gap-4 p-2 rounded-lg ${
-                    value === i ? "bg-primary_light" : "bg-transparent"
+                    value === i ? "bg-primary_100" : "bg-transparent"
                   } w-full`}
                 >
                   <Box
                     className={`w-[35px] h-[35px] bg-primary border-[2px]  border-solid relative rounded-full flex justify-center items-center ${
                       value === i
                         ? "text-white bg-primary border-primary"
-                        : "text-black bg-white border-y-table_border"
+                        : "text-black bg-white border-y-neutral_100"
                     } `}
                   >
                     <Typography variant={"subtitle2"} className={`!font-[700]`}>
@@ -64,7 +64,7 @@ const CustomTabs = ({ variant, tabsTitles, children }: CustomTabsTypes) => {
                     </Typography>
                     {tabsTitles.length > i + 1 && (
                       <Box
-                        className={`absolute left-[50%] translate-x-[-50%] bg-table_border w-[2px] h-[300px] top-[10px] z-[-1]`}
+                        className={`absolute left-[50%] translate-x-[-50%] bg-neutral_100 w-[2px] h-[300px] top-[10px] z-[-1]`}
                       ></Box>
                     )}
                   </Box>

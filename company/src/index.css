@@ -9,7 +9,49 @@
 }
 
 :root {
-  --primary: #5643e1;
+  --primary_100: #EFEDFD;
+  --primary_200: #CEC8F8;
+  --primary_300: #BDB5F5;
+  --primary_400: #9C90F0;
+  --primary_500: #5A46E6;
+  --primary_600: #2C17B5;
+  --primary_700: #211287;
+  --primary_800: #160C5A;
+  --primary_900: #0B062D;
+
+  --secondary_100: #EAFBF9;
+  --secondary_200: #BFF2EE;
+  --secondary_300: #AAEDE8;
+  --secondary_400: #7FE4DC;
+  --secondary_500: #2AD2C5;
+  --secondary_600: #21AB9F;
+  --secondary_700: #198077;
+  --secondary_800: #115550;
+  --secondary_900: #082B28;
+
+  --neutral_white: #FFFFFF;
+  --neutral_100: #E6E6E6;
+  --neutral_200: #CCCCCC;
+  --neutral_300: #B3B3B3;
+  --neutral_400: #999999;
+  --neutral_500: #838383;
+  --neutral_600: #666666;
+  --neutral_700: #4D4D4D;
+  --neutral_800: #333333;
+  --neutral_900: #1A1A1A;
+  --neutral_dark: #000000;
+
+  --success_100: #DADADA;
+  --success_200: #1EC940;
+
+  --warning_900: #FCFEE8;
+  --warning_dark: #EFDE03;
+
+  --error_900: #FFF0F0;
+  --error_dark: #FF2828;
+
+  --other: #FAFAFA;
+
   --primary_bg: #f3f5f9;
 }
 
@@ -39,6 +81,10 @@ main {
 
 .rtl {
   direction: rtl;
+}
+
+.sidebar_height {
+  height: calc(100vh - 60px) !important;
 }
 
 ::-webkit-scrollbar-track {

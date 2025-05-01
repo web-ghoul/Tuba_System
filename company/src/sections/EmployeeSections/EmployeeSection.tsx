@@ -40,7 +40,7 @@ const EmployeeSection = () => {
           className={` p-4 pl-12 border-[1px] border-[#E9E9E9] border-solid rounded-lg h-full  grid justify-stretch items-center gap-6`}
         >
           <Box
-            className={`w-[50px] h-[50px] bg-primary_light rounded-xl flex justify-center items-center !text-primary !text-3xl`}
+            className={`w-[50px] h-[50px] bg-primary_100 rounded-xl flex justify-center items-center !text-primary !text-3xl`}
           >
             <PiNotepadLight />
           </Box>
@@ -61,7 +61,7 @@ const EmployeeSection = () => {
           className={` p-4 pl-12 border-[1px] border-[#E9E9E9] border-solid rounded-lg h-full grid justify-stretch items-center gap-6`}
         >
           <Box
-            className={`w-[50px] h-[50px] bg-primary_light rounded-xl flex justify-center items-center !text-primary !text-3xl`}
+            className={`w-[50px] h-[50px] bg-primary_100 rounded-xl flex justify-center items-center !text-primary !text-3xl`}
           >
             <CiBag1 />
           </Box>

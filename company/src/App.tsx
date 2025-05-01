@@ -5,8 +5,8 @@ import Header from "./components/Header/Header";
 import Sidebar from "./components/Sidebar/Sidebar";
 import { PrimaryBox } from "./mui/boxes/PrimaryBox";
 import { PrimaryContainer } from "./mui/containers/PrimaryContainer";
-import BreadCrumb from "./components/BreadCrumb/BreadCrumb";
 import WelcomeModal from "./modals/WelcomeModal";
+import BreadCrumbSection from "./sections/BreadCrumbSection/BreadCrumbSection";
 
 function App() {
   const { pathname } = useLocation();
@@ -20,22 +20,24 @@ function App() {
       <Header />
       <Box className={`pt-[60px] grid justify-stretch items-center !h-full`}>
         <Sidebar />
-        <Box className={`grid justify-stretch items-stretch self-stretch !content-between pr-[260px]`}>
+        <Box
+          className={`grid justify-stretch items-stretch self-stretch !content-between pr-[260px]`}
+        >
           <PrimaryBox>
             <PrimaryContainer
-              className={`!grid justify-stretch items-start gap-8`}
+              className={`!grid justify-stretch items-start gap-10`}
             >
               {!(
                 pathname === `${import.meta.env.VITE_DASHBOARD_ROUTE}` ||
                 pathname === `${import.meta.env.VITE_LOGIN_ROUTE}`
-              ) && <BreadCrumb />}
+              ) && <BreadCrumbSection />}
               <Outlet />
             </PrimaryContainer>
           </PrimaryBox>
           <Footer />
         </Box>
       </Box>
-      <WelcomeModal/>
+      <WelcomeModal />
     </Box>
   );
 }

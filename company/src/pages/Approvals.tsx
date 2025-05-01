@@ -1,9 +1,7 @@
-const Approvals = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+import ApprovalsSection from "../sections/ApprovalsSection/ApprovalsSection";
 
-export default Approvals
+const Approvals = () => {
+  return <ApprovalsSection />;
+};
+
+export default Approvals;

@@ -4,6 +4,7 @@ import { FiEdit } from "react-icons/fi";
 import { GradientButton } from "../../mui/buttons/GradientButton";
 import { IoArrowBackSharp, IoArrowForwardSharp } from "react-icons/io5";
 import { useTabs } from "../../contexts/TabsContext";
+import TextLabel from "../../components/TextLabel/TextLabel";
 
 const EmployeeJobInfoSection = () => {
   const { dispatch } = useTabs();
@@ -16,6 +17,26 @@ const EmployeeJobInfoSection = () => {
           تعديل
           <FiEdit />
         </BasicButton>
+      </Box>
+
+      <Box className={`grid justify-stretch items-center gap-4 grid-cols-2`}>
+        <TextLabel
+          title={"البريد الإلكتروني للعمل"}
+          value={"a.tarek@tuba.com"}
+          variant="employee"
+        />
+        <TextLabel title={"رقم الموظف"} value={"780"} variant="employee" />
+        <TextLabel
+          title={"المسمى الوظيفي "}
+          value={"."}
+          variant="employee"
+        />
+        <TextLabel
+          title={"الراتب"}
+          value={"اقل من 4000 ريال"}
+          variant="employee"
+        />
+        <TextLabel title={"المجموعة"} value={"."} variant="employee" />
       </Box>
 
       <Box className={`flex justify-between items-center gap-4 flex-wrap`}>
