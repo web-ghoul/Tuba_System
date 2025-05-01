@@ -6,6 +6,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import { PrimaryBox } from "./mui/boxes/PrimaryBox";
 import { PrimaryContainer } from "./mui/containers/PrimaryContainer";
 import BreadCrumb from "./components/BreadCrumb/BreadCrumb";
+import WelcomeModal from "./modals/WelcomeModal";
 
 function App() {
   const { pathname } = useLocation();
@@ -34,6 +35,7 @@ function App() {
           <Footer />
         </Box>
       </Box>
+      <WelcomeModal/>
     </Box>
   );
 }

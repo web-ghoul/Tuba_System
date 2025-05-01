@@ -104,6 +104,11 @@ interface CustomMenuTypes {
   children: ReactNode;
 }
 
+interface TextLabelTypes {
+  title: string;
+  value: string;
+}
+
 export type {
   ButtonTypes,
   ImageBoxTypes,
@@ -120,4 +125,5 @@ export type {
   StatusBoxTypes,
   TableIconButtonTypes,
   CustomMenuTypes,
+  TextLabelTypes,
 };

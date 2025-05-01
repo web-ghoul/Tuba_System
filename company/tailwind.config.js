@@ -33,6 +33,7 @@ export default {
         profile_employees_counter_gray: "rgba(250, 250, 250, 1)",
         profile_employees_counter_text_gray: "#636466",
         table_border:"#E6E6E6",
+        text_label:"#4D4D4D",
         tuba_gray: "#82808D",
       },
       boxShadow: {

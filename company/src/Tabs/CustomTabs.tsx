@@ -33,7 +33,7 @@ const CustomTabs = ({ variant, tabsTitles, children }: CustomTabsTypes) => {
 
   return (
     <Box
-      className={`grid justify-stretch items-start grid-cols-[20%,1fr] gap-4 md:gap-3 sm:!gap-2 md:grid-cols-1`}
+      className={`grid justify-stretch items-start grid-cols-[27.5%,1fr] gap-4 md:gap-3 sm:!gap-2 md:grid-cols-1`}
     >
       <Paper className={`w-full paper !sticky top-[90px]`} sx={stylingPaper}>
         <Tabs

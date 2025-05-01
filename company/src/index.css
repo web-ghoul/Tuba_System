@@ -61,6 +61,10 @@ main {
     @apply !rounded-[12px] !border-none bg-white p-4 border border-gray-300 !shadow-none grid justify-stretch items-center gap-4;
   }
 
+  .modal {
+    @apply bg-white rounded-xl p-6 md:p-4 sm:p-2 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] absolute grid justify-stretch items-center max-w-[90vw] max-h-[90vh] w-fit min-w-[40vw] overflow-auto gap-8
+  }
+
   .profile_employees_paper {
     @apply !rounded-[12px] !border-none bg-white border border-gray-300 !shadow-none grid justify-stretch items-center content-between gap-4;
   }

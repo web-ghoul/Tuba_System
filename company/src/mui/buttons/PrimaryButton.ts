@@ -5,9 +5,11 @@ export const PrimaryButton = styled(LoadingButton)(({ theme }) => ({
   color: theme.palette.common.white,
   backgroundColor: theme.palette.primary.main,
   borderRadius: "10px",
-  padding: "10px 16px",
+  padding: "8px 16px",
   boxShadow: "none",
-  fontWeight:"600",
+  borderWidth: "2px",
+  borderStyle: "solid",
+  fontWeight: "600",
   "& > span ": {
     display: "flex",
     justifyContent: "center",
@@ -22,7 +24,8 @@ export const PrimaryButton = styled(LoadingButton)(({ theme }) => ({
     fontSize: "16px",
   },
   "&:hover": {
-    backgroundColor: theme.palette.primary.dark,
+    backgroundColor: "#fff",
+    color: theme.palette.primary.main,
   },
   [theme.breakpoints.down("lg")]: {
     borderRadius: "3px",

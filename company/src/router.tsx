@@ -13,6 +13,7 @@ import Approvals from "./pages/Approvals.tsx";
 import Package from "./pages/Package.tsx";
 import Packages from "./pages/Packages.tsx";
 import Invoices from "./pages/Invoices.tsx";
+import Payment from "./pages/Payment.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
       {
         path: `${import.meta.env.VITE_EMPLOYEES_ROUTE}/:id`,
         element: <Employee />,
+      },
+      {
+        path: `${import.meta.env.VITE_PAYMENT_ROUTE}`,
+        element: <Payment />,
       },
       {
         path: `${import.meta.env.VITE_PACKAGES_ROUTE}`,

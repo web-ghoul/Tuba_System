@@ -12,6 +12,7 @@ import { store } from "./store/store.tsx";
 import { theme } from "./theme.tsx";
 import "./index.css";
 import { TabsProvider } from "./contexts/TabsContext.tsx";
+import { ModalsProvider } from "./contexts/ModalsContext.tsx";
 
 const cacheRtl = createCache({
   key: "muirtl",
@@ -26,18 +27,20 @@ createRoot(document.getElementById("root")!).render(
   <CacheProvider value={cacheRtl}>
     <ThemeProvider theme={theme}>
       <Provider store={store}>
-        <TabsProvider>
-          <FrappeProvider
-            url={`http://erp-staging.gettuba.com/api/v2`}
-            tokenParams={{
-              useToken: true,
-              token: () => "",
-              type: "Bearer",
-            }}
-          >
-            <RouterProvider router={router} />
-          </FrappeProvider>
-        </TabsProvider>
+        <ModalsProvider>
+          <TabsProvider>
+            <FrappeProvider
+              url={`http://erp-staging.gettuba.com/api/v2`}
+              tokenParams={{
+                useToken: true,
+                token: () => "",
+                type: "Bearer",
+              }}
+            >
+              <RouterProvider router={router} />
+            </FrappeProvider>
+          </TabsProvider>
+        </ModalsProvider>
       </Provider>
     </ThemeProvider>
   </CacheProvider>

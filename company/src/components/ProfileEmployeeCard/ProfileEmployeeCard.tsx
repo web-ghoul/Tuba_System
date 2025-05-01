@@ -12,7 +12,7 @@ const ProfileEmployeeCard = ({
   rate,
 }: ProfileEmployeeCardTypes) => {
   return (
-    <Box className={`profile_employees_paper h-full`}>
+    <Box className={`profile_employees_paper h-full overflow-hidden`}>
       <Box className={`flex justify-start items-start gap-2 p-4`}>
         <Icon
           className={`rounded-3xl !w-[60px] !h-[60px] !flex justify-center items-center bg-profile_employees_counter_light`}

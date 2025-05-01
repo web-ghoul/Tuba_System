@@ -8,6 +8,7 @@ import {
   LogoutRounded,
   ReceiptRounded,
   VerifiedUserRounded,
+  WalletRounded,
 } from "@mui/icons-material";
 import { Divider } from "@mui/material";
 import { PrimaryBox } from "../../mui/boxes/PrimaryBox";
@@ -37,6 +38,11 @@ const Sidebar = () => {
         icon={<BeenhereRounded />}
         title={"باقات التغطية الطبية"}
         link={`${import.meta.env.VITE_PACKAGES_ROUTE}`}
+      />
+      <Item
+        icon={<WalletRounded />}
+        title={"الدفع"}
+        link={`${import.meta.env.VITE_PAYMENT_ROUTE}`}
       />
       <Item
         icon={<ListAltRounded />}

@@ -7,10 +7,20 @@ import ApprovalsSection from "../sections/ApprovalsSection/ApprovalsSection";
 import MostClientsSection from "../sections/MostClientsSection/MostClientsSection";
 import MostSellerService from "../sections/MostSellerService/MostSellerService";
 import UsedMembersSection from "../sections/UsedMembersSection/UsedMembersSection";
+import { useModals } from "../contexts/ModalsContext";
+import { PrimaryButton } from "../mui/buttons/PrimaryButton";
 
 const Dashboard = () => {
+  const { state, dispatch } = useModals();
+  console.log(state);
+  
   return (
     <>
+      <PrimaryButton
+        onClick={() => dispatch({ type: "welcomeModal", payload: true })}
+      >
+        Try Modal
+      </PrimaryButton>
       <CounterCardsSection />
       <BalanceDetailsSection />
       <Box className={`grid justify-stretch items-start grid-cols-2 gap-4`}>
