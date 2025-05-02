@@ -10,6 +10,9 @@ import BreadCrumbSection from "./sections/BreadCrumbSection/BreadCrumbSection";
 import EditEmployeePersonInfoModal from "./modals/EditEmployeePersonInfoModal";
 import EditEmployeeJobInfoModal from "./modals/EditEmployeeJobInfoModal";
 import EditEmployeeMedicalCoverageModal from "./modals/EditEmployeeMedicalCoverageModal";
+import AddMemberModal from "./modals/AddMemberModal";
+import EditMemberModal from "./modals/EditMemberModal";
+import ViewMemberModal from "./modals/ViewMemberModal";
 
 function App() {
   const { pathname } = useLocation();
@@ -40,10 +43,13 @@ function App() {
           <Footer />
         </Box>
       </Box>
+      <WelcomeModal />
       <EditEmployeePersonInfoModal />
       <EditEmployeeJobInfoModal />
       <EditEmployeeMedicalCoverageModal />
-      <WelcomeModal />
+      <AddMemberModal />
+      <EditMemberModal />
+      <ViewMemberModal />
     </Box>
   );
 }

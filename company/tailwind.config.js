@@ -47,10 +47,10 @@ export default {
         success_100: "var(--success_100)",
         success_200: "var(--success_200)",
 
-        warning_900: "var(--warning_900)",
+        warning_100: "var(--warning_100)",
         warning_dark: "var(--warning_dark)",
 
-        error_900: "var(--error_900)",
+        error_100: "var(--error_100)",
         error_dark: "var(--error_dark)",
 
         other: "var(--other)",

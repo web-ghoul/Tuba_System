@@ -3,8 +3,11 @@ import { TableBody, TableHead, TableRow } from "@mui/material";
 import { StyledTableCell } from "../StyledTableCell";
 import { StyledTableRow } from "../StyledTableRow";
 import ActionMenus from "./ActionMenus";
+import { useModals } from "../../contexts/ModalsContext";
 
 const EmployeeMembersTable = () => {
+  const { dispatch } = useModals();
+
   return (
     <PrimaryTable>
       <TableHead>
@@ -20,7 +23,12 @@ const EmployeeMembersTable = () => {
       </TableHead>
       <TableBody>
         <StyledTableRow>
-          <StyledTableCell component="th" scope="row">
+          <StyledTableCell
+            onClick={() => dispatch({ type: "viewMemberModal", payload: true })}
+            component="th"
+            scope="row"
+            className={`transition-all hover:underline hover:cursor-pointer`}
+          >
             2034567890
           </StyledTableCell>
           <StyledTableCell align="center">علي طارق محمود</StyledTableCell>

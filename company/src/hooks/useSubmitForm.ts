@@ -4,6 +4,9 @@ import useSubmitFunction from "./useSubmitFunction";
 import useLoginSchema from "../forms/LoginForm/useLoginSchema";
 import useEmployeePersonInfoSchema from "../forms/EmployeePersonInfoForm/useEmployeePersonInfoSchema";
 import { FormikMap } from "../types/forms.types";
+import useEmployeeJobInfoSchema from "../forms/EmployeeJobInfoForm/useEmployeeJobInfoSchema";
+import useEmployeeMedicalCoverageSchema from "../forms/EmployeeMedicalCoverageForm/useEmployeeMedicalCoverageSchema";
+import useMemberSchema from "../forms/MemberForm/useMemberSchema";
 
 const useSubmitForm = <T extends keyof FormikMap>(
   type: T
@@ -12,18 +15,41 @@ const useSubmitForm = <T extends keyof FormikMap>(
   const { LoginInitialValues, LoginSchema } = useLoginSchema();
   const { EmployeePersonInfoInitialValues, EmployeePersonInfoSchema } =
     useEmployeePersonInfoSchema();
+  const { EmployeeJobInfoInitialValues, EmployeeJobInfoSchema } =
+    useEmployeeJobInfoSchema();
+  const {
+    EmployeeMedicalCoverageInitialValues,
+    EmployeeMedicalCoverageSchema,
+  } = useEmployeeMedicalCoverageSchema();
+  const { MemberInitialValues, MemberSchema } = useMemberSchema();
 
   const formikConfig = useMemo(() => {
     switch (type) {
+      case "login":
+        return {
+          initialValues: LoginInitialValues,
+          validationSchema: LoginSchema,
+        };
       case "editEmployeePersonInfo":
         return {
           initialValues: EmployeePersonInfoInitialValues,
           validationSchema: EmployeePersonInfoSchema,
         };
-      case "login":
+      case "editEmployeeJobInfo":
         return {
-          initialValues: LoginInitialValues,
-          validationSchema: LoginSchema,
+          initialValues: EmployeeJobInfoInitialValues,
+          validationSchema: EmployeeJobInfoSchema,
+        };
+      case "editEmployeeMedicalCoverage":
+        return {
+          initialValues: EmployeeMedicalCoverageInitialValues,
+          validationSchema: EmployeeMedicalCoverageSchema,
+        };
+      case "addMember":
+      case "editMember":
+        return {
+          initialValues: MemberInitialValues,
+          validationSchema: MemberSchema,
         };
       default:
         throw new Error(`Unknown form type: ${type}`);

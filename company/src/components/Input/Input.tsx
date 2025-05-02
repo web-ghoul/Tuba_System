@@ -2,7 +2,7 @@ import { VisibilityOffRounded, VisibilityRounded } from "@mui/icons-material";
 import { Box, IconButton, InputAdornment, Typography } from "@mui/material";
 import { MouseEvent, useMemo, useState } from "react";
 import { InputTypes } from "../../types/components.types";
-import { AllFormiksTypes, AllFormsTypes, FormiksTypes } from "../../types/forms.types";
+import { AllFormsTypes, FormiksTypes } from "../../types/forms.types";
 import { PrimaryTextField } from "../../mui/fields/PrimaryTextField";
 
 const Input = <T extends AllFormsTypes>({
@@ -25,21 +25,22 @@ const Input = <T extends AllFormsTypes>({
   };
 
   const error =
-    formik.touched[name as keyof AllFormiksTypes] &&
-    Boolean(formik.errors[name as keyof AllFormiksTypes]);
+    formik.touched[name as keyof T] && Boolean(formik.errors[name as keyof T]);
   const helperText = error
-    ? (formik.errors[name as keyof AllFormiksTypes] as string)
+    ? (formik.errors[name as keyof T] as string)
     : undefined;
 
   return useMemo(
     () => (
-      <Box
-        className={`grid justify-stretch w-full items-center gap-2 md:gap-1`}
-      >
-        <Typography id={`label-${name}`} variant="subtitle1" className={`!font-[400]`}>
-          {type === "search" ? "Search" : label}
+      <Box className="grid justify-stretch w-full items-center gap-2 md:gap-1">
+        <Typography
+          id={`label-${name}`}
+          variant="subtitle1"
+          className="!font-[400]"
+        >
+          {type === "search" ? "ابحث عن" : label}
         </Typography>
-        <label htmlFor={name} className={`!hidden`}>
+        <label htmlFor={name} className="!hidden">
           .
         </label>
         {select ? (
@@ -58,7 +59,7 @@ const Input = <T extends AllFormsTypes>({
                 },
               },
             }}
-            value={formik.values[name as keyof AllFormiksTypes]}
+            value={formik.values[name as keyof T]}
             onChange={(e) => {
               if (change) {
                 change(e.target.value);
@@ -69,7 +70,7 @@ const Input = <T extends AllFormsTypes>({
             error={error}
             helperText={helperText}
           >
-            <option value={""}>{`Select ${label}`}</option>
+            <option value={""}>{`ابحث عن ${label}`}</option>
             {options &&
               options.map((option: string, i: number) => (
                 <option value={option} key={i}>
@@ -79,7 +80,7 @@ const Input = <T extends AllFormsTypes>({
           </PrimaryTextField>
         ) : textarea ? (
           <Box
-            component={"textarea"}
+            component="textarea"
             sx={{
               padding: "8px !important",
               fontSize: "15px",
@@ -98,9 +99,7 @@ const Input = <T extends AllFormsTypes>({
             }}
             id={name}
             name={name}
-            defaultValue={
-              formik.values[name as keyof AllFormiksTypes] as string
-            }
+            defaultValue={formik.values[name as keyof T] as string}
             onChange={(e) => {
               const val = (e.target as HTMLTextAreaElement).value;
               if (change) {
@@ -108,20 +107,14 @@ const Input = <T extends AllFormsTypes>({
               }
               formik.handleChange(e);
             }}
-            placeholder={`Enter ${label}`}
+            placeholder={`ادخل ${label}`}
           />
         ) : (
           <PrimaryTextField
             fullWidth
             id={name}
             type={
-              type
-                ? type === "password"
-                  ? showPassword
-                    ? "text"
-                    : "password"
-                  : type
-                : "text"
+              type === "password" ? (showPassword ? "text" : "password") : type
             }
             name={name}
             InputProps={
@@ -150,10 +143,10 @@ const Input = <T extends AllFormsTypes>({
               type !== "date"
                 ? type === "search"
                   ? label
-                  : `Enter ${label}`
+                  : `ادخل ${label}`
                 : ""
             }
-            value={formik.values[name as keyof AllFormiksTypes]}
+            value={formik.values[name as keyof T]}
             onChange={(e) => {
               const val = e.target.value;
               if (change) {

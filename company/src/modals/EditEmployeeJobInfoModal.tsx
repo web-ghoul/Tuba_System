@@ -11,7 +11,7 @@ const EditEmployeeJobInfoModal = () => {
       handleClose={() =>
         dispatch({ type: "editEmployeeJobInfoModal", payload: false })
       }
-      className={`min-w-[60vw]`}
+      className={`min-w-[50vw]`}
     >
       <Forms type={"editEmployeeJobInfo"} />
     </CustomModal>

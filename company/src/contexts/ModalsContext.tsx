@@ -5,13 +5,19 @@ type ModalsState = {
   isOpenEditEmployeePersonInfoModal: boolean;
   isOpenEditEmployeeJobInfoModal: boolean;
   isOpenEditEmployeeMedicalCoverageModal: boolean;
+  isOpenAddMemberModal: boolean;
+  isOpenEditMemberModal: boolean;
+  isOpenViewMemberModal: boolean;
 };
 
 type ModalsAction =
   | { type: "welcomeModal"; payload: boolean }
   | { type: "editEmployeePersonInfoModal"; payload: boolean }
   | { type: "editEmployeeJobInfoModal"; payload: boolean }
-  | { type: "editEmployeeMedicalCoverageModal"; payload: boolean };
+  | { type: "editEmployeeMedicalCoverageModal"; payload: boolean }
+  | { type: "addMemberModal"; payload: boolean }
+  | { type: "editMemberModal"; payload: boolean }
+  | { type: "viewMemberModal"; payload: boolean };
 
 type ModalsContextType = {
   state: ModalsState;
@@ -25,6 +31,9 @@ const initialState: ModalsState = {
   isOpenEditEmployeePersonInfoModal: false,
   isOpenEditEmployeeJobInfoModal: false,
   isOpenEditEmployeeMedicalCoverageModal: false,
+  isOpenAddMemberModal: false,
+  isOpenEditMemberModal: false,
+  isOpenViewMemberModal: false,
 };
 
 function ModalsReducer(state: ModalsState, action: ModalsAction): ModalsState {
@@ -39,6 +48,15 @@ function ModalsReducer(state: ModalsState, action: ModalsAction): ModalsState {
       return {
         ...state,
         isOpenEditEmployeeMedicalCoverageModal: action.payload,
+      };
+    case "addMemberModal":
+      return { ...state, isOpenAddMemberModal: action.payload };
+    case "editMemberModal":
+      return { ...state, isOpenEditMemberModal: action.payload };
+    case "viewMemberModal":
+      return {
+        ...state,
+        isOpenViewMemberModal: action.payload,
       };
     default:
       return state;

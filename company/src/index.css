@@ -44,10 +44,10 @@
   --success_100: #DADADA;
   --success_200: #1EC940;
 
-  --warning_900: #FCFEE8;
+  --warning_100: #FCFEE8;
   --warning_dark: #EFDE03;
 
-  --error_900: #FFF0F0;
+  --error_100: #FFF0F0;
   --error_dark: #FF2828;
 
   --other: #FAFAFA;

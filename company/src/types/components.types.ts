@@ -44,7 +44,7 @@ interface ButtonTypes {
 interface SubmitButtonTypes {
   loading: boolean;
   children: ReactNode;
-  variant?: "gradient"|"primary"|"secondary"|"basic";
+  variant?: "gradient" | "primary" | "secondary" | "basic";
   className?: string;
   handling?: () => void;
 }
@@ -98,6 +98,7 @@ interface StatusBoxTypes {
 interface TableIconButtonTypes {
   children: ReactNode;
   className?: string;
+  onClick?: () => void;
 }
 
 interface CustomMenuTypes {
@@ -113,7 +114,7 @@ interface TextLabelTypes {
 interface TextLineTypes {
   title: string;
   value: string;
-  valueColor?:string
+  valueColor?: string;
 }
 
 export type {

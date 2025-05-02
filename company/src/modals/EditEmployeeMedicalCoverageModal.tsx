@@ -11,6 +11,7 @@ const EditEmployeeMedicalCoverageModal = () => {
       handleClose={() =>
         dispatch({ type: "editEmployeeMedicalCoverageModal", payload: false })
       }
+      className={`min-w-[50vw]`}
     >
       <Forms type={"editEmployeeMedicalCoverage"} />
     </CustomModal>

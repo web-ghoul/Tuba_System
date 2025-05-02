@@ -4,15 +4,21 @@ import { IoAddCircleOutline, IoArrowForwardSharp } from "react-icons/io5";
 import EmployeeMembersTable from "../../Tables/EmployeeMembersTable/EmployeeMembersTable";
 import { BasicButton } from "../../mui/buttons/BasicButton";
 import { useTabs } from "../../contexts/TabsContext";
+import { useModals } from "../../contexts/ModalsContext";
 
 const EmployeeMembersSection = () => {
   const { dispatch } = useTabs();
+  const { dispatch: dispatchModal } = useModals();
 
   return (
     <Paper className={`paper`}>
       <Box className={`flex justify-between items-center gap-4`}>
         <h6 className="!font-[700] paper_head">أعضاء العائلة</h6>
-        <GradientButton>
+        <GradientButton
+          onClick={() =>
+            dispatchModal({ type: "addMemberModal", payload: true })
+          }
+        >
           <IoAddCircleOutline />
           إضافة عضو جديد
         </GradientButton>
