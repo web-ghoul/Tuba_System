@@ -1,51 +1,42 @@
-import { FormikProps, useFormik } from "formik";
+import { useFormik } from "formik";
 import { useMemo } from "react";
-import useDeleteSchema from "../forms/DeleteForm/useDeleteSchema";
-import LoginSchema from "../forms/LoginForm/useLoginSchema";
-import LoginInitailValues from "../forms/LoginForm/useLoginSchema";
 import useSubmitFunction from "./useSubmitFunction";
-import {
-  AllFormiksTypes,
-  AllFormsTypes,
-  DeleteFormikTypes,
-  DeleteFormTypes,
-  LoginFormikTypes,
-  LoginFormTypes,
-} from "../types/forms.types";
+import useLoginSchema from "../forms/LoginForm/useLoginSchema";
+import useEmployeePersonInfoSchema from "../forms/EmployeePersonInfoForm/useEmployeePersonInfoSchema";
+import { FormikMap } from "../types/forms.types";
 
-const useSubmitForm = (type: string) => {
+const useSubmitForm = <T extends keyof FormikMap>(
+  type: T
+): { formik: FormikMap[T] } => {
   const { handleSubmit } = useSubmitFunction(type);
-  const { DeleteInitialValues, DeleteSchema } = useDeleteSchema();
+  const { LoginInitialValues, LoginSchema } = useLoginSchema();
+  const { EmployeePersonInfoInitialValues, EmployeePersonInfoSchema } =
+    useEmployeePersonInfoSchema();
 
-  const chosenFormik = useMemo(
-    () => (): AllFormiksTypes => {
-      switch (type) {
-        case "login":
-          return {
-            initialValues: LoginInitailValues,
-            validationSchema: LoginSchema,
-            onSubmit: (values: LoginFormTypes) => {
-              handleSubmit(values);
-            },
-          } as unknown as LoginFormikTypes;
-        default:
-          return {
-            initialValues: DeleteInitialValues,
-            validationSchema: DeleteSchema,
-            onSubmit: (values: DeleteFormTypes) => {
-              handleSubmit(values);
-            },
-          } as unknown as DeleteFormikTypes;
-      }
-    },
-    [DeleteInitialValues, DeleteSchema, handleSubmit, type]
-  );
+  const formikConfig = useMemo(() => {
+    switch (type) {
+      case "editEmployeePersonInfo":
+        return {
+          initialValues: EmployeePersonInfoInitialValues,
+          validationSchema: EmployeePersonInfoSchema,
+        };
+      case "login":
+        return {
+          initialValues: LoginInitialValues,
+          validationSchema: LoginSchema,
+        };
+      default:
+        throw new Error(`Unknown form type: ${type}`);
+    }
+  }, [type]);
 
-  return {
-    formik: useFormik<AllFormsTypes>(
-      chosenFormik()
-    ) as FormikProps<AllFormsTypes>,
-  };
+  const formik = useFormik({
+    ...formikConfig,
+    onSubmit: handleSubmit,
+    enableReinitialize: true,
+  });
+
+  return { formik } as { formik: FormikMap[T] };
 };
 
 export default useSubmitForm;

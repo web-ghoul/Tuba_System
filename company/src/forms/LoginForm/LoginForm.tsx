@@ -1,9 +1,9 @@
 import { Box, Typography } from "@mui/material";
-import { LoginFormiksTypes } from "../../types/forms.types";
+import { FormiksTypes, LoginFormTypes } from "../../types/forms.types";
 import SubmitButton from "../../components/SubmitButton/SubmitButton";
 import Input from "../../components/Input/Input";
 
-const LoginForm = ({ formik }: LoginFormiksTypes) => {
+const LoginForm = ({ formik }: FormiksTypes<LoginFormTypes>) => {
   return (
     <Box
       className={`grid justify-stretch items-center gap-10 md:gap-6 sm:gap-4 sm:justify-center`}
@@ -19,15 +19,11 @@ const LoginForm = ({ formik }: LoginFormiksTypes) => {
       <Box
         className={`grid justify-stretch items-start gap-8 sm:flex sm:flex-wrap sm:justify-center`}
       >
+        <Input formik={formik} label={"Email"} name={"usr"} type={"email"} />
+
         <Input
           formik={formik}
-          type={"email"}
-          name={"usr"}
-          label={"البريد الالكترونى"}
-        />
-        <Input
-          formik={formik}
-          label={"كلمة المرور"}
+          label={"Password"}
           type={"password"}
           name={"pwd"}
           ac={"current-pasword"}

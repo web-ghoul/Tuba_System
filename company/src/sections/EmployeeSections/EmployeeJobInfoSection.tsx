@@ -5,15 +5,24 @@ import { GradientButton } from "../../mui/buttons/GradientButton";
 import { IoArrowBackSharp, IoArrowForwardSharp } from "react-icons/io5";
 import { useTabs } from "../../contexts/TabsContext";
 import TextLabel from "../../components/TextLabel/TextLabel";
+import { useModals } from "../../contexts/ModalsContext";
 
 const EmployeeJobInfoSection = () => {
   const { dispatch } = useTabs();
+  const { dispatch: dispatchModal } = useModals();
 
   return (
     <Paper className={`paper`}>
       <Box className={`flex justify-between items-center gap-4`}>
         <h6 className="!font-[700] paper_head">معلومات العمل</h6>
-        <BasicButton>
+        <BasicButton
+          onClick={() =>
+            dispatchModal({
+              type: "editEmployeeJobInfoModal",
+              payload: true,
+            })
+          }
+        >
           تعديل
           <FiEdit />
         </BasicButton>
@@ -26,11 +35,7 @@ const EmployeeJobInfoSection = () => {
           variant="employee"
         />
         <TextLabel title={"رقم الموظف"} value={"780"} variant="employee" />
-        <TextLabel
-          title={"المسمى الوظيفي "}
-          value={"."}
-          variant="employee"
-        />
+        <TextLabel title={"المسمى الوظيفي "} value={"."} variant="employee" />
         <TextLabel
           title={"الراتب"}
           value={"اقل من 4000 ريال"}

@@ -24,6 +24,7 @@ interface CustomModalTypes {
   children: ReactNode;
   open: boolean;
   handleClose: () => void;
+  className?:string
 }
 
 type HeadsType =

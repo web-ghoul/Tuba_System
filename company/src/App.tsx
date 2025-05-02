@@ -7,6 +7,9 @@ import { PrimaryBox } from "./mui/boxes/PrimaryBox";
 import { PrimaryContainer } from "./mui/containers/PrimaryContainer";
 import WelcomeModal from "./modals/WelcomeModal";
 import BreadCrumbSection from "./sections/BreadCrumbSection/BreadCrumbSection";
+import EditEmployeePersonInfoModal from "./modals/EditEmployeePersonInfoModal";
+import EditEmployeeJobInfoModal from "./modals/EditEmployeeJobInfoModal";
+import EditEmployeeMedicalCoverageModal from "./modals/EditEmployeeMedicalCoverageModal";
 
 function App() {
   const { pathname } = useLocation();
@@ -37,6 +40,9 @@ function App() {
           <Footer />
         </Box>
       </Box>
+      <EditEmployeePersonInfoModal />
+      <EditEmployeeJobInfoModal />
+      <EditEmployeeMedicalCoverageModal />
       <WelcomeModal />
     </Box>
   );

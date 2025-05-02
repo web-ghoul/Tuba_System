@@ -2,9 +2,16 @@ import { createContext, ReactNode, useContext, useReducer } from "react";
 
 type ModalsState = {
   isOpenWelcomeModal: boolean;
+  isOpenEditEmployeePersonInfoModal: boolean;
+  isOpenEditEmployeeJobInfoModal: boolean;
+  isOpenEditEmployeeMedicalCoverageModal: boolean;
 };
 
-type ModalsAction = { type: "welcomeModal"; payload: boolean };
+type ModalsAction =
+  | { type: "welcomeModal"; payload: boolean }
+  | { type: "editEmployeePersonInfoModal"; payload: boolean }
+  | { type: "editEmployeeJobInfoModal"; payload: boolean }
+  | { type: "editEmployeeMedicalCoverageModal"; payload: boolean };
 
 type ModalsContextType = {
   state: ModalsState;
@@ -13,12 +20,26 @@ type ModalsContextType = {
 
 const ModalsContext = createContext<ModalsContextType | undefined>(undefined);
 
-const initialState: ModalsState = { isOpenWelcomeModal: false };
+const initialState: ModalsState = {
+  isOpenWelcomeModal: false,
+  isOpenEditEmployeePersonInfoModal: false,
+  isOpenEditEmployeeJobInfoModal: false,
+  isOpenEditEmployeeMedicalCoverageModal: false,
+};
 
 function ModalsReducer(state: ModalsState, action: ModalsAction): ModalsState {
   switch (action.type) {
     case "welcomeModal":
       return { ...state, isOpenWelcomeModal: action.payload };
+    case "editEmployeePersonInfoModal":
+      return { ...state, isOpenEditEmployeePersonInfoModal: action.payload };
+    case "editEmployeeJobInfoModal":
+      return { ...state, isOpenEditEmployeeJobInfoModal: action.payload };
+    case "editEmployeeMedicalCoverageModal":
+      return {
+        ...state,
+        isOpenEditEmployeeMedicalCoverageModal: action.payload,
+      };
     default:
       return state;
   }

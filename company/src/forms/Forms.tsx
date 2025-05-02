@@ -1,21 +1,26 @@
 import { Box } from "@mui/material";
-import DeleteForm from "./DeleteForm/DeleteForm";
 import LoginForm from "./LoginForm/LoginForm";
-import { FormsTypes } from "../types/forms.types";
+import { FormikMap, FormsTypes, LoginFormTypes } from "../types/forms.types";
 import useSubmitForm from "../hooks/useSubmitForm";
+import EmployeePersonInfoForm from "./EmployeePersonInfoForm/EmployeePersonInfoForm";
+import { FormikProps } from "formik";
 
 const Forms = ({ type }: FormsTypes) => {
-  const { formik } = useSubmitForm(type);
+  const { formik } = useSubmitForm(type as keyof FormikMap);
 
   return (
     <Box component={"form"} onSubmit={formik.handleSubmit}>
-      {/* Delete */}
-      {type === "delete" && <DeleteForm />}
-      {/* Delete */}
+      {/* Authentication */}
+      {type === "login" && (
+        <LoginForm formik={formik as FormikProps<LoginFormTypes>} type={type} />
+      )}
+      {/* Authentication */}
 
-      {/* Authentication */}
-      {type === "login" && <LoginForm formik={formik} type={type} />}
-      {/* Authentication */}
+      {/* Employee */}
+      {type === "editEmployeePersonInfo" && (
+        <EmployeePersonInfoForm formik={formik} type={type} />
+      )}
+      {/* Employee */}
     </Box>
   );
 };

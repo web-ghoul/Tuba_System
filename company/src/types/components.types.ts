@@ -44,7 +44,7 @@ interface ButtonTypes {
 interface SubmitButtonTypes {
   loading: boolean;
   children: ReactNode;
-  variant?: string;
+  variant?: "gradient"|"primary"|"secondary"|"basic";
   className?: string;
   handling?: () => void;
 }

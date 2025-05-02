@@ -1,13 +1,13 @@
 import { FormikProps } from "formik";
 
 interface FormsTypes {
-  type: string;
+  type: "login" | "editEmployeePersonInfo";
   index?: number;
 }
 
-interface LoginFormTypes {
-  username: string;
-  password: string;
+interface LoginFormTypes  {
+  usr: string;
+  pwd: string;
 }
 
 interface LoginFormikTypes {
@@ -21,34 +21,39 @@ interface LoginFormikTypes {
   values: LoginFormTypes;
 }
 
-interface DeleteFormTypes {
-  type: string;
+interface EmployeePersonInfoFormTypes {
+  name: string;
+  gender: string;
+  phone: string;
+  nationalId: string;
+  nationality: string;
+  email: string;
+  status: string;
+  dateOfBirth: string;
 }
 
-interface DeleteFormikTypes {
-  touched: DeleteFormTypes;
-  errors: DeleteFormTypes;
-  initialValues: DeleteFormTypes;
+interface EmployeePersonInfoFormikTypes {
+  touched: EmployeePersonInfoFormTypes;
+  errors: EmployeePersonInfoFormTypes;
+  initialValues: EmployeePersonInfoFormTypes;
   validationSchema: unknown;
-  onSubmit: (values: unknown) => void;
-  handleChange: (event: unknown) => void;
-  handleBlur: (event: unknown) => void;
-  values: DeleteFormTypes;
+  onSubmit: (values: EmployeePersonInfoFormTypes) => void;
+  values: EmployeePersonInfoFormTypes;
 }
 
-type AllFormsTypes = LoginFormTypes | DeleteFormTypes;
+type AllFormsTypes = LoginFormTypes | EmployeePersonInfoFormTypes;
 
-type AllFormiksTypes = LoginFormikTypes | DeleteFormikTypes;
+type AllFormiksTypes = LoginFormikTypes | EmployeePersonInfoFormikTypes;
 
-interface FormiksTypes {
-  formik: FormikProps<AllFormiksTypes>;
+interface FormiksTypes<T> {
+  formik: FormikProps<T>;
   type?: string;
 }
 
-interface LoginFormiksTypes {
-  formik: FormikProps<LoginFormikTypes>;
-  type?: string;
-}
+type FormikMap = {
+  login: FormikProps<LoginFormTypes>;
+  editEmployeePersonInfo: FormikProps<EmployeePersonInfoFormTypes>;
+};
 
 interface CatchErrorTypes {
   response: {
@@ -62,11 +67,11 @@ export type {
   AllFormiksTypes,
   AllFormsTypes,
   CatchErrorTypes,
-  DeleteFormikTypes,
-  DeleteFormTypes,
   FormiksTypes,
   FormsTypes,
   LoginFormikTypes,
   LoginFormTypes,
-  LoginFormiksTypes,
+  EmployeePersonInfoFormTypes,
+  EmployeePersonInfoFormikTypes,
+  FormikMap,
 };

@@ -1,7 +1,12 @@
 import { Box, Modal } from "@mui/material";
 import { CustomModalTypes } from "../types/app.types";
 
-const CustomModal = ({ children, open, handleClose }: CustomModalTypes) => {
+const CustomModal = ({
+  children,
+  open,
+  handleClose,
+  className,
+}: CustomModalTypes) => {
   return (
     <Modal
       open={open}
@@ -9,7 +14,7 @@ const CustomModal = ({ children, open, handleClose }: CustomModalTypes) => {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box className={`modal`}>{children}</Box>
+      <Box className={`modal ${className}`}>{children}</Box>
     </Modal>
   );
 };
