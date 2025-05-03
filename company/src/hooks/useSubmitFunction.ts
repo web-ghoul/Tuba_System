@@ -3,6 +3,7 @@ import {
   EmployeeJobInfoFormTypes,
   EmployeeMedicalCoverageFormTypes,
   EmployeePersonInfoFormTypes,
+  FilterEmployeesFormTypes,
   LoginFormTypes,
   MemberFormTypes,
 } from "../types/forms.types";
@@ -11,12 +12,14 @@ import useEmployeePersonInfoSubmit from "../forms/EmployeePersonInfoForm/useEmpl
 import useEmployeeJobInfoSubmit from "../forms/EmployeeJobInfoForm/useEmployeeJobInfoSubmit";
 import useEmployeeMedicalCoverageSubmit from "../forms/EmployeeMedicalCoverageForm/useEmployeeMedicalCoverageSubmit";
 import useMemberSubmit from "../forms/MemberForm/useMemberSubmit";
+import useFilterEmployeesSubmit from "../forms/FilterEmployeesForm/useFilterEmployeesSubmit";
 
 const useSubmitFunction = (type: string) => {
   const { login } = useLoginSubmit();
   const { editEmployeePersonInfo } = useEmployeePersonInfoSubmit();
   const { editEmployeeJobInfo } = useEmployeeJobInfoSubmit();
   const { editEmployeeMedicalCoverage } = useEmployeeMedicalCoverageSubmit();
+  const { filterEmployees } = useFilterEmployeesSubmit();
   const { addMember, editMember } = useMemberSubmit();
 
   const handleSubmit = (values: AllFormsTypes) => {
@@ -32,6 +35,9 @@ const useSubmitFunction = (type: string) => {
         break;
       case "editEmployeeMedicalCoverage":
         editEmployeeMedicalCoverage(values as EmployeeMedicalCoverageFormTypes);
+        break;
+      case "filterEmployees":
+        filterEmployees(values as FilterEmployeesFormTypes);
         break;
       case "addMember":
         addMember(values as MemberFormTypes);

@@ -6,9 +6,9 @@ interface FormsTypes {
     | "editEmployeePersonInfo"
     | "editEmployeeJobInfo"
     | "editEmployeeMedicalCoverage"
+    | "filterEmployees"
     | "addMember"
     | "editMember"
-    | "viewMember";
   index?: number;
 }
 
@@ -88,6 +88,23 @@ interface EmployeeMedicalCoverageFormikTypes {
   values: EmployeeMedicalCoverageFormTypes;
 }
 
+interface FilterEmployeesFormTypes {
+  name: string;
+  nationality: string;
+  gender: string;
+}
+
+interface FilterEmployeesFormikTypes {
+  touched: FilterEmployeesFormTypes;
+  errors: FilterEmployeesFormTypes;
+  initialValues: FilterEmployeesFormTypes;
+  validationSchema: unknown;
+  onSubmit: (values: unknown) => void;
+  handleChange: (event: unknown) => void;
+  handleBlur: (event: unknown) => void;
+  values: FilterEmployeesFormTypes;
+}
+
 //Employee
 
 interface MemberFormTypes {
@@ -117,6 +134,7 @@ type AllFormsTypes =
   | EmployeePersonInfoFormTypes
   | EmployeeJobInfoFormTypes
   | EmployeeMedicalCoverageFormTypes
+  | FilterEmployeesFormTypes
   | MemberFormTypes;
 
 type AllFormiksTypes =
@@ -124,7 +142,8 @@ type AllFormiksTypes =
   | EmployeePersonInfoFormikTypes
   | EmployeeJobInfoFormikTypes
   | EmployeeMedicalCoverageFormikTypes
-  | MemberFormikTypes;
+  | MemberFormikTypes
+  | FilterEmployeesFormikTypes;
 
 interface FormiksTypes<T> {
   formik: FormikProps<T>;
@@ -136,6 +155,7 @@ type FormikMap = {
   editEmployeePersonInfo: FormikProps<EmployeePersonInfoFormTypes>;
   editEmployeeJobInfo: FormikProps<EmployeeJobInfoFormTypes>;
   editEmployeeMedicalCoverage: FormikProps<EmployeeMedicalCoverageFormTypes>;
+  filterEmployees: FormikProps<FilterEmployeesFormTypes>;
   addMember: FormikProps<MemberFormTypes>;
   editMember: FormikProps<MemberFormTypes>;
 };
@@ -165,4 +185,6 @@ export type {
   EmployeeMedicalCoverageFormikTypes,
   MemberFormTypes,
   MemberFormikTypes,
+  FilterEmployeesFormTypes,
+  FilterEmployeesFormikTypes,
 };

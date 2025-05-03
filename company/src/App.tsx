@@ -13,6 +13,7 @@ import EditEmployeeMedicalCoverageModal from "./modals/EditEmployeeMedicalCovera
 import AddMemberModal from "./modals/AddMemberModal";
 import EditMemberModal from "./modals/EditMemberModal";
 import ViewMemberModal from "./modals/ViewMemberModal";
+import ChangeProfileAvatarModal from "./modals/ChangeProfileAvatarModal";
 
 function App() {
   const { pathname } = useLocation();
@@ -44,6 +45,7 @@ function App() {
         </Box>
       </Box>
       <WelcomeModal />
+      <ChangeProfileAvatarModal />
       <EditEmployeePersonInfoModal />
       <EditEmployeeJobInfoModal />
       <EditEmployeeMedicalCoverageModal />

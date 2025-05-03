@@ -14,6 +14,7 @@ import "./index.css";
 import { TabsProvider } from "./contexts/TabsContext.tsx";
 import { ModalsProvider } from "./contexts/ModalsContext.tsx";
 import { FormsProvider } from "./contexts/FormsContext.tsx";
+import { Toaster } from "react-hot-toast";
 
 const cacheRtl = createCache({
   key: "muirtl",
@@ -40,6 +41,7 @@ createRoot(document.getElementById("root")!).render(
                 }}
               >
                 <RouterProvider router={router} />
+                <Toaster/>
               </FrappeProvider>
             </FormsProvider>
           </TabsProvider>

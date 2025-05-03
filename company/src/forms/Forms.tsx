@@ -4,6 +4,7 @@ import {
   EmployeeJobInfoFormTypes,
   EmployeeMedicalCoverageFormTypes,
   EmployeePersonInfoFormTypes,
+  FilterEmployeesFormTypes,
   FormikMap,
   FormsTypes,
   LoginFormTypes,
@@ -15,6 +16,7 @@ import { FormikProps } from "formik";
 import EmployeeJobInfoForm from "./EmployeeJobInfoForm/EmployeeJobInfoForm";
 import EmployeeMedicalCoverageForm from "./EmployeeMedicalCoverageForm/EmployeeMedicalCoverageForm";
 import MemberForm from "./MemberForm/MemberForm";
+import FilterEmployeesForm from "./FilterEmployeesForm/FilterEmployeesForm";
 
 const Forms = ({ type }: FormsTypes) => {
   const { formik } = useSubmitForm(type as keyof FormikMap);
@@ -43,6 +45,12 @@ const Forms = ({ type }: FormsTypes) => {
       {type === "editEmployeeMedicalCoverage" && (
         <EmployeeMedicalCoverageForm
           formik={formik as FormikProps<EmployeeMedicalCoverageFormTypes>}
+          type={type}
+        />
+      )}
+      {type === "filterEmployees" && (
+        <FilterEmployeesForm
+          formik={formik as FormikProps<FilterEmployeesFormTypes>}
           type={type}
         />
       )}

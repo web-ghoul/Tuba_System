@@ -7,6 +7,7 @@ import { FormikMap } from "../types/forms.types";
 import useEmployeeJobInfoSchema from "../forms/EmployeeJobInfoForm/useEmployeeJobInfoSchema";
 import useEmployeeMedicalCoverageSchema from "../forms/EmployeeMedicalCoverageForm/useEmployeeMedicalCoverageSchema";
 import useMemberSchema from "../forms/MemberForm/useMemberSchema";
+import useFilterEmployeesSchema from "../forms/FilterEmployeesForm/useFilterEmployeesSchema";
 
 const useSubmitForm = <T extends keyof FormikMap>(
   type: T
@@ -21,6 +22,8 @@ const useSubmitForm = <T extends keyof FormikMap>(
     EmployeeMedicalCoverageInitialValues,
     EmployeeMedicalCoverageSchema,
   } = useEmployeeMedicalCoverageSchema();
+  const { FilterEmployeesInitialValues, FilterEmployeesSchema } =
+    useFilterEmployeesSchema();
   const { MemberInitialValues, MemberSchema } = useMemberSchema();
 
   const formikConfig = useMemo(() => {
@@ -44,6 +47,11 @@ const useSubmitForm = <T extends keyof FormikMap>(
         return {
           initialValues: EmployeeMedicalCoverageInitialValues,
           validationSchema: EmployeeMedicalCoverageSchema,
+        };
+      case "filterEmployees":
+        return {
+          initialValues: FilterEmployeesInitialValues,
+          validationSchema: FilterEmployeesSchema,
         };
       case "addMember":
       case "editMember":

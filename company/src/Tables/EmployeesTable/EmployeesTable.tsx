@@ -16,6 +16,7 @@ const EmployeesTable = () => {
           <StyledTableCell align="center">الهاتف المحمول</StyledTableCell>
           <StyledTableCell align="center">الجنس</StyledTableCell>
           <StyledTableCell align="center">الجنسية</StyledTableCell>
+          <StyledTableCell align="center">المبلغ المطلوب</StyledTableCell>
           <StyledTableCell align="center">الحالة</StyledTableCell>
           <StyledTableCell align="center">الإجراءات</StyledTableCell>
         </TableRow>
@@ -32,6 +33,7 @@ const EmployeesTable = () => {
           </StyledTableCell>
           <StyledTableCell align="center">ذكر</StyledTableCell>
           <StyledTableCell align="center">سعودي</StyledTableCell>
+          <StyledTableCell align="center">3000 ر.س</StyledTableCell>
           <StyledTableCell align="center">
             <StatusBox status={"active"} />
           </StyledTableCell>
@@ -51,6 +53,7 @@ const EmployeesTable = () => {
           </StyledTableCell>
           <StyledTableCell align="center">ذكر</StyledTableCell>
           <StyledTableCell align="center">سعودي</StyledTableCell>
+          <StyledTableCell align="center">3000 ر.س</StyledTableCell>
           <StyledTableCell align="center">
             <StatusBox status={"active"} />
           </StyledTableCell>
@@ -70,6 +73,7 @@ const EmployeesTable = () => {
           </StyledTableCell>
           <StyledTableCell align="center">ذكر</StyledTableCell>
           <StyledTableCell align="center">سعودي</StyledTableCell>
+          <StyledTableCell align="center">3000 ر.س</StyledTableCell>
           <StyledTableCell align="center">
             <StatusBox status={"active"} />
           </StyledTableCell>
@@ -89,8 +93,9 @@ const EmployeesTable = () => {
           </StyledTableCell>
           <StyledTableCell align="center">ذكر</StyledTableCell>
           <StyledTableCell align="center">سعودي</StyledTableCell>
+          <StyledTableCell align="center">3000 ر.س</StyledTableCell>
           <StyledTableCell align="center">
-            <StatusBox status={"active"} />
+            <StatusBox status={"inactive"} />
           </StyledTableCell>
           <StyledTableCell align="right">
             <ActionMenus />

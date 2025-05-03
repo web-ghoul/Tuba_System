@@ -4,7 +4,7 @@ import { CustomMenuTypes } from "../../types/components.types";
 import { CiMenuKebab } from "react-icons/ci";
 import { useState } from "react";
 
-const CustomMenu = ({ children }: CustomMenuTypes) => {
+const CustomMenu = ({ children, button }: CustomMenuTypes) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -26,7 +26,7 @@ const CustomMenu = ({ children }: CustomMenuTypes) => {
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <CiMenuKebab className="rotate-[90deg]" />
+        {button || <CiMenuKebab className="rotate-[90deg]" />}
       </IconButton>
       <Menu
         id="long-menu"

@@ -77,6 +77,8 @@ interface ProfileEmployeeCardTypes {
   title: string;
   number: string;
   rate: number;
+  bg: string;
+  color: string;
 }
 
 interface ProfileManagerCardTypes {
@@ -103,6 +105,7 @@ interface TableIconButtonTypes {
 
 interface CustomMenuTypes {
   children: ReactNode;
+  button?: ReactNode;
 }
 
 interface TextLabelTypes {
@@ -115,6 +118,10 @@ interface TextLineTypes {
   title: string;
   value: string;
   valueColor?: string;
+}
+
+interface UploadFilesTypes {
+  count?: number;
 }
 
 export type {
@@ -135,4 +142,5 @@ export type {
   CustomMenuTypes,
   TextLabelTypes,
   TextLineTypes,
+  UploadFilesTypes,
 };

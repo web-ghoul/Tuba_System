@@ -7,7 +7,7 @@ import CustomMenu from "../../components/CustomMenu/CustomMenu";
 const ActionMenus = () => {
   return (
     <Box className={`flex justify-center items-center gap-2`}>
-      <TableIconButton className={`!bg-green-100 !text-green-600`}>
+      <TableIconButton className={`!bg-warning_100 !text-warning_dark`}>
         <FiEdit />
       </TableIconButton>
       <TableIconButton className={`!bg-red-100 !text-red-600`}>
