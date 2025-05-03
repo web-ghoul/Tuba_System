@@ -1,17 +1,8 @@
 // ServiceDetailsSection.tsx
 import { Paper } from '@mui/material';
 import React from 'react';
+import { ServiceDetails } from '../../types/claimRecord';
 
-interface ServiceDetails {
-    service_type: string;
-    covered_person_doc: {
-        name1: string;
-    };
-    company_doc: {
-        name1: string;
-    };
-    branch_id?: string;
-}
 
 interface Props {
     serviceDetails: ServiceDetails;
@@ -40,32 +31,32 @@ const ServiceDetailsSection: React.FC<Props> = ({ serviceDetails = mockServiceDe
                 <div className="bg-white p-4">
                     <div className="flex w-full">
                         {/* Service Type */}
-                        <div className="w-1/4 px-2">
-                            <div className="h-full flex flex-row gap-2 p-3 text-center border-r border-gray-300 rtl:border-r-0 rtl:border-l">
+                        <div className="w-1/4 px-1">
+                            <div className="h-full flex flex-row gap-2 py-5 text-center border-r border-gray-300 rtl:border-r-0 rtl:border-l">
                                 <span className="block text-gray-500 text-sm mb-1">نوع الخدمة:</span>
                                 <span className="font-medium">{serviceDetails.service_type}</span>
                             </div>
                         </div>
 
                         {/* Insured Person */}
-                        <div className="w-1/4 px-2">
-                            <div className="h-full p-3 flex flex-row gap-3 text-center border-r border-gray-300 rtl:border-r-0 rtl:border-l">
+                        <div className="w-1/4 ">
+                            <div className="h-full p-3 flex flex-row gap-2 py-5 text-center border-r border-gray-300 rtl:border-r-0 rtl:border-l">
                                 <span className="block text-gray-500 text-sm mb-1">الشخص المؤمن:</span>
                                 <span className="font-medium">{serviceDetails.covered_person_doc.name1}</span>
                             </div>
                         </div>
 
                         {/* Company */}
-                        <div className="w-1/4 px-2">
-                            <div className="h-full p-3 flex flex-row gap-3 text-center border-r border-gray-300 rtl:border-r-0 rtl:border-l">
+                        <div className="w-1/4 ">
+                            <div className="h-full p-3 flex flex-row gap-2 py-5 text-center border-r border-gray-300 rtl:border-r-0 rtl:border-l">
                                 <span className="block text-gray-500 text-sm mb-1">الشركة:</span>
                                 <span className="font-medium">{serviceDetails.company_doc.name1}</span>
                             </div>
                         </div>
 
                         {/* Branch */}
-                        <div className="w-1/4 px-2">
-                            <div className="h-full flex p-3 flex-row gap-2 text-center">
+                        <div className="w-1/4">
+                            <div className="h-full flex p-3 flex-row gap-2 py-5 text-center">
                                 <span className="block text-gray-500 text-sm mb-1">الفرع:</span>
                                 <span className="font-medium">{currentBranch}</span>
                             </div>

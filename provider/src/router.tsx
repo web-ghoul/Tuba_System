@@ -8,24 +8,24 @@
   import GuestRoute from "./components/Routers/GuestRoute.tsx";
   import Approvals from "./pages/Approvals.tsx";
   import Approval from "./pages/Approval.tsx";
+import { FrappeProvider } from "frappe-react-sdk";
+import AddApproval from "./pages/AddApproval.tsx";
 
   export const router = createBrowserRouter([
     {
       path: "/",
-      element: <App />,
+      element: 
+      <App />
+   
+      ,
       children: [
         {
-          path: "/home",
+          path: "/",
           element: 
             <Dashboard />
         
         },
-        {
-          path: `${import.meta.env.VITE_LOGIN_ROUTE}`,
-          element: <GuestRoute>
-          <Login />
-        </GuestRoute>
-        },
+       
         {
           path: `${import.meta.env.VITE_PAYMENT_ROUTE}`,
           element: <Payment />,
@@ -35,12 +35,22 @@
           element: <Approvals />,
         },
         {
+          path: `${import.meta.env.VITE_APPROVAL_CREATE_ROUTE}`,
+          element: <AddApproval />,
+        },
+        {
           path: `${import.meta.env.VITE_APPROVAL_ROUTE}/:id`,
           element: <Approval />,
         },
 
       ],
 
+    },
+    {
+      path: `${import.meta.env.VITE_LOGIN_ROUTE}`,
+      element: <GuestRoute>
+      <Login />
+    </GuestRoute>
     },
     {
       path: "*",
