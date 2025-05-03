@@ -6,6 +6,6 @@ export const GradientButton = styled(PrimaryButton)(() => ({
   backgroundImage: "linear-gradient(90deg,#2ad2c5 20% ,#5a46e6 100%)",
   "&:hover": {
     backgroundImage: "linear-gradient(90deg,#5a46e6 20% ,#2ad2c5 100%)",
-    color: "#fff",
+    color:"#fff !important",
   },
 }));

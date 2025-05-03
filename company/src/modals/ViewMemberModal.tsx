@@ -1,4 +1,5 @@
 import { useModals } from "../contexts/ModalsContext";
+import MemberSection from "../sections/EmployeeSections/MemberSection";
 import CustomModal from "./CustomModal";
 
 const ViewMemberModal = () => {
@@ -10,7 +11,7 @@ const ViewMemberModal = () => {
       handleClose={() => dispatch({ type: "viewMemberModal", payload: false })}
       className={`min-w-[50vw]`}
     >
-        <></>
+      <MemberSection />
     </CustomModal>
   );
 };

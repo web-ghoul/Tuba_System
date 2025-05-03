@@ -3,6 +3,7 @@ import {
   EmployeeJobInfoFormTypes,
   EmployeeMedicalCoverageFormTypes,
   EmployeePersonInfoFormTypes,
+  FilterApprovalsFormTypes,
   FilterEmployeesFormTypes,
   LoginFormTypes,
   MemberFormTypes,
@@ -13,6 +14,7 @@ import useEmployeeJobInfoSubmit from "../forms/EmployeeJobInfoForm/useEmployeeJo
 import useEmployeeMedicalCoverageSubmit from "../forms/EmployeeMedicalCoverageForm/useEmployeeMedicalCoverageSubmit";
 import useMemberSubmit from "../forms/MemberForm/useMemberSubmit";
 import useFilterEmployeesSubmit from "../forms/FilterEmployeesForm/useFilterEmployeesSubmit";
+import useFilterApprovalsSubmit from "../forms/FilterApprovalsForm/useFilterApprovalsSubmit";
 
 const useSubmitFunction = (type: string) => {
   const { login } = useLoginSubmit();
@@ -21,6 +23,7 @@ const useSubmitFunction = (type: string) => {
   const { editEmployeeMedicalCoverage } = useEmployeeMedicalCoverageSubmit();
   const { filterEmployees } = useFilterEmployeesSubmit();
   const { addMember, editMember } = useMemberSubmit();
+  const { filterApprovals } = useFilterApprovalsSubmit();
 
   const handleSubmit = (values: AllFormsTypes) => {
     switch (type) {
@@ -44,6 +47,9 @@ const useSubmitFunction = (type: string) => {
         break;
       case "editMember":
         editMember(values as MemberFormTypes);
+        break;
+      case "filterApprovals":
+        filterApprovals(values as FilterApprovalsFormTypes);
         break;
       default:
         console.warn("Unknown form type submitted:", type);

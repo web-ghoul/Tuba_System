@@ -4,8 +4,11 @@ import { StyledTableCell } from "../StyledTableCell";
 import { StyledTableRow } from "../StyledTableRow";
 import StatusBox from "../../components/StatusBox/StatusBox";
 import { SecondaryButton } from "../../mui/buttons/SecondaryButton";
+import { useNavigate } from "react-router-dom";
 
 const ApprovalsTable = () => {
+  const navigate = useNavigate();
+
   return (
     <PrimaryTable>
       <TableHead>
@@ -23,7 +26,14 @@ const ApprovalsTable = () => {
       </TableHead>
       <TableBody>
         <StyledTableRow>
-          <StyledTableCell component="th" scope="row">
+          <StyledTableCell
+            component="th"
+            scope="row"
+            onClick={() =>
+              navigate(`${import.meta.env.VITE_APPROVALS_ROUTE}/12`)
+            }
+            className={`transition-all hover:underline hover:cursor-pointer`}
+          >
             CLR-211
           </StyledTableCell>
           <StyledTableCell align="center">عبد الله بن سعود</StyledTableCell>
@@ -38,7 +48,13 @@ const ApprovalsTable = () => {
             <StatusBox status={"active"} />
           </StyledTableCell>
           <StyledTableCell align="right">
-            <SecondaryButton>التفاصيل</SecondaryButton>
+            <SecondaryButton
+              onClick={() =>
+                navigate(`${import.meta.env.VITE_APPROVALS_ROUTE}/12`)
+              }
+            >
+              التفاصيل
+            </SecondaryButton>
           </StyledTableCell>
         </StyledTableRow>
       </TableBody>

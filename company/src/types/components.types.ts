@@ -111,7 +111,8 @@ interface CustomMenuTypes {
 interface TextLabelTypes {
   title: string;
   value: string;
-  variant?: "employee" | "payment";
+  tel?: boolean;
+  variant?: "employee" | "member" | "payment";
 }
 
 interface TextLineTypes {

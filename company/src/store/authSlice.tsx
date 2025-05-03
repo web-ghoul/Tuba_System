@@ -1,18 +1,18 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
-import Cookies from 'js-cookie';
-import { AuthValuesTypes } from '../types/store.types';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+import Cookies from "js-cookie";
+import { AuthValuesTypes } from "../types/store.types";
 
-export const getProfile = createAsyncThunk('/auth/getProfile', async () => {
-  const token = Cookies.get(`${import.meta.env.VITE_TOKEN_TITLE}`);
-  const userId = Cookies.get(`${import.meta.env.VITE_USER_ID_TITLE}`);
+export const getProfile = createAsyncThunk("/auth/getProfile", async () => {
+  const token = Cookies.get(`${import.meta.env.VITE_TOKEN_STORAGE}`);
+  const userId = Cookies.get(`${import.meta.env.VITE_USER_ID_STORAGE}`);
   const res = await axios.get(
     `${import.meta.env.VITE_SERVER_URL}/users/${userId}`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    },
+    }
   );
   return res.data;
 });
@@ -25,7 +25,7 @@ const initialState: AuthValuesTypes = {
 };
 
 export const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
   reducers: {
     login: (state, action) => {
@@ -33,20 +33,24 @@ export const authSlice = createSlice({
       state.userId = action.payload.userId;
       const expirationDate = new Date();
       expirationDate.setTime(expirationDate.getTime() + 2 * 60 * 60 * 1000);
-      Cookies.set(`${import.meta.env.VITE_TOKEN_TITLE}`, action.payload.token, {
-        expires: expirationDate,
-      });
       Cookies.set(
-        `${import.meta.env.VITE_USER_ID_TITLE}`,
+        `${import.meta.env.VITE_TOKEN_STORAGE}`,
+        action.payload.token,
+        {
+          expires: expirationDate,
+        }
+      );
+      Cookies.set(
+        `${import.meta.env.VITE_USER_ID_STORAGE}`,
         action.payload.userId,
-        { expires: expirationDate },
+        { expires: expirationDate }
       );
     },
-    logout: state => {
+    logout: (state) => {
       state.token = null;
       state.userId = null;
-      Cookies.remove(`${import.meta.env.VITE_TOKEN_TITLE}`);
-      Cookies.remove(`${import.meta.env.VITE_USER_ID_TITLE}`);
+      Cookies.remove(`${import.meta.env.VITE_TOKEN_STORAGE}`);
+      Cookies.remove(`${import.meta.env.VITE_USER_ID_STORAGE}`);
     },
     setAuth: (state, action) => {
       if (action.payload) {
@@ -55,8 +59,8 @@ export const authSlice = createSlice({
       }
     },
   },
-  extraReducers: builder => {
-    builder.addCase(getProfile.pending, state => {
+  extraReducers: (builder) => {
+    builder.addCase(getProfile.pending, (state) => {
       state.isLoading = false;
     });
     builder.addCase(getProfile.fulfilled, (state, { payload }) => {

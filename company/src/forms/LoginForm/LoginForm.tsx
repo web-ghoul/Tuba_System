@@ -19,11 +19,11 @@ const LoginForm = ({ formik }: FormiksTypes<LoginFormTypes>) => {
       <Box
         className={`grid justify-stretch items-start gap-8 sm:flex sm:flex-wrap sm:justify-center`}
       >
-        <Input formik={formik} label={"Email"} name={"usr"} type={"email"} />
+        <Input formik={formik} label={"البريد الإلكترونى"} name={"usr"} type={"email"} />
 
         <Input
           formik={formik}
-          label={"Password"}
+          label={"كلمة المرور"}
           type={"password"}
           name={"pwd"}
           ac={"current-pasword"}

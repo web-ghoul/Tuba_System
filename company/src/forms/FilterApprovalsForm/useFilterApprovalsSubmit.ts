@@ -1,12 +1,12 @@
 import { handleToaster } from "../../functions/handleToaster";
 import { handleCatchError } from "../../functions/handleCatchError";
 import useAxios from "../../hooks/useAxios";
-import { FilterEmployeesFormTypes } from "../../types/forms.types";
+import { FilterApprovalsFormTypes } from "../../types/forms.types";
 
-const useFilterEmployeesSubmit = () => {
+const useFilterApprovalsSubmit = () => {
   const { server } = useAxios();
 
-  const filterEmployees = async (values: FilterEmployeesFormTypes) => {
+  const filterApprovals = async (values: FilterApprovalsFormTypes) => {
     await server
       .post(`/method/login_password`, values)
       .then((res) => {
@@ -18,7 +18,7 @@ const useFilterEmployeesSubmit = () => {
       });
   };
 
-  const filterEmployeesLimits = async (limit: number) => {
+  const filterApprovalsLimits = async (limit: number) => {
     await server
       .post(`/method/login_password`, limit)
       .then((res) => {
@@ -30,7 +30,7 @@ const useFilterEmployeesSubmit = () => {
       });
   };
 
-  return { filterEmployees, filterEmployeesLimits };
+  return { filterApprovals, filterApprovalsLimits };
 };
 
-export default useFilterEmployeesSubmit;
+export default useFilterApprovalsSubmit;

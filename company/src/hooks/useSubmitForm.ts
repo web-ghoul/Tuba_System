@@ -8,6 +8,7 @@ import useEmployeeJobInfoSchema from "../forms/EmployeeJobInfoForm/useEmployeeJo
 import useEmployeeMedicalCoverageSchema from "../forms/EmployeeMedicalCoverageForm/useEmployeeMedicalCoverageSchema";
 import useMemberSchema from "../forms/MemberForm/useMemberSchema";
 import useFilterEmployeesSchema from "../forms/FilterEmployeesForm/useFilterEmployeesSchema";
+import useFilterApprovalsSchema from "../forms/FilterApprovalsForm/useFilterApprovalsSchema";
 
 const useSubmitForm = <T extends keyof FormikMap>(
   type: T
@@ -25,6 +26,8 @@ const useSubmitForm = <T extends keyof FormikMap>(
   const { FilterEmployeesInitialValues, FilterEmployeesSchema } =
     useFilterEmployeesSchema();
   const { MemberInitialValues, MemberSchema } = useMemberSchema();
+  const { FilterApprovalsInitialValues, FilterApprovalsSchema } =
+    useFilterApprovalsSchema();
 
   const formikConfig = useMemo(() => {
     switch (type) {
@@ -58,6 +61,11 @@ const useSubmitForm = <T extends keyof FormikMap>(
         return {
           initialValues: MemberInitialValues,
           validationSchema: MemberSchema,
+        };
+      case "filterApprovals":
+        return {
+          initialValues: FilterApprovalsInitialValues,
+          validationSchema: FilterApprovalsSchema,
         };
       default:
         throw new Error(`Unknown form type: ${type}`);

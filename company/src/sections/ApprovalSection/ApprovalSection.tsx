@@ -4,7 +4,7 @@ import TextLine from "../../components/TextLine/TextLine";
 
 const ApprovalSection = () => {
   return (
-    <Paper className={`paper`}>
+    <Paper className={`paper gap-8`}>
       <Box className={`grid justify-stretch items-center gap-2 w-fit`}>
         <Typography variant="h6" className={`!text-primary !font-[700]`}>
           تفاصيل الطلب
@@ -157,35 +157,17 @@ const ApprovalSection = () => {
             "flex justify-between items-center gap-10 rounded-lg bg-white px-3 py-7 border-[1px] border-solid border-[#E9E9E9] overflow-hidden"
           }
         >
-          <Box className={`flex justify-center items-center gap-1`}>
-            <Typography
-              variant="subtitle1"
-              className={`text-tuba_gray !font-[600]`}
-            >
-              رقم وثيقة التغطية :
-            </Typography>
-            <Typography
-              variant="subtitle1"
-              className={`!font-[600] text-primary`}
-            >
-              202400001
-            </Typography>
-          </Box>
+          <TextLine
+            title={"رقم وثيقة التغطية :"}
+            value={"202400001"}
+            valueColor={"!text-primary"}
+          />
 
-          <Box className={`flex justify-center items-center gap-1`}>
-            <Typography
-              variant="subtitle1"
-              className={`text-tuba_gray !font-[600]`}
-            >
-              وثيقة التغطية :
-            </Typography>
-            <Typography
-              variant="subtitle1"
-              className={`!font-[600] text-primary`}
-            >
-              DOC-202400001
-            </Typography>
-          </Box>
+          <TextLine
+            title={"وثيقة التغطية :"}
+            value={"DOC-202400001"}
+            valueColor={"!text-primary"}
+          />
         </Box>
       </Box>
 
@@ -198,13 +180,13 @@ const ApprovalSection = () => {
         <ApprovalCoveragePlanTable />
       </Box>
 
-      <Box className={`flex justify-stretch items-center gap-4 flex-wrap`}>
+      <Box className={`flex justify-stretch items-center gap-6 flex-wrap`}>
         <Box className={`grid justify-stretch items-center gap-2`}>
           <Typography variant="h6" className={`!text-primary !font-[700]`}>
             تفاصيل تغطية العنصر CLI-122
           </Typography>
           <Box
-            className={`grid justify-stretch items-center gap-2 rounded-md p-4 border-[1px] border-solid border-[]`}
+            className={`grid justify-stretch items-center gap-3 rounded-md p-4 border-[1px] border-solid`}
           >
             <TextLine
               title={"المبلغ المغطى (الأساسي):"}
@@ -226,7 +208,7 @@ const ApprovalSection = () => {
             تفاصيل التحمل
           </Typography>
           <Box
-            className={`grid justify-stretch items-center gap-2 rounded-md p-4 border-[1px] border-solid border-[]`}
+            className={`grid justify-stretch items-center gap-3 rounded-md p-4 border-[1px] border-solid`}
           >
             <TextLine
               title={"المبلغ المستحق (الأساسي):"}
@@ -248,7 +230,7 @@ const ApprovalSection = () => {
             تفاصيل السعر
           </Typography>
           <Box
-            className={`grid justify-stretch items-center gap-2 rounded-md p-4 border-[1px] border-solid border-[]`}
+            className={`grid justify-stretch items-center gap-3 rounded-md p-4 border-[1px] border-solid`}
           >
             <TextLine title={"السعر الأساسي:"} value={"7200 ريال سعودي"} />
             <TextLine

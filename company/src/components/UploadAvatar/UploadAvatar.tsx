@@ -57,12 +57,13 @@ const UploadAvatar = () => {
           ref={avatarInputRef}
           onChange={handleUploadAvatar}
           className={`absolute z-[10] opacity-0`}
+          accept=".jpg,.jpeg,.png,.webp,.gif,.svg"
         />
       </Box>
       <Box className={`grid justify-stretch items-center gap-4 grid-cols-2`}>
         <GradientButton
           onClick={() => {
-            console.log(avatar)
+            console.log(avatar);
             if (avatar) {
               handleChangeProfileAvatar(avatar);
             } else {

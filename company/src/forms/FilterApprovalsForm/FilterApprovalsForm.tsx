@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import {
   FormiksTypes,
-  FilterEmployeesFormTypes,
+  FilterApprovalsFormTypes,
 } from "../../types/forms.types";
 import SubmitButton from "../../components/SubmitButton/SubmitButton";
 import Input from "../../components/Input/Input";
@@ -10,12 +10,12 @@ import CustomMenu from "../../components/CustomMenu/CustomMenu";
 import { BasicButton } from "../../mui/buttons/BasicButton";
 import { IoIosArrowDown } from "react-icons/io";
 import { TbFilterSearch } from "react-icons/tb";
-import useFilterEmployeesSubmit from "./useFilterEmployeesSubmit";
+import useFilterApprovalsSubmit from "./useFilterApprovalsSubmit";
 
-const FilterEmployeesForm = ({
+const FilterApprovalsForm = ({
   formik,
-}: FormiksTypes<FilterEmployeesFormTypes>) => {
-  const { filterEmployeesLimits } = useFilterEmployeesSubmit();
+}: FormiksTypes<FilterApprovalsFormTypes>) => {
+  const { filterApprovalsLimits } = useFilterApprovalsSubmit();
   const limits = [5, 10, 50, 100];
   return (
     <Box className={`flex justify-start items-center gap-2`}>
@@ -33,7 +33,7 @@ const FilterEmployeesForm = ({
       >
         <Box className={`grid justify-stretch items-center gap-4 p-4`}>
           {limits.map((limit, i) => (
-            <Button key={i} onClick={() => filterEmployeesLimits(limit)}>
+            <Button key={i} onClick={() => filterApprovalsLimits(limit)}>
               {limit}
             </Button>
           ))}
@@ -50,20 +50,31 @@ const FilterEmployeesForm = ({
       >
         <Box className={`grid justify-stretch items-center gap-6 p-4`}>
           <Box className={`grid justify-stretch items-center gap-4`}>
-            <Input formik={formik} label={"الاسم"} name={"name"} />
+            <Input formik={formik} label={"المزودين"} name={"members"} />
             <Input
               formik={formik}
-              label={"الجنسية"}
+              label={"الموظفين"}
               select
               options={["dd", "dd"]}
-              name={"nationality"}
+              name={"employees"}
             />
             <Input
               formik={formik}
-              label={"الجنس"}
+              label={"وثيقة التغطية"}
+              name={"coverageDoc"}
+            />
+            <Input
+              formik={formik}
+              label={"الحالة"}
               select
-              options={["Male", "Female"]}
-              name={"gender"}
+              options={["dd", "dd"]}
+              name={"status"}
+            />
+            <Input
+              formik={formik}
+              label={"تاريخ الإصدار"}
+              name={"date"}
+              type={"date"}
             />
           </Box>
 
@@ -81,4 +92,4 @@ const FilterEmployeesForm = ({
   );
 };
 
-export default FilterEmployeesForm;
+export default FilterApprovalsForm;

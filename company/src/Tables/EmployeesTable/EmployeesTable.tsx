@@ -4,8 +4,11 @@ import { StyledTableCell } from "../StyledTableCell";
 import { StyledTableRow } from "../StyledTableRow";
 import ActionMenus from "./ActionMenus";
 import StatusBox from "../../components/StatusBox/StatusBox";
+import { useNavigate } from "react-router-dom";
 
 const EmployeesTable = () => {
+  const navigate = useNavigate();
+
   return (
     <PrimaryTable>
       <TableHead>
@@ -23,7 +26,14 @@ const EmployeesTable = () => {
       </TableHead>
       <TableBody>
         <StyledTableRow>
-          <StyledTableCell component="th" scope="row">
+          <StyledTableCell
+            component="th"
+            scope="row"
+            className={`transition-all hover:underline hover:cursor-pointer`}
+            onClick={() =>
+              navigate(`${import.meta.env.VITE_EMPLOYEES_ROUTE}/23`)
+            }
+          >
             علي طارق محمود
           </StyledTableCell>
           <StyledTableCell align="center">خدمة العملاء</StyledTableCell>
@@ -43,7 +53,14 @@ const EmployeesTable = () => {
         </StyledTableRow>
 
         <StyledTableRow>
-          <StyledTableCell component="th" scope="row">
+          <StyledTableCell
+            component="th"
+            scope="row"
+            className={`transition-all hover:underline hover:cursor-pointer`}
+            onClick={() =>
+              navigate(`${import.meta.env.VITE_EMPLOYEES_ROUTE}/23`)
+            }
+          >
             علي طارق محمود
           </StyledTableCell>
           <StyledTableCell align="center">خدمة العملاء</StyledTableCell>
@@ -63,7 +80,14 @@ const EmployeesTable = () => {
         </StyledTableRow>
 
         <StyledTableRow>
-          <StyledTableCell component="th" scope="row">
+          <StyledTableCell
+            component="th"
+            scope="row"
+            className={`transition-all hover:underline hover:cursor-pointer`}
+            onClick={() =>
+              navigate(`${import.meta.env.VITE_EMPLOYEES_ROUTE}/23`)
+            }
+          >
             علي طارق محمود
           </StyledTableCell>
           <StyledTableCell align="center">خدمة العملاء</StyledTableCell>
@@ -83,7 +107,14 @@ const EmployeesTable = () => {
         </StyledTableRow>
 
         <StyledTableRow>
-          <StyledTableCell component="th" scope="row">
+          <StyledTableCell
+            component="th"
+            scope="row"
+            className={`transition-all hover:underline hover:cursor-pointer`}
+            onClick={() =>
+              navigate(`${import.meta.env.VITE_EMPLOYEES_ROUTE}/23`)
+            }
+          >
             علي طارق محمود
           </StyledTableCell>
           <StyledTableCell align="center">خدمة العملاء</StyledTableCell>

@@ -1,6 +1,6 @@
 import { useModals } from "../contexts/ModalsContext";
 import CustomModal from "./CustomModal";
-import UploadAvatar from "../components/UploadImage/UploadAvatar";
+import UploadAvatar from "../components/UploadAvatar/UploadAvatar";
 
 const ChangeProfileAvatarModal = () => {
   const { state, dispatch } = useModals();
