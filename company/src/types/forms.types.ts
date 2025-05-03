@@ -1,10 +1,18 @@
 import { FormikProps } from "formik";
 
 interface FormsTypes {
-  type: string;
+  type:
+    | "login"
+    | "editEmployeePersonInfo"
+    | "editEmployeeJobInfo"
+    | "editEmployeeMedicalCoverage"
+    | "filterEmployees"
+    | "addMember"
+    | "editMember"
   index?: number;
 }
 
+//Authentication
 interface LoginFormTypes {
   usr: string;
   pwd: string;
@@ -21,29 +29,136 @@ interface LoginFormikTypes {
   values: LoginFormTypes;
 }
 
-interface DeleteFormTypes {
-  type: string;
+//Authentication
+
+//Employee
+interface EmployeePersonInfoFormTypes {
+  name: string;
+  gender: string;
+  phone: string;
+  nationalId: string;
+  nationality: string;
+  email: string;
+  status: string;
+  dateOfBirth: string;
 }
 
-interface DeleteFormikTypes {
-  touched: DeleteFormTypes;
-  errors: DeleteFormTypes;
-  initialValues: DeleteFormTypes;
+interface EmployeePersonInfoFormikTypes {
+  touched: EmployeePersonInfoFormTypes;
+  errors: EmployeePersonInfoFormTypes;
+  initialValues: EmployeePersonInfoFormTypes;
+  validationSchema: unknown;
+  onSubmit: (values: EmployeePersonInfoFormTypes) => void;
+  handleChange: (event: unknown) => void;
+  handleBlur: (event: unknown) => void;
+  values: EmployeePersonInfoFormTypes;
+}
+
+interface EmployeeJobInfoFormTypes {
+  employeeNo: string;
+  email: string;
+  jobTitle: string;
+  salary: string;
+}
+
+interface EmployeeJobInfoFormikTypes {
+  touched: EmployeeJobInfoFormTypes;
+  errors: EmployeeJobInfoFormTypes;
+  initialValues: EmployeeJobInfoFormTypes;
+  validationSchema: unknown;
+  onSubmit: (values: EmployeeJobInfoFormTypes) => void;
+  handleChange: (event: unknown) => void;
+  handleBlur: (event: unknown) => void;
+  values: EmployeeJobInfoFormTypes;
+}
+
+interface EmployeeMedicalCoverageFormTypes {
+  medicalCoverageDoc: string;
+  package: string;
+}
+
+interface EmployeeMedicalCoverageFormikTypes {
+  touched: EmployeeMedicalCoverageFormTypes;
+  errors: EmployeeMedicalCoverageFormTypes;
+  initialValues: EmployeeMedicalCoverageFormTypes;
+  validationSchema: unknown;
+  onSubmit: (values: EmployeeMedicalCoverageFormTypes) => void;
+  handleChange: (event: unknown) => void;
+  handleBlur: (event: unknown) => void;
+  values: EmployeeMedicalCoverageFormTypes;
+}
+
+interface FilterEmployeesFormTypes {
+  name: string;
+  nationality: string;
+  gender: string;
+}
+
+interface FilterEmployeesFormikTypes {
+  touched: FilterEmployeesFormTypes;
+  errors: FilterEmployeesFormTypes;
+  initialValues: FilterEmployeesFormTypes;
   validationSchema: unknown;
   onSubmit: (values: unknown) => void;
   handleChange: (event: unknown) => void;
   handleBlur: (event: unknown) => void;
-  values: DeleteFormTypes;
+  values: FilterEmployeesFormTypes;
 }
 
-type AllFormsTypes = LoginFormTypes | DeleteFormTypes;
+//Employee
 
-type AllFormiksTypes = LoginFormikTypes | DeleteFormikTypes;
+interface MemberFormTypes {
+  name: string;
+  nationality: string;
+  nationalNo: string;
+  relation: string;
+  phone: string;
+  gender: string;
+  dateOfBirth: string;
+  coveragePackage: string;
+}
 
-interface FormiksTypes {
-  formik: FormikProps<AllFormiksTypes>;
+interface MemberFormikTypes {
+  touched: MemberFormTypes;
+  errors: MemberFormTypes;
+  initialValues: MemberFormTypes;
+  validationSchema: unknown;
+  onSubmit: (values: MemberFormTypes) => void;
+  handleChange: (event: unknown) => void;
+  handleBlur: (event: unknown) => void;
+  values: MemberFormTypes;
+}
+
+type AllFormsTypes =
+  | LoginFormTypes
+  | EmployeePersonInfoFormTypes
+  | EmployeeJobInfoFormTypes
+  | EmployeeMedicalCoverageFormTypes
+  | FilterEmployeesFormTypes
+  | MemberFormTypes;
+
+type AllFormiksTypes =
+  | LoginFormikTypes
+  | EmployeePersonInfoFormikTypes
+  | EmployeeJobInfoFormikTypes
+  | EmployeeMedicalCoverageFormikTypes
+  | MemberFormikTypes
+  | FilterEmployeesFormikTypes;
+
+interface FormiksTypes<T> {
+  formik: FormikProps<T>;
   type?: string;
 }
+
+type FormikMap = {
+  login: FormikProps<LoginFormTypes>;
+  editEmployeePersonInfo: FormikProps<EmployeePersonInfoFormTypes>;
+  editEmployeeJobInfo: FormikProps<EmployeeJobInfoFormTypes>;
+  editEmployeeMedicalCoverage: FormikProps<EmployeeMedicalCoverageFormTypes>;
+  filterEmployees: FormikProps<FilterEmployeesFormTypes>;
+  addMember: FormikProps<MemberFormTypes>;
+  editMember: FormikProps<MemberFormTypes>;
+};
 
 interface CatchErrorTypes {
   response: {
@@ -57,10 +172,19 @@ export type {
   AllFormiksTypes,
   AllFormsTypes,
   CatchErrorTypes,
-  DeleteFormikTypes,
-  DeleteFormTypes,
   FormiksTypes,
   FormsTypes,
   LoginFormikTypes,
   LoginFormTypes,
+  EmployeePersonInfoFormTypes,
+  EmployeePersonInfoFormikTypes,
+  FormikMap,
+  EmployeeJobInfoFormikTypes,
+  EmployeeJobInfoFormTypes,
+  EmployeeMedicalCoverageFormTypes,
+  EmployeeMedicalCoverageFormikTypes,
+  MemberFormTypes,
+  MemberFormikTypes,
+  FilterEmployeesFormTypes,
+  FilterEmployeesFormikTypes,
 };

@@ -44,7 +44,7 @@ interface ButtonTypes {
 interface SubmitButtonTypes {
   loading: boolean;
   children: ReactNode;
-  variant?: string;
+  variant?: "gradient" | "primary" | "secondary" | "basic";
   className?: string;
   handling?: () => void;
 }
@@ -77,6 +77,8 @@ interface ProfileEmployeeCardTypes {
   title: string;
   number: string;
   rate: number;
+  bg: string;
+  color: string;
 }
 
 interface ProfileManagerCardTypes {
@@ -85,6 +87,41 @@ interface ProfileManagerCardTypes {
   name: string;
   email: string;
   phone: string;
+}
+
+interface DotTypes {
+  color?: string;
+}
+
+interface StatusBoxTypes {
+  status: "active" | "inactive" | "not paid";
+}
+
+interface TableIconButtonTypes {
+  children: ReactNode;
+  className?: string;
+  onClick?: () => void;
+}
+
+interface CustomMenuTypes {
+  children: ReactNode;
+  button?: ReactNode;
+}
+
+interface TextLabelTypes {
+  title: string;
+  value: string;
+  variant?: "employee" | "payment";
+}
+
+interface TextLineTypes {
+  title: string;
+  value: string;
+  valueColor?: string;
+}
+
+interface UploadFilesTypes {
+  count?: number;
 }
 
 export type {
@@ -99,4 +136,11 @@ export type {
   BalanceCardTypes,
   ProfileEmployeeCardTypes,
   ProfileManagerCardTypes,
+  DotTypes,
+  StatusBoxTypes,
+  TableIconButtonTypes,
+  CustomMenuTypes,
+  TextLabelTypes,
+  TextLineTypes,
+  UploadFilesTypes,
 };

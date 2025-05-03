@@ -1,38 +1,43 @@
-import { createContext, useState } from 'react';
-import { FormsContextTypes } from '../types/contexts.types';
+import { createContext, ReactNode, useContext, useReducer } from "react";
 
-export const FormsContext = createContext<FormsContextTypes>({
-  formsLoading: false,
-  handleCloseFormsLoading: () => {},
-  handleOpenFormsLoading: () => {},
-  formType: '',
-  setFormType: () => {},
-});
+type FormsState = {
+  isLoading: boolean;
+};
 
-const FormsProvider = ({ children }: { children: React.ReactNode }) => {
-  //Loading Form
-  const [formsLoading, setFormsLoading] = useState(false);
-  const handleCloseFormsLoading = () => {
-    setFormsLoading(false);
-  };
+type FormsAction = { type: "loading"; payload: boolean };
 
-  const handleOpenFormsLoading = () => {
-    setFormsLoading(true);
-  };
+type FormsContextType = {
+  state: FormsState;
+  dispatch: React.Dispatch<FormsAction>;
+};
 
-  //Form Type
-  const [formType, setFormType] = useState('');
+const FormsContext = createContext<FormsContextType | undefined>(undefined);
 
-  const values = {
-    formsLoading,
-    handleCloseFormsLoading,
-    handleOpenFormsLoading,
-    formType,
-    setFormType,
-  };
+const initialState: FormsState = { isLoading: false };
+
+function FormsReducer(state: FormsState, action: FormsAction): FormsState {
+  switch (action.type) {
+    case "loading":
+      return { ...state, isLoading: action.payload };
+    default:
+      return state;
+  }
+}
+
+export const FormsProvider = ({ children }: { children: ReactNode }) => {
+  const [state, dispatch] = useReducer(FormsReducer, initialState);
+
   return (
-    <FormsContext.Provider value={values}>{children}</FormsContext.Provider>
+    <FormsContext.Provider value={{ state, dispatch }}>
+      {children}
+    </FormsContext.Provider>
   );
 };
 
-export default FormsProvider;
+export const useForms = (): FormsContextType => {
+  const context = useContext(FormsContext);
+  if (!context) {
+    throw new Error("useTabs must be used within a FormsProvider");
+  }
+  return context;
+};

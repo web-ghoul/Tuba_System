@@ -1,55 +1,90 @@
-import { ReactNode, createContext, useContext, useState } from 'react';
-import { ModalsContextTypes } from '../types/contexts.types';
-import { FormsContext } from './FormsContext';
+import { createContext, ReactNode, useContext, useReducer } from "react";
 
-export const ModalsContext = createContext<ModalsContextTypes>({
-  openDeleteModal: false,
-  handleOpenDeleteModal: () => {},
-  handleCloseDeleteModal: () => {},
-  openForgotPasswordModal: false,
-  handleOpenForgotPasswordModal: () => {},
-  handleCloseForgotPasswordModal: () => {},
-});
+type ModalsState = {
+  isOpenWelcomeModal: boolean;
+  isOpenChangeProfileAvatarModal: boolean;
+  isOpenEditEmployeePersonInfoModal: boolean;
+  isOpenEditEmployeeJobInfoModal: boolean;
+  isOpenEditEmployeeMedicalCoverageModal: boolean;
+  isOpenAddMemberModal: boolean;
+  isOpenEditMemberModal: boolean;
+  isOpenViewMemberModal: boolean;
+};
 
-const ModalsProvider = ({ children }: { children: ReactNode }) => {
-  const { setFormType } = useContext(FormsContext);
+type ModalsAction =
+  | { type: "welcomeModal"; payload: boolean }
+  | { type: "changeProfileAvatarModal"; payload: boolean }
+  | { type: "editEmployeePersonInfoModal"; payload: boolean }
+  | { type: "editEmployeeJobInfoModal"; payload: boolean }
+  | { type: "editEmployeeMedicalCoverageModal"; payload: boolean }
+  | { type: "addMemberModal"; payload: boolean }
+  | { type: "editMemberModal"; payload: boolean }
+  | { type: "viewMemberModal"; payload: boolean };
 
-  //Delete
-  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+type ModalsContextType = {
+  state: ModalsState;
+  dispatch: React.Dispatch<ModalsAction>;
+};
 
-  const handleCloseDeleteModal = () => {
-    setOpenDeleteModal(false);
-  };
+const ModalsContext = createContext<ModalsContextType | undefined>(undefined);
 
-  const handleOpenDeleteModal = (type: string) => {
-    setFormType(type);
-    setOpenDeleteModal(true);
-  };
-  //Delete
+const initialState: ModalsState = {
+  isOpenWelcomeModal: false,
+  isOpenChangeProfileAvatarModal: false,
+  isOpenEditEmployeePersonInfoModal: false,
+  isOpenEditEmployeeJobInfoModal: false,
+  isOpenEditEmployeeMedicalCoverageModal: false,
+  isOpenAddMemberModal: false,
+  isOpenEditMemberModal: false,
+  isOpenViewMemberModal: false,
+};
 
-  //Forgot Password
-  const [openForgotPasswordModal, setOpenForgotPasswordModal] = useState(false);
+function ModalsReducer(state: ModalsState, action: ModalsAction): ModalsState {
+  switch (action.type) {
+    case "welcomeModal":
+      return { ...state, isOpenWelcomeModal: action.payload };
+    case "changeProfileAvatarModal":
+      return {
+        ...state,
+        isOpenChangeProfileAvatarModal: action.payload,
+      };
+    case "editEmployeePersonInfoModal":
+      return { ...state, isOpenEditEmployeePersonInfoModal: action.payload };
+    case "editEmployeeJobInfoModal":
+      return { ...state, isOpenEditEmployeeJobInfoModal: action.payload };
+    case "editEmployeeMedicalCoverageModal":
+      return {
+        ...state,
+        isOpenEditEmployeeMedicalCoverageModal: action.payload,
+      };
+    case "addMemberModal":
+      return { ...state, isOpenAddMemberModal: action.payload };
+    case "editMemberModal":
+      return { ...state, isOpenEditMemberModal: action.payload };
+    case "viewMemberModal":
+      return {
+        ...state,
+        isOpenViewMemberModal: action.payload,
+      };
+    default:
+      return state;
+  }
+}
 
-  const handleCloseForgotPasswordModal = () => {
-    setOpenForgotPasswordModal(false);
-  };
+export const ModalsProvider = ({ children }: { children: ReactNode }) => {
+  const [state, dispatch] = useReducer(ModalsReducer, initialState);
 
-  const handleOpenForgotPasswordModal = () => {
-    setOpenForgotPasswordModal(true);
-  };
-  //Forgot Password
-
-  const values = {
-    openForgotPasswordModal,
-    handleOpenForgotPasswordModal,
-    handleCloseForgotPasswordModal,
-    openDeleteModal,
-    handleCloseDeleteModal,
-    handleOpenDeleteModal,
-  };
   return (
-    <ModalsContext.Provider value={values}>{children}</ModalsContext.Provider>
+    <ModalsContext.Provider value={{ state, dispatch }}>
+      {children}
+    </ModalsContext.Provider>
   );
 };
 
-export default ModalsProvider;
+export const useModals = (): ModalsContextType => {
+  const context = useContext(ModalsContext);
+  if (!context) {
+    throw new Error("useTabs must be used within a ModalsProvider");
+  }
+  return context;
+};

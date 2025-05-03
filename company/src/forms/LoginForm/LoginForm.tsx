@@ -1,13 +1,9 @@
 import { Box, Typography } from "@mui/material";
-import { useContext } from "react";
-import Input from "../../components/Input/Input";
+import { FormiksTypes, LoginFormTypes } from "../../types/forms.types";
 import SubmitButton from "../../components/SubmitButton/SubmitButton";
-import { FormsContext } from "../../contexts/FormsContext";
-import { FormiksTypes } from "../../types/forms.types";
+import Input from "../../components/Input/Input";
 
-const LoginForm = ({ formik }: FormiksTypes) => {
-  const { formsLoading } = useContext(FormsContext);
-
+const LoginForm = ({ formik }: FormiksTypes<LoginFormTypes>) => {
   return (
     <Box
       className={`grid justify-stretch items-center gap-10 md:gap-6 sm:gap-4 sm:justify-center`}
@@ -23,15 +19,11 @@ const LoginForm = ({ formik }: FormiksTypes) => {
       <Box
         className={`grid justify-stretch items-start gap-8 sm:flex sm:flex-wrap sm:justify-center`}
       >
+        <Input formik={formik} label={"Email"} name={"usr"} type={"email"} />
+
         <Input
           formik={formik}
-          type={"email"}
-          name={"usr"}
-          label={"البريد الالكترونى"}
-        />
-        <Input
-          formik={formik}
-          label={"كلمة المرور"}
+          label={"Password"}
           type={"password"}
           name={"pwd"}
           ac={"current-pasword"}
@@ -41,7 +33,7 @@ const LoginForm = ({ formik }: FormiksTypes) => {
         className={`grid justify-stretch items-center gap-2 sm:justify-center`}
       >
         <SubmitButton
-          loading={formsLoading}
+          loading={false}
           className={`transition-all bg-gradient_primary hover:bg-gradient_primary_reverse w-full`}
         >
           تسجيل الدخول

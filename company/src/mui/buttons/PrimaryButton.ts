@@ -1,29 +1,37 @@
-import { LoadingButton } from '@mui/lab';
-import { styled } from '@mui/material/styles';
+import { LoadingButton } from "@mui/lab";
+import { styled } from "@mui/material/styles";
 
 export const PrimaryButton = styled(LoadingButton)(({ theme }) => ({
   color: theme.palette.common.white,
   backgroundColor: theme.palette.primary.main,
-  borderRadius: "12px",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  gap: "5px",
-  padding: "10px 14px",
+  borderRadius: "10px",
+  padding: "8px 16px",
   boxShadow: "none",
+  borderWidth: "2px",
+  borderStyle: "solid",
+  fontWeight: "600",
+  "& > span ": {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "5px",
+  },
   "& > span > span": {
     height: "20px !important",
     width: "20px !important",
   },
   "& svg": {
-    fontSize: "14px",
+    fontSize: "16px",
   },
   "&:hover": {
-    backgroundColor: theme.palette.primary.dark,
+    backgroundColor: "#fff",
+    color: theme.palette.primary.main,
   },
   [theme.breakpoints.down("lg")]: {
     borderRadius: "3px",
-    gap: "4px",
+    "& > span": {
+      gap: "4px",
+    },
     padding: "16px 8px",
     "& > span > span": {
       height: "18px !important",
@@ -45,7 +53,9 @@ export const PrimaryButton = styled(LoadingButton)(({ theme }) => ({
   },
   [theme.breakpoints.down("sm")]: {
     borderRadius: "2px",
-    gap: "3px",
+    "& > span": {
+      gap: "3px",
+    },
     padding: "5px 12px",
     "& > span > span": {
       height: "14px !important",
@@ -56,7 +66,9 @@ export const PrimaryButton = styled(LoadingButton)(({ theme }) => ({
     },
   },
   [theme.breakpoints.down("xs")]: {
-    gap: "2px",
+    "& > span": {
+      gap: "2px",
+    },
     padding: "4px 10px",
     "& > span > span": {
       height: "12px !important",

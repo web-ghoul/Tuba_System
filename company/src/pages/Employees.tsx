@@ -1,10 +1,7 @@
+import EmployeesSection from "../sections/EmployeesSection/EmployeesSection";
 
 const Employees = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  return <EmployeesSection />;
+};
 
-export default Employees
+export default Employees;

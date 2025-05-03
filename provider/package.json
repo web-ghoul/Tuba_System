@@ -25,6 +25,7 @@
     "frappe-react-sdk": "^1.11.0",
     "js-cookie": "^3.0.5",
     "lucide-react": "^0.503.0",
+    "provider": "file:",
     "react": "^18.3.1",
     "react-chartjs-2": "^5.3.0",
     "react-dom": "^18.3.1",

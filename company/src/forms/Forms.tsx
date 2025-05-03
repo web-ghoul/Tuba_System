@@ -1,33 +1,69 @@
-import { Box } from '@mui/material';
-import useSubmitForm from '../hooks/useSubmitForm';
-import { FormsTypes } from '../types/forms.types';
-import DeleteForm from './DeleteForm/DeleteForm';
-import ForgotPasswordForm from './ForgotPasswordForm/ForgotPasswordForm';
-import LoginForm from './LoginForm/LoginForm';
-import OTPForm from './OTPForm/OTPForm';
-import ResetPasswordForm from './ResetPasswordForm/ResetPasswordForm';
+import { Box } from "@mui/material";
+import LoginForm from "./LoginForm/LoginForm";
+import {
+  EmployeeJobInfoFormTypes,
+  EmployeeMedicalCoverageFormTypes,
+  EmployeePersonInfoFormTypes,
+  FilterEmployeesFormTypes,
+  FormikMap,
+  FormsTypes,
+  LoginFormTypes,
+  MemberFormTypes,
+} from "../types/forms.types";
+import useSubmitForm from "../hooks/useSubmitForm";
+import EmployeePersonInfoForm from "./EmployeePersonInfoForm/EmployeePersonInfoForm";
+import { FormikProps } from "formik";
+import EmployeeJobInfoForm from "./EmployeeJobInfoForm/EmployeeJobInfoForm";
+import EmployeeMedicalCoverageForm from "./EmployeeMedicalCoverageForm/EmployeeMedicalCoverageForm";
+import MemberForm from "./MemberForm/MemberForm";
+import FilterEmployeesForm from "./FilterEmployeesForm/FilterEmployeesForm";
 
 const Forms = ({ type }: FormsTypes) => {
-  const { register, handleSubmitForm, errors, setValue, getValues } =
-    useSubmitForm(type);
+  const { formik } = useSubmitForm(type as keyof FormikMap);
 
   return (
-    <Box component={'form'} onSubmit={handleSubmitForm}>
-      {/* Delete */}
-      {type === 'delete' && <DeleteForm />}
-      {/* Delete */}
-
+    <Box component={"form"} onSubmit={formik.handleSubmit}>
       {/* Authentication */}
-      {type === 'login' && (
-        <LoginForm
-          register={register}
-          errors={errors}
-          setValue={setValue}
-          getValues={getValues}
+      {type === "login" && (
+        <LoginForm formik={formik as FormikProps<LoginFormTypes>} type={type} />
+      )}
+      {/* Authentication */}
+
+      {/* Employee */}
+      {type === "editEmployeePersonInfo" && (
+        <EmployeePersonInfoForm
+          formik={formik as FormikProps<EmployeePersonInfoFormTypes>}
           type={type}
         />
       )}
-      {/* Authentication */}
+      {type === "editEmployeeJobInfo" && (
+        <EmployeeJobInfoForm
+          formik={formik as FormikProps<EmployeeJobInfoFormTypes>}
+          type={type}
+        />
+      )}
+      {type === "editEmployeeMedicalCoverage" && (
+        <EmployeeMedicalCoverageForm
+          formik={formik as FormikProps<EmployeeMedicalCoverageFormTypes>}
+          type={type}
+        />
+      )}
+      {type === "filterEmployees" && (
+        <FilterEmployeesForm
+          formik={formik as FormikProps<FilterEmployeesFormTypes>}
+          type={type}
+        />
+      )}
+      {/* Employee */}
+
+      {/* Member */}
+      {(type === "addMember" || type === "editMember") && (
+        <MemberForm
+          formik={formik as FormikProps<MemberFormTypes>}
+          type={type}
+        />
+      )}
+      {/* Member */}
     </Box>
   );
 };

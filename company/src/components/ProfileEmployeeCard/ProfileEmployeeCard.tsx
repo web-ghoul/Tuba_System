@@ -10,15 +10,17 @@ const ProfileEmployeeCard = ({
   title,
   number,
   rate,
+  bg,
+  color
 }: ProfileEmployeeCardTypes) => {
   return (
-    <Box className={`profile_employees_paper h-full`}>
+    <Box className={`profile_employees_paper h-full overflow-hidden`}>
       <Box className={`flex justify-start items-start gap-2 p-4`}>
         <Icon
-          className={`rounded-3xl !w-[60px] !h-[60px] !flex justify-center items-center bg-profile_employees_counter_light`}
+          className={`rounded-3xl !w-[60px] !h-[60px] !flex justify-center items-center ${bg}`}
         >
           <PeopleAltRounded
-            className={`!text-[32px] !text-profile_employees_counter`}
+            className={`!text-[32px] ${color}`}
           />
         </Icon>
         <Box className={`grid justify-stretch items-center gap-2`}>

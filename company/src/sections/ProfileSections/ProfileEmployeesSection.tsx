@@ -14,16 +14,22 @@ const ProfileEmployeesSection = () => {
           title={"إجمالي الموظفين"}
           rate={10}
           number={"15240"}
+          bg={"!bg-[#D2F6F3]"}
+          color={"!text-[#179C91FF]"}
         />
         <ProfileEmployeeCard
           title={"الموظفون النشطون"}
           rate={30}
           number={"15240"}
+          bg={"!bg-[#FFEED3]"}
+          color={"!text-[#D0A25AFF]"}
         />
         <ProfileEmployeeCard
           title={"الموظفون غير النشطين"}
           rate={40}
           number={"80"}
+          bg={"!bg-[#E5E4FF]"}
+          color={"!text-[#6966CAFF]"}
         />
       </Box>
     </Box>

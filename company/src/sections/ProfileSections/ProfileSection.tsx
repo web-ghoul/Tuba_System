@@ -5,7 +5,7 @@ import ProfileAvatar from "../../components/ProfileAvatar/ProfileAvatar";
 const ProfileSection = () => {
   return (
     <Paper className={`paper`}>
-      <ProfileAvatar image={``} />
+      <ProfileAvatar image={`/images/avatar.png`} />
       <Box className={`grid justify-stretch items-center gap-3`}>
         <Typography variant="h5" className={`!font-[700]`}>
           شركة الرعاية الصحية المتقدمة

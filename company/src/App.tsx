@@ -3,7 +3,17 @@ import { Outlet, useLocation } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Sidebar from "./components/Sidebar/Sidebar";
+import { PrimaryBox } from "./mui/boxes/PrimaryBox";
+import { PrimaryContainer } from "./mui/containers/PrimaryContainer";
+import WelcomeModal from "./modals/WelcomeModal";
 import BreadCrumbSection from "./sections/BreadCrumbSection/BreadCrumbSection";
+import EditEmployeePersonInfoModal from "./modals/EditEmployeePersonInfoModal";
+import EditEmployeeJobInfoModal from "./modals/EditEmployeeJobInfoModal";
+import EditEmployeeMedicalCoverageModal from "./modals/EditEmployeeMedicalCoverageModal";
+import AddMemberModal from "./modals/AddMemberModal";
+import EditMemberModal from "./modals/EditMemberModal";
+import ViewMemberModal from "./modals/ViewMemberModal";
+import ChangeProfileAvatarModal from "./modals/ChangeProfileAvatarModal";
 
 function App() {
   const { pathname } = useLocation();
@@ -17,15 +27,31 @@ function App() {
       <Header />
       <Box className={`pt-[60px] grid justify-stretch items-center !h-full`}>
         <Sidebar />
-        <Box className={`grid justify-stretch items-center gap-8 pr-[260px]`}>
-          {!(pathname === `${import.meta.env.VITE_DASHBOARD_ROUTE}` ||
-            pathname === `${import.meta.env.VITE_LOGIN_ROUTE}`) && (
-              <BreadCrumbSection />
-            )}
-          <Outlet />
+        <Box
+          className={`grid justify-stretch items-stretch self-stretch !content-between pr-[260px]`}
+        >
+          <PrimaryBox>
+            <PrimaryContainer
+              className={`!grid justify-stretch items-start gap-10`}
+            >
+              {!(
+                pathname === `${import.meta.env.VITE_DASHBOARD_ROUTE}` ||
+                pathname === `${import.meta.env.VITE_LOGIN_ROUTE}`
+              ) && <BreadCrumbSection />}
+              <Outlet />
+            </PrimaryContainer>
+          </PrimaryBox>
           <Footer />
         </Box>
       </Box>
+      <WelcomeModal />
+      <ChangeProfileAvatarModal />
+      <EditEmployeePersonInfoModal />
+      <EditEmployeeJobInfoModal />
+      <EditEmployeeMedicalCoverageModal />
+      <AddMemberModal />
+      <EditMemberModal />
+      <ViewMemberModal />
     </Box>
   );
 }

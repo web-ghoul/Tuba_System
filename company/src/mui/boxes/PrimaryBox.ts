@@ -4,7 +4,7 @@ export const PrimaryBox = styled(Container)(({ theme }) => ({
   padding: '0px !important',
   margin: '0px',
   maxWidth: '100% !important',
-  height: '100% !important',
+  height: '100%',
   paddingTop: '30px !important',
   paddingBottom: '30px !important',
   [theme.breakpoints.down('lg')]: {
