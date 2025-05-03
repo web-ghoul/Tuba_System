@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
@@ -6,13 +7,35 @@ import {
     Legend,
     ChartOptions,
 } from 'chart.js';
-import React from 'react';
+import { getInvoiceStats } from '../services/dashboardService';
+import InvoiceChartSkeleton from '../skeletons/InvoiceChartSkeleton';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const InvoiceChart: React.FC = () => {
-    const invoicesPaid = 120;
-    const invoicesUnpaid = 80;
+    const [loading, setLoading] = useState(true);
+    const [invoicesPaid, setInvoicesPaid] = useState(0);
+    const [invoicesUnpaid, setInvoicesUnpaid] = useState(0);
+
+    useEffect(() => {
+        const fetchInvoiceData = async () => {
+            try {
+                const res = await getInvoiceStats(localStorage.getItem('providerName')??"");
+                const data = res?.data?.data || {};
+                setInvoicesPaid(data.paid || 0);
+                setInvoicesUnpaid(data.unpaid || 0);
+            } catch (err) {
+                console.error("Failed to fetch invoice stats", err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchInvoiceData();
+    }, []);
+
+    if (loading) return <InvoiceChartSkeleton />;
+
     const totalInvoices = invoicesPaid + invoicesUnpaid;
 
     const data = {

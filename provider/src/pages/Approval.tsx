@@ -1,33 +1,63 @@
 import { Paper } from "@mui/material";
-import ApprovalDetailsSection from "../components/approval/ApprovalDetailsSection";
-import ServiceDetailsSection from "../components/approval/ServiceDetailsSection";
+
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getClaim } from "../services/dashboardService";
+import { ClaimRequestStatusKey } from "../constants/claimStatus";
+
+import { Claim } from "../types/approval";
 import { PrimaryBox } from "../mui/boxes/PrimaryBox";
 import { PrimaryContainer } from "../mui/containers/PrimaryContainer";
-import CoverageDetailsSection from "../components/approval/CoverageDetailsSection";
-import FilesSection from "../components/approval/FilesSection";
-import ItemsSection from "../components/approval/ItemsSection";
-import TotalsSection from "../components/approval/TotalsSection";
+import ApprovalDetailsSection from "../components/approval/ApprovalDetailsSectionComponent";
+import ServiceDetailsSection from "../components/approval/ServiceDetailsSectionComponent";
+import CoverageDetailsSection from "../components/approval/CoverageDetailsSectionComponent";
+import FilesSection from "../components/approval/FilesSectionComponent";
+import ItemsSection from "../components/approval/ItemsSectionComponent";
+import TotalsSection from "../components/approval/TotalsSectionComponent";
 
 const ApprovalPage: React.FC = () => {
+    const { id } = useParams(); // from route like /approval/:claimId
+    const [claim, setClaim] = useState<Claim | null>(null);
+    const [loading, setLoading] = useState<boolean>(false);
 
+    useEffect(() => {
+        const fetchClaims = async () => {
+            try {
+
+                const response = await getClaim(id as string);
+
+                setClaim(response.data.data);
+            } catch (error) {
+                console.error('Failed to fetch claims:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchClaims();
+    }, []);
+
+    if (!claim) return <div>Loading...</div>;
+    
+    
 
     return (
 
         <PrimaryBox>
-            
+
             <PrimaryContainer className={`!grid justify-stretch items-start gap-2`}>
-                <ApprovalDetailsSection />
-                <ServiceDetailsSection />
+                <ApprovalDetailsSection claim ={claim} hasFurtherDataItems={false} />
+                <ServiceDetailsSection  />
                 <CoverageDetailsSection />
-                <FilesSection  />
-                <ItemsSection/>
-                <TotalsSection />
+                <FilesSection items = {claim.items} />
+                <ItemsSection  claim={claim} />
+                <TotalsSection  claim={claim} />
 
 
 
             </PrimaryContainer>
-           
-      
+
+
         </PrimaryBox >
     );
 };

@@ -29,7 +29,7 @@ function App() {
         </Box>
       </Box>
     </Box>
-     </ProtectedRoute> 
+  </ProtectedRoute> 
   );
 }
 

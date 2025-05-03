@@ -1,14 +1,13 @@
 // CoverageDetailsSection.tsx
 import { Paper } from '@mui/material';
 import React from 'react';
+import { CoverageDetails } from '../../types/claimRecord';
 
-interface CoverageDetails {
-    coverage_document_number: string;
-    coverage_document: string;
-}
+
+
 
 interface Props {
-    coverageDetails: CoverageDetails;
+    coverageDetails: CoverageDetails ;
 }
 
 // Mock data for development and testing

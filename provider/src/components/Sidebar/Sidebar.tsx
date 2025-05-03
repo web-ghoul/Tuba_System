@@ -35,6 +35,11 @@ const Sidebar = () => {
       />
        <Item
         icon={<Approval />}
+        title={" اضافة ومتابعة"}
+        link={`${import.meta.env.VITE_APPROVAL_CREATE_ROUTE}`}
+      />
+       <Item
+        icon={<Approval />}
         title={" الموافقات"}
         link={`${import.meta.env.VITE_APPROVALS_ROUTE}`}
       />

@@ -16,8 +16,8 @@ const PrimaryTable: React.FC<PrimaryTableProps> = ({ data }) => {
       <thead>
         <tr className="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
           <th>رقم</th>
-          <th>اسم الشخص المغطى</th>
-          <th>جنسية الشخص المغطى</th>
+          {/* <th>اسم الشخص المغطى</th> */}
+          {/* <th>جنسية الشخص المغطى</th> */}
           <th className="text-center">تاريخ الإصدار</th>
           <th className="text-center">الإجمالي</th>
           <th className="text-center">الضريبة</th>
@@ -28,16 +28,16 @@ const PrimaryTable: React.FC<PrimaryTableProps> = ({ data }) => {
       </thead>
       <tbody className="fw-semibold text-gray-600">
         {data.map((item, index) => {
-          const statusInfo = CLAIM_REQUEST_STATUSES[item.status];
+          const statusInfo = CLAIM_REQUEST_STATUSES[item.workflow_state];
           return (
-            <tr key={item.id}>
-              <td>{index + 1}</td>
+            <tr key={item.name}>
+              {/* <td>{index + 1}</td> */}
               <td>{item.name}</td>
-              <td>{item.nationality}</td>
-              <td className="text-center">{item.issueDate}</td>
-              <td className="text-center">{item.total}</td>
-              <td className="text-center">{item.vat}</td>
-              <td className="text-center">{item.totalWithVat}</td>
+              {/* <td>{item.nationality}</td> */}
+              <td className="text-center">{item.issue_date}</td>
+              <td className="text-center">{item.total_price_base}</td>
+              <td className="text-center">{item.total_price_vat}</td>
+              <td className="text-center">{item.total_price_taxed}</td>
               <td className="text-center">
                 <span
                   className="badge"
@@ -52,7 +52,7 @@ const PrimaryTable: React.FC<PrimaryTableProps> = ({ data }) => {
                 </span>
               </td>
               <td className="text-end min-w-70px">
-                <button className="btn btn-sm btn-outline-primary"   onClick={() => navigate(`/approvals/${item.id}`)}>عرض</button>
+                <button className="btn btn-sm btn-outline-primary"   onClick={() => navigate(`/approvals/${item.name}`)}>عرض</button>
               </td>
             </tr>
           );
