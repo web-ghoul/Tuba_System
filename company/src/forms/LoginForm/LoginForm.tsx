@@ -4,6 +4,7 @@ import SubmitButton from "../../components/SubmitButton/SubmitButton";
 import Input from "../../components/Input/Input";
 
 const LoginForm = ({ formik }: FormiksTypes<LoginFormTypes>) => {
+  console.log(formik)
   return (
     <Box
       className={`grid justify-stretch items-center gap-10 md:gap-6 sm:gap-4 sm:justify-center`}
@@ -19,7 +20,12 @@ const LoginForm = ({ formik }: FormiksTypes<LoginFormTypes>) => {
       <Box
         className={`grid justify-stretch items-start gap-8 sm:flex sm:flex-wrap sm:justify-center`}
       >
-        <Input formik={formik} label={"البريد الإلكترونى"} name={"usr"} type={"email"} />
+        <Input
+          formik={formik}
+          label={"البريد الإلكترونى"}
+          name={"usr"}
+          type={"email"}
+        />
 
         <Input
           formik={formik}

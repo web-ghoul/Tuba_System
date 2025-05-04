@@ -1,26 +1,11 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createSlice } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
 import { AuthValuesTypes } from "../types/store.types";
 
-export const getProfile = createAsyncThunk("/auth/getProfile", async () => {
-  const token = Cookies.get(`${import.meta.env.VITE_TOKEN_STORAGE}`);
-  const userId = Cookies.get(`${import.meta.env.VITE_USER_ID_STORAGE}`);
-  const res = await axios.get(
-    `${import.meta.env.VITE_SERVER_URL}/users/${userId}`,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
-  return res.data;
-});
-
 const initialState: AuthValuesTypes = {
   token: null,
-  userId: null,
   user: null,
+  company: null,
   isLoading: true,
 };
 
@@ -30,50 +15,41 @@ export const authSlice = createSlice({
   reducers: {
     login: (state, action) => {
       state.token = action.payload.token;
-      state.userId = action.payload.userId;
+      state.user = action.payload.userData;
+      state.company = action.payload.company;
       const expirationDate = new Date();
       expirationDate.setTime(expirationDate.getTime() + 2 * 60 * 60 * 1000);
       Cookies.set(
-        `${import.meta.env.VITE_TOKEN_STORAGE}`,
+        `${import.meta.env.VITE_TOKEN_COOKIE}`,
         action.payload.token,
         {
           expires: expirationDate,
         }
       );
+      localStorage.setItem(
+        `${import.meta.env.VITE_USER_DATA_STORAGE}`,
+        JSON.stringify(action.payload.userData)
+      );
       Cookies.set(
-        `${import.meta.env.VITE_USER_ID_STORAGE}`,
-        action.payload.userId,
+        `${import.meta.env.VITE_COMPANY_ID_COOKIE}`,
+        action.payload.company,
         { expires: expirationDate }
       );
     },
     logout: (state) => {
       state.token = null;
-      state.userId = null;
-      Cookies.remove(`${import.meta.env.VITE_TOKEN_STORAGE}`);
-      Cookies.remove(`${import.meta.env.VITE_USER_ID_STORAGE}`);
+      state.user = null;
+      Cookies.remove(`${import.meta.env.VITE_TOKEN_COOKIE}`);
+      Cookies.remove(`${import.meta.env.VITE_COMPANY_ID_COOKIE}`);
+      localStorage.removeItem(`${import.meta.env.VITE_USER_DATA_STORAGE}`);
     },
     setAuth: (state, action) => {
       if (action.payload) {
         state.token = action.payload.token;
-        state.userId = action.payload.userId;
+        state.user = action.payload.user;
+        state.company = action.payload.company;
       }
     },
-  },
-  extraReducers: (builder) => {
-    builder.addCase(getProfile.pending, (state) => {
-      state.isLoading = false;
-    });
-    builder.addCase(getProfile.fulfilled, (state, { payload }) => {
-      state.isLoading = false;
-      state.user = payload.user;
-    });
-    builder.addCase(getProfile.rejected, (_, action) => {
-      if (action.payload) {
-        console.log(action.payload);
-      } else {
-        console.log(action.error);
-      }
-    });
   },
 });
 

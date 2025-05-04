@@ -15,6 +15,7 @@ import Invoices from "./pages/Invoices.tsx";
 import Payment from "./pages/Payment.tsx";
 import Permissions from "./pages/Permissions.tsx";
 import Approval from "./pages/Approval.tsx";
+import UpdatePassword from "./pages/UpdatePassword.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
       {
         path: `${import.meta.env.VITE_LOGIN_ROUTE}`,
         element: <Login />,
+      },
+      {
+        path: `${import.meta.env.VITE_UPDATE_PASSWORD_ROUTE}`,
+        element: <UpdatePassword />,
       },
       {
         path: `${import.meta.env.VITE_PROFILE_ROUTE}`,

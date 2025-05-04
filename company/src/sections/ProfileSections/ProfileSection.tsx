@@ -1,14 +1,20 @@
 import { Box, Paper, Typography } from "@mui/material";
 import ProfileTitle from "../../components/ProfileTitle/ProfileTitle";
 import ProfileAvatar from "../../components/ProfileAvatar/ProfileAvatar";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
+import { handleGetFileFromServer } from "../../functions/handleGetFileFromServer";
 
 const ProfileSection = () => {
+  const { profile } = useSelector((state: RootState) => state.profile);
+  console.log(profile);
+
   return (
     <Paper className={`paper`}>
-      <ProfileAvatar image={`/images/avatar.png`} />
+      <ProfileAvatar image={handleGetFileFromServer(profile?.logo || "")} />
       <Box className={`grid justify-stretch items-center gap-3`}>
         <Typography variant="h5" className={`!font-[700]`}>
-          شركة الرعاية الصحية المتقدمة
+          {profile?.name1}
         </Typography>
         <Box className={`grid justify-stretch items-center gap-4`}>
           <ProfileTitle title={"معلومات الشركة"} />

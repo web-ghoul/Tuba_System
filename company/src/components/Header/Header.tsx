@@ -3,10 +3,13 @@ import { AppBar, Avatar, Box, IconButton } from "@mui/material";
 import { PrimaryContainer } from "../../mui/containers/PrimaryContainer";
 import Logo from "../Logo/Logo";
 import { useEffect, useState } from "react";
+import { RootState } from "../../store/store";
+import { useSelector } from "react-redux";
+import { handleGetFileFromServer } from "../../functions/handleGetFileFromServer";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
-
+  const { profile } = useSelector((state: RootState) => state.profile);
   useEffect(() => {
     if (typeof window != "undefined") {
       window.addEventListener("scroll", () => {
@@ -27,19 +30,25 @@ const Header = () => {
           <IconButton
             className={`!bg-[rgba(255,255,255,0.5)] group !rounded-md w-[37.5px] h-[37.5px] flex justify-center items-center`}
           >
-            <LanguageRounded className={`text-white subtitle1 group-hover:text-primary group-hover:subtitle2`} />
+            <LanguageRounded
+              className={`text-white subtitle1 group-hover:text-primary group-hover:subtitle2`}
+            />
           </IconButton>
           <Box className={`bg-gray-300 h-[20px] w-[1px]`} />
           <IconButton
             className={`!bg-[rgba(255,255,255,0.5)] group !rounded-md w-[37.5px] h-[37.5px] flex justify-center items-center`}
           >
-            <NotificationsRounded className={`text-white subtitle1 group-hover:text-primary group-hover:subtitle2`} />
+            <NotificationsRounded
+              className={`text-white subtitle1 group-hover:text-primary group-hover:subtitle2`}
+            />
           </IconButton>
           <Box className={`bg-gray-300 h-[20px] w-[1px]`} />
           <IconButton className={`transition-all hover:scale-[0.9]`}>
             <Avatar
               src={
-                "/images/avatar.png"
+                profile
+                  ? handleGetFileFromServer(profile.logo)
+                  : "/images/avatar.png"
               }
             />
           </IconButton>

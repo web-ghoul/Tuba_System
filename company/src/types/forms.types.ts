@@ -3,13 +3,16 @@ import { FormikProps } from "formik";
 interface FormsTypes {
   type:
     | "login"
+    | "updatePassword"
     | "editEmployeePersonInfo"
     | "editEmployeeJobInfo"
     | "editEmployeeMedicalCoverage"
     | "filterEmployees"
     | "addMember"
     | "editMember"
-    | "filterApprovals";
+    | "filterApprovals"
+    | "searchNetworks"
+    | "filterProviders";
   index?: number;
 }
 
@@ -28,6 +31,23 @@ interface LoginFormikTypes {
   handleChange: (event: unknown) => void;
   handleBlur: (event: unknown) => void;
   values: LoginFormTypes;
+}
+
+interface UpdatePasswordFormTypes {
+  oldPassword: string;
+  password: string;
+  confirmPassword: string;
+}
+
+interface UpdatePasswordFormikTypes {
+  touched: UpdatePasswordFormTypes;
+  errors: UpdatePasswordFormTypes;
+  initialValues: UpdatePasswordFormTypes;
+  validationSchema: unknown;
+  onSubmit: (values: unknown) => void;
+  handleChange: (event: unknown) => void;
+  handleBlur: (event: unknown) => void;
+  values: UpdatePasswordFormTypes;
 }
 
 //Authentication
@@ -152,23 +172,65 @@ interface FilterApprovalsFormikTypes {
 
 //Approvals
 
+//Networks
+interface SearchNetworksFormTypes {
+  searchNetworks: string;
+}
+
+interface SearchNetworksFormikTypes {
+  touched: SearchNetworksFormTypes;
+  errors: SearchNetworksFormTypes;
+  initialValues: SearchNetworksFormTypes;
+  validationSchema: unknown;
+  onSubmit: (values: unknown) => void;
+  handleChange: (event: unknown) => void;
+  handleBlur: (event: unknown) => void;
+  values: SearchNetworksFormTypes;
+}
+
+interface FilterProvidersFormTypes {
+  name: string;
+  type: string;
+  provider: string;
+  networkLevel: string;
+}
+
+interface FilterProvidersFormikTypes {
+  touched: FilterProvidersFormTypes;
+  errors: FilterProvidersFormTypes;
+  initialValues: FilterProvidersFormTypes;
+  validationSchema: unknown;
+  onSubmit: (values: unknown) => void;
+  handleChange: (event: unknown) => void;
+  handleBlur: (event: unknown) => void;
+  values: FilterProvidersFormTypes;
+}
+
+//Networks
+
 type AllFormsTypes =
   | LoginFormTypes
+  | UpdatePasswordFormTypes
   | EmployeePersonInfoFormTypes
   | EmployeeJobInfoFormTypes
   | EmployeeMedicalCoverageFormTypes
   | FilterEmployeesFormTypes
   | MemberFormTypes
-  | FilterApprovalsFormTypes;
+  | FilterApprovalsFormTypes
+  | SearchNetworksFormTypes
+  | FilterProvidersFormTypes;
 
 type AllFormiksTypes =
   | LoginFormikTypes
+  | UpdatePasswordFormikTypes
   | EmployeePersonInfoFormikTypes
   | EmployeeJobInfoFormikTypes
   | EmployeeMedicalCoverageFormikTypes
   | MemberFormikTypes
   | FilterEmployeesFormikTypes
-  | FilterApprovalsFormikTypes;
+  | FilterApprovalsFormikTypes
+  | SearchNetworksFormikTypes
+  | FilterProvidersFormikTypes;
 
 interface FormiksTypes<T> {
   formik: FormikProps<T>;
@@ -177,6 +239,7 @@ interface FormiksTypes<T> {
 
 type FormikMap = {
   login: FormikProps<LoginFormTypes>;
+  updatePassword: FormikProps<UpdatePasswordFormTypes>;
   editEmployeePersonInfo: FormikProps<EmployeePersonInfoFormTypes>;
   editEmployeeJobInfo: FormikProps<EmployeeJobInfoFormTypes>;
   editEmployeeMedicalCoverage: FormikProps<EmployeeMedicalCoverageFormTypes>;
@@ -184,6 +247,8 @@ type FormikMap = {
   addMember: FormikProps<MemberFormTypes>;
   editMember: FormikProps<MemberFormTypes>;
   filterApprovals: FormikProps<FilterApprovalsFormTypes>;
+  filterProviders: FormikProps<FilterProvidersFormTypes>;
+  searchNetworks: FormikProps<SearchNetworksFormTypes>;
 };
 
 interface CatchErrorTypes {
@@ -202,6 +267,8 @@ export type {
   FormsTypes,
   LoginFormikTypes,
   LoginFormTypes,
+  UpdatePasswordFormTypes,
+  UpdatePasswordFormikTypes,
   EmployeePersonInfoFormTypes,
   EmployeePersonInfoFormikTypes,
   FormikMap,
@@ -215,4 +282,8 @@ export type {
   FilterEmployeesFormikTypes,
   FilterApprovalsFormTypes,
   FilterApprovalsFormikTypes,
+  SearchNetworksFormTypes,
+  SearchNetworksFormikTypes,
+  FilterProvidersFormTypes,
+  FilterProvidersFormikTypes,
 };

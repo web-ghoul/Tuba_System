@@ -1,14 +1,14 @@
 import { ReactNode } from "react";
 
 interface LogoTypes {
-  color?: string;
-  noTitle?: boolean;
-  handling?: () => void;
+  theme?: "dark" | "light";
+  className?: string;
 }
 
 interface InputTypes {
   name: string;
   label?: string;
+  placeholder?: string;
   type?: string;
   select?: boolean;
   options?: Array<string>;
@@ -125,6 +125,20 @@ interface UploadFilesTypes {
   count?: number;
 }
 
+interface ProviderBoxTypes {
+  type: string;
+  networkLevel: string;
+  name: string;
+  image: string;
+}
+
+interface SidebarItemTypes {
+  icon: ReactNode;
+  title: string;
+  link?: string;
+  logout?: boolean;
+}
+
 export type {
   ButtonTypes,
   ImageBoxTypes,
@@ -144,4 +158,6 @@ export type {
   TextLabelTypes,
   TextLineTypes,
   UploadFilesTypes,
+  ProviderBoxTypes,
+  SidebarItemTypes,
 };

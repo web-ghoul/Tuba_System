@@ -69,7 +69,6 @@ const Sidebar = () => {
         <Item
           icon={<LogoutRounded />}
           title={"تسجيل الخروج"}
-          link={`${import.meta.env.VITE_LOGIN_ROUTE}`}
           logout
         />
       </Box>

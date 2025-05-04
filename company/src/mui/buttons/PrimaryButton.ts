@@ -9,6 +9,7 @@ export const PrimaryButton = styled(LoadingButton)(({ theme }) => ({
   boxShadow: "none",
   borderWidth: "2px",
   borderStyle: "solid",
+  height: "fit-content",
   fontWeight: "600",
   "& > span ": {
     display: "flex",

@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Sidebar from "./components/Sidebar/Sidebar";
@@ -14,11 +14,41 @@ import AddMemberModal from "./modals/AddMemberModal";
 import EditMemberModal from "./modals/EditMemberModal";
 import ViewMemberModal from "./modals/ViewMemberModal";
 import ChangeProfileAvatarModal from "./modals/ChangeProfileAvatarModal";
+import { useEffect } from "react";
+import { setAuth } from "./store/authSlice";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "./store/store";
+import { handleGetAuthData } from "./functions/handleGetAuthData";
+import { getProfile } from "./store/profileSlice";
 
 function App() {
   const { pathname } = useLocation();
+  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
 
-  return pathname === `${import.meta.env.VITE_LOGIN_ROUTE}` ? (
+  const authRoutes = [
+    `${import.meta.env.VITE_LOGIN_ROUTE}`,
+    `${import.meta.env.VITE_UPDATE_PASSWORD_ROUTE}`,
+  ];
+
+  useEffect(() => {
+    if (!authRoutes.includes(pathname)) {
+      const { token, userData, company } = handleGetAuthData();
+      if (token && userData && company) {
+        dispatch(setAuth({ token, userData, company }));
+        dispatch(getProfile(company));
+      } else {
+        navigate(`${import.meta.env.VITE_LOGIN_ROUTE}`);
+      }
+    } else {
+      const { token, userData, company } = handleGetAuthData();
+      if (token && userData && company) {
+        navigate(`${import.meta.env.VITE_DASHBOARD_ROUTE}`);
+      }
+    }
+  }, [pathname]);
+
+  return authRoutes.includes(pathname) ? (
     <Box component={"main"}>
       <Outlet />
     </Box>

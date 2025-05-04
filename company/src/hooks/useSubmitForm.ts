@@ -9,12 +9,17 @@ import useEmployeeMedicalCoverageSchema from "../forms/EmployeeMedicalCoverageFo
 import useMemberSchema from "../forms/MemberForm/useMemberSchema";
 import useFilterEmployeesSchema from "../forms/FilterEmployeesForm/useFilterEmployeesSchema";
 import useFilterApprovalsSchema from "../forms/FilterApprovalsForm/useFilterApprovalsSchema";
+import useFilterProvidersSchema from "../forms/FilterProvidersForm/useFilterProvidersSchema";
+import useSearchNetworksSchema from "../forms/SearchNetworksForm/useSearchNetworksSchema";
+import useUpdatePasswordSchema from "../forms/UpdatePasswordForm/useUpdatePasswordSchema";
 
 const useSubmitForm = <T extends keyof FormikMap>(
   type: T
 ): { formik: FormikMap[T] } => {
   const { handleSubmit } = useSubmitFunction(type);
   const { LoginInitialValues, LoginSchema } = useLoginSchema();
+  const { UpdatePasswordInitialValues, UpdatePasswordSchema } =
+    useUpdatePasswordSchema();
   const { EmployeePersonInfoInitialValues, EmployeePersonInfoSchema } =
     useEmployeePersonInfoSchema();
   const { EmployeeJobInfoInitialValues, EmployeeJobInfoSchema } =
@@ -28,6 +33,10 @@ const useSubmitForm = <T extends keyof FormikMap>(
   const { MemberInitialValues, MemberSchema } = useMemberSchema();
   const { FilterApprovalsInitialValues, FilterApprovalsSchema } =
     useFilterApprovalsSchema();
+  const { FilterProvidersInitialValues, FilterProvidersSchema } =
+    useFilterProvidersSchema();
+  const { SearchNetworksInitialValues, SearchNetworksSchema } =
+    useSearchNetworksSchema();
 
   const formikConfig = useMemo(() => {
     switch (type) {
@@ -35,6 +44,11 @@ const useSubmitForm = <T extends keyof FormikMap>(
         return {
           initialValues: LoginInitialValues,
           validationSchema: LoginSchema,
+        };
+      case "updatePassword":
+        return {
+          initialValues: UpdatePasswordInitialValues,
+          validationSchema: UpdatePasswordSchema,
         };
       case "editEmployeePersonInfo":
         return {
@@ -66,6 +80,16 @@ const useSubmitForm = <T extends keyof FormikMap>(
         return {
           initialValues: FilterApprovalsInitialValues,
           validationSchema: FilterApprovalsSchema,
+        };
+      case "filterProviders":
+        return {
+          initialValues: FilterProvidersInitialValues,
+          validationSchema: FilterProvidersSchema,
+        };
+      case "searchNetworks":
+        return {
+          initialValues: SearchNetworksInitialValues,
+          validationSchema: SearchNetworksSchema,
         };
       default:
         throw new Error(`Unknown form type: ${type}`);

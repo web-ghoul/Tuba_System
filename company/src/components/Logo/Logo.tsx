@@ -1,9 +1,14 @@
+import { LogoTypes } from "../../types/components.types";
 import ImageBox from "../ImageBox/ImageBox";
 
-const Logo = ({ className }: { className?: string }) => {
+const Logo = ({ theme = "light", className }: LogoTypes) => {
   return (
     <ImageBox
-      src={"/images/logo_arabic_light.svg"}
+      src={
+        theme === "light"
+          ? "/images/logo_arabic_light.svg"
+          : "/images/logo_arabic_dark.svg"
+      }
       lazy
       className={className}
     />

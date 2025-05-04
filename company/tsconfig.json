@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "forceConsistentCasingInFileNames": true, // Enforces consistent casing across file imports
-    "strict": true // Enables strict type-checking for reduced type errors
+    "forceConsistentCasingInFileNames": true, 
+    "strict": true
   },
   "files": [],
   "references": [

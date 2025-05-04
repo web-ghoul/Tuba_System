@@ -6,22 +6,21 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
 
-    /* Bundler mode */
     "moduleResolution": "Bundler",
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "moduleDetection": "force",
-    "emitDeclarationOnly": true, // Added emitDeclarationOnly instead of noEmit
+    "emitDeclarationOnly": true,
     "jsx": "react-jsx",
     "composite": true,
 
-    /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src"]
+  "include": ["src", "server/**/*"]
 }

@@ -11,8 +11,7 @@ import { useModals } from "../contexts/ModalsContext";
 import { PrimaryButton } from "../mui/buttons/PrimaryButton";
 
 const Dashboard = () => {
-  const { state, dispatch } = useModals();
-  console.log(state);
+  const { dispatch } = useModals();
 
   return (
     <>

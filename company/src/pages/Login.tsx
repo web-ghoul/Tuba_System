@@ -1,7 +1,7 @@
-import AuthenticationSection from '../sections/AuthenticationSection/AuthenticationSection';
+import AuthenticationSection from "../sections/AuthenticationSection/AuthenticationSection";
 
 const Login = () => {
-  return <AuthenticationSection />;
+  return <AuthenticationSection type={"login"} />;
 };
 
 export default Login;

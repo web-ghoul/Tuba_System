@@ -1,7 +1,6 @@
 import createCache from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
 import { ThemeProvider } from "@mui/material";
-import { FrappeProvider } from "frappe-react-sdk";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { RouterProvider } from "react-router-dom";
@@ -32,17 +31,8 @@ createRoot(document.getElementById("root")!).render(
         <ModalsProvider>
           <TabsProvider>
             <FormsProvider>
-              <FrappeProvider
-                url={`http://erp-staging.gettuba.com/api/v2`}
-                tokenParams={{
-                  useToken: true,
-                  token: () => "",
-                  type: "Bearer",
-                }}
-              >
-                <RouterProvider router={router} />
-                <Toaster/>
-              </FrappeProvider>
+              <RouterProvider router={router} />
+              <Toaster />
             </FormsProvider>
           </TabsProvider>
         </ModalsProvider>

@@ -118,7 +118,6 @@ export const theme = createTheme({
     },
     subtitle1: {
       fontSize: "15px",
-      lineHeight: "1",
       "@media (max-width: 1200px)": {
         fontSize: "14px",
       },

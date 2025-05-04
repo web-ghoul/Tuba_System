@@ -9,6 +9,7 @@ const Input = <T extends AllFormsTypes>({
   formik,
   name,
   label,
+  placeholder,
   type,
   select,
   options,
@@ -33,13 +34,15 @@ const Input = <T extends AllFormsTypes>({
   return useMemo(
     () => (
       <Box className="grid justify-stretch w-full items-center gap-2 md:gap-1">
-        <Typography
-          id={`label-${name}`}
-          variant="subtitle1"
-          className="!font-[400]"
-        >
-          {type === "search" ? "ابحث عن" : label}
-        </Typography>
+        {label && (
+          <Typography
+            id={`label-${name}`}
+            variant="subtitle1"
+            className="!font-[400]"
+          >
+            {type === "search" ? "ابحث عن" : label}
+          </Typography>
+        )}
         <label htmlFor={name} className="!hidden">
           .
         </label>
@@ -49,6 +52,7 @@ const Input = <T extends AllFormsTypes>({
             id={name}
             name={name}
             select
+            label={label}
             slotProps={{
               select: {
                 native: true,
@@ -59,7 +63,7 @@ const Input = <T extends AllFormsTypes>({
                 },
               },
             }}
-            value={formik.values[name as keyof T]}
+            value={formik.values[name as keyof T] ?? ""}
             onChange={(e) => {
               if (change) {
                 change(e.target.value);
@@ -99,7 +103,7 @@ const Input = <T extends AllFormsTypes>({
             }}
             id={name}
             name={name}
-            defaultValue={formik.values[name as keyof T] as string}
+            value={(formik.values[name as keyof T] as string) ?? ""}
             onChange={(e) => {
               const val = (e.target as HTMLTextAreaElement).value;
               if (change) {
@@ -107,7 +111,7 @@ const Input = <T extends AllFormsTypes>({
               }
               formik.handleChange(e);
             }}
-            placeholder={`ادخل ${label}`}
+            placeholder={placeholder || label}
           />
         ) : (
           <PrimaryTextField
@@ -140,13 +144,10 @@ const Input = <T extends AllFormsTypes>({
                 : {}
             }
             placeholder={
-              type !== "date"
-                ? type === "search"
-                  ? label
-                  : `ادخل ${label}`
-                : ""
+              placeholder ||
+              (type !== "date" ? (type === "search" ? label : label) : "")
             }
-            value={formik.values[name as keyof T]}
+            value={formik.values[name as keyof T] ?? ""}
             onChange={(e) => {
               const val = e.target.value;
               if (change) {
@@ -180,6 +181,7 @@ const Input = <T extends AllFormsTypes>({
       label,
       name,
       options,
+      placeholder,
       select,
       showPassword,
       textarea,

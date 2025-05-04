@@ -1,11 +1,12 @@
 import axios from "axios";
+import { handleGetAuthData } from "../functions/handleGetAuthData";
 
-const useAxios = () => {
+const useAxios = (unauthorized: boolean = false) => {
+  const { token } = handleGetAuthData();
   const server = axios.create({
     baseURL: `${import.meta.env.VITE_SERVER_URL}`,
     headers: {
-      Referer: "https://cp-staging.gettuba.com/",
-      "Referrer-Policy": "strict-origin-when-cross-origin", // Set the Referrer-Policy header
+      ...(unauthorized ? {} : { Authorization: `token ${token}` }),
     },
   });
   return { server };

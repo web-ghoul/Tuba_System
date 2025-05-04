@@ -1,5 +1,7 @@
+import NetworkSection from "../sections/NetworkSection/NetworkSection";
+
 const Network = () => {
-  return <></>;
+  return <NetworkSection />;
 };
 
 export default Network;

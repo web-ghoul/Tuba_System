@@ -5,8 +5,11 @@ import {
   EmployeePersonInfoFormTypes,
   FilterApprovalsFormTypes,
   FilterEmployeesFormTypes,
+  FilterProvidersFormTypes,
   LoginFormTypes,
   MemberFormTypes,
+  SearchNetworksFormTypes,
+  UpdatePasswordFormTypes,
 } from "../types/forms.types";
 import useLoginSubmit from "../forms/LoginForm/useLoginSubmit";
 import useEmployeePersonInfoSubmit from "../forms/EmployeePersonInfoForm/useEmployeePersonInfoSubmit";
@@ -15,20 +18,29 @@ import useEmployeeMedicalCoverageSubmit from "../forms/EmployeeMedicalCoverageFo
 import useMemberSubmit from "../forms/MemberForm/useMemberSubmit";
 import useFilterEmployeesSubmit from "../forms/FilterEmployeesForm/useFilterEmployeesSubmit";
 import useFilterApprovalsSubmit from "../forms/FilterApprovalsForm/useFilterApprovalsSubmit";
+import useFilterProvidersSubmit from "../forms/FilterProvidersForm/useFilterProvidersSubmit";
+import useSearchNetworksSubmit from "../forms/SearchNetworksForm/useSearchNetworksSubmit";
+import useUpdatePasswordSubmit from "../forms/UpdatePasswordForm/useUpdatePasswordSubmit";
 
 const useSubmitFunction = (type: string) => {
   const { login } = useLoginSubmit();
+  const { updatePassword } = useUpdatePasswordSubmit();
   const { editEmployeePersonInfo } = useEmployeePersonInfoSubmit();
   const { editEmployeeJobInfo } = useEmployeeJobInfoSubmit();
   const { editEmployeeMedicalCoverage } = useEmployeeMedicalCoverageSubmit();
   const { filterEmployees } = useFilterEmployeesSubmit();
   const { addMember, editMember } = useMemberSubmit();
   const { filterApprovals } = useFilterApprovalsSubmit();
+  const { filterProviders } = useFilterProvidersSubmit();
+  const { searchNetworks } = useSearchNetworksSubmit();
 
   const handleSubmit = (values: AllFormsTypes) => {
     switch (type) {
       case "login":
         login(values as LoginFormTypes);
+        break;
+      case "updatePassword":
+        updatePassword(values as UpdatePasswordFormTypes);
         break;
       case "editEmployeePersonInfo":
         editEmployeePersonInfo(values as EmployeePersonInfoFormTypes);
@@ -50,6 +62,12 @@ const useSubmitFunction = (type: string) => {
         break;
       case "filterApprovals":
         filterApprovals(values as FilterApprovalsFormTypes);
+        break;
+      case "filterProviders":
+        filterProviders(values as FilterProvidersFormTypes);
+        break;
+      case "searchNetworks":
+        searchNetworks(values as SearchNetworksFormTypes);
         break;
       default:
         console.warn("Unknown form type submitted:", type);
