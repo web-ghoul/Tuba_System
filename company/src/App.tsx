@@ -20,6 +20,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "./store/store";
 import { handleGetAuthData } from "./functions/handleGetAuthData";
 import { getProfile } from "./store/profileSlice";
+import axios from "axios";
 
 function App() {
   const { pathname } = useLocation();
@@ -31,7 +32,15 @@ function App() {
     `${import.meta.env.VITE_UPDATE_PASSWORD_ROUTE}`,
   ];
 
+  const handleTryServer = async () => {
+    const res = await axios.get(
+      `http://localhost:5000/api/message`
+    );
+    console.log(res);
+  };
+
   useEffect(() => {
+    handleTryServer();
     if (!authRoutes.includes(pathname)) {
       const { token, userData, company } = handleGetAuthData();
       if (token && userData && company) {
