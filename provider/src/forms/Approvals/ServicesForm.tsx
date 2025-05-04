@@ -1,55 +1,70 @@
-// components/ClaimForm.tsx
-
-import React, { useState } from 'react';
-// import ServiceTypeSelect from './ServiceTypeSelect';
-// import ICD10Select from './ICD10Select';
-// import JustificationTextarea from './JustificationTextarea';
-import {TabNavigation} from '../../components/approval/TabNavigation';
+// ServicesForm.tsx
+import { useForm, FormProvider } from 'react-hook-form';
+import { Button } from '@mui/material';
+import BasicApprovalDetails from '../../components/approval/BasicApprovalDetails';
+import { TabNavigation } from '../../components/approval/TabNavigation';
 import NormalItemsTab from '../../components/approval/NormalItemsTab';
-// import TotalClaim from './TotalClaim';
-
+import ClaimTotalCard from '../../components/approval/ClaimTotalCard';
+import React, { useState } from 'react';
+import { ServiceItem } from '../../types/services';
 const ServicesForm: React.FC = () => {
+  const deduct =20;
   const [activeTab, setActiveTab] = useState<'normal' | 'drg'>('normal');
-
+  const [basicDetails, setBasicDetails] = useState({
+    service_type: '',
+    icd10_diagnoses: '',
+    justification: '',
+  });
+  const [claimItems, setClaimItems] = useState<ServiceItem[]>([]);
+  const methods = useForm();
+  const { handleSubmit } = methods;
+  const onSubmit = (data: any) => {
+    const finalData = {
+      ...data,
+      ...basicDetails,
+      items: claimItems,
+    };
+    console.log('Form Data:', finalData);
+    // Send finalData to your API here
+  };
   return (
-    <div id="claim_form_div" className="">
-      <div className="grid gap-6">
-        {/* Service Type */}
-       
-
-        {/* ICD10 Select */}
-        {/* <ICD10Select /> */}
-
-        {/* Justification Textarea */}
-        {/* <JustificationTextarea /> */}
-
-        {/* Tab Navigation */}
-        <TabNavigation activeTab={activeTab} setActiveTab={setActiveTab} />
-
-        {/* Tab Content */}
-        <div className="tab-content">
-          {activeTab === 'normal' && <NormalItemsTab />}
-          {activeTab === 'drg' && <div className="p-4">DRG Tab Placeholder</div>}
+    <FormProvider {...methods}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="grid gap-6">
+          <BasicApprovalDetails
+            basicDetails={basicDetails}
+            setBasicDetails={setBasicDetails}
+          />
+          <TabNavigation activeTab={activeTab} setActiveTab={setActiveTab} />
+          <div className="tab-content">
+            {activeTab === 'normal' && <NormalItemsTab deduct={deduct} claimItems={claimItems}
+              setClaimItems={setClaimItems} />}
+            {activeTab === 'drg' && <div className="p-4">Comming Soon....</div>}
+          </div>
+          <ClaimTotalCard
+            isVisible={true}
+            deduct={20}
+            claimItems={claimItems}
+            labels={{
+              claimTotals: 'مجموع المطالبات',
+              startSearchText: 'ابدأ باضافة خدمات لعرض مجموع تكلفة الموافقة هنا.',
+              totalCost: 'التكلفة الإجمالية',
+              totalCostVat: 'ضريبة القيمة المضافة',
+              totalCostWithVat: 'المبلغ المغطى مع الضريبة',
+              totalDeductibleCost: 'المبلغ المغطى',
+              vat: 'الضريبة',
+              totalDeductibleCostWithVat: 'المبلغ المغطى  مع الضريبة',
+              totalCoveredAmount: 'المبلغ المتحمل',
+              totalCoveredAmountWithVat: 'المبلغ المتحمل مع الضريبة',
+              
+            }}
+          />
+          <Button type="submit" variant="contained" color="primary" className="w-full md:w-1/3 py-2 rounded">
+            إرسال موافقة الخدمات
+          </Button>
         </div>
-
-        {/* Total Claim Summary */}
-        {/* <TotalClaim /> */}
-
-        {/* Submit Button */}
-        <button
-          id="save_btn"
-          type="button"
-          className="btn my-5 w-full bg-gradient-to-r from-blue-600 to-blue-400 text-white hidden"
-        >
-          <span className="indicator-label">Save</span>
-          <span className="indicator-progress flex items-center gap-2">
-            Please wait
-            <span className="spinner-border spinner-border-sm align-middle ms-2"></span>
-          </span>
-        </button>
-      </div>
-    </div>
+      </form>
+    </FormProvider>
   );
 };
-
-export default ServicesForm;
+export default ServicesForm; 

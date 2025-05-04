@@ -22,7 +22,7 @@ const mockClaim = {
   ],
 };
 
-const NormalItemsTab: React.FC = () => {
+const NormalItemsTab: React.FC = ({deduct, claimItems ,setClaimItems}) => {
   const [showRay, setShowRay] = useState(false);
   const [showAnalysis, setShowAnalysis] = useState(false);
   const [showMedication, setShowMedication] = useState(false);
@@ -34,16 +34,20 @@ const NormalItemsTab: React.FC = () => {
         <button
           type="button"
           onClick={() => setShowRay(!showRay)}
-          className="w-full px-4 py-3 text-left font-medium bg-gray-50 hover:bg-gray-100 rounded-t-xl"
+          className="w-full px-4 py-3 text-right font-medium bg-gray-50 hover:bg-gray-100 rounded-t-xl"
         >
-          {showRay ? '−' : '+'} Ray Items
+          {showRay ? '−' : '+'} اشعة 
         </button>
         {showRay && (
           <div className="p-4">
             <ServiceTable
               type="ray"
               tableId="ray_items_table"
-             
+              claim={{ items: claimItems }}
+              onClaimUpdate={(updatedClaim) => {
+                setClaimItems(updatedClaim.items);
+              }}  
+              deduct={deduct}
               id="ray_table_btn"
             />
           </div>
@@ -55,16 +59,20 @@ const NormalItemsTab: React.FC = () => {
         <button
           type="button"
           onClick={() => setShowAnalysis(!showAnalysis)}
-          className="w-full px-4 py-3 text-left font-medium bg-gray-50 hover:bg-gray-100 rounded-t-xl"
+          className="w-full px-4 py-3 text-right font-medium bg-gray-50 hover:bg-gray-100 rounded-t-xl"
         >
-          {showAnalysis ? '−' : '+'} Analysis Items
+          {showAnalysis ? '−' : '+'} تحاليل
         </button>
         {showAnalysis && (
           <div className="p-4">
             <ServiceTable
               type="analysis"
               tableId="analysis_items_table"
-             
+              claim={{ items: claimItems }}
+              onClaimUpdate={(updatedClaim) => {
+                setClaimItems(updatedClaim.items);
+              }}
+              deduct={deduct}
               id="analysis_table_btn"
             />
           </div>
@@ -76,16 +84,22 @@ const NormalItemsTab: React.FC = () => {
         <button
           type="button"
           onClick={() => setShowMedication(!showMedication)}
-          className="w-full px-4 py-3 text-left font-medium bg-gray-50 hover:bg-gray-100 rounded-t-xl"
+          className="w-full px-4 py-3 text-right font-medium bg-gray-50 hover:bg-gray-100 rounded-t-xl"
         >
-          {showMedication ? '−' : '+'} Medication Items
+          {showMedication ? '−' : '+'}  ادوية
         </button>
         {showMedication && (
           <div className="p-4">
             <ServiceTable
               type="medication"
               tableId="medication_items_table"
-              
+              // claimItems = {claimItems}
+              // setClaimItems={setClaimItems}
+              claim={{ items: claimItems }}
+              onClaimUpdate={(updatedClaim) => {
+                setClaimItems(updatedClaim.items);
+              }}
+              deduct={deduct}
               id="medication_table_btn"
             />
           </div>

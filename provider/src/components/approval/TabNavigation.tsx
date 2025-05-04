@@ -6,7 +6,7 @@ type Props = {
 };
 
 export const TabNavigation: React.FC<Props> = ({ activeTab, setActiveTab }) => (
-  <div className="mb-3">
+  <div className="mb-3 flex justify-end">
     <ul className="flex">
       <li>
         <button
