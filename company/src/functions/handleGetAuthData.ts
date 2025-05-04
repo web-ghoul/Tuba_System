@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import { UserTypes } from "../types/store.types";
+import { UserTypes } from "../types/app.types";
 
 export const handleGetAuthData = (): {
   token: string | null;
