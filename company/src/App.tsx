@@ -21,6 +21,7 @@ import { AppDispatch } from "./store/store";
 import { handleGetAuthData } from "./functions/handleGetAuthData";
 import { getProfile } from "./store/profileSlice";
 import axios from "axios";
+import UploadEmployeesModal from "./modals/UploadEmployeesModal";
 
 function App() {
   const { pathname } = useLocation();
@@ -34,7 +35,7 @@ function App() {
 
   const handleTryServer = async () => {
     const res = await axios.get(
-      `http://localhost:5000/api/message`
+      `/api/hello`
     );
     console.log(res);
   };
@@ -85,6 +86,7 @@ function App() {
       </Box>
       <WelcomeModal />
       <ChangeProfileAvatarModal />
+      <UploadEmployeesModal />
       <EditEmployeePersonInfoModal />
       <EditEmployeeJobInfoModal />
       <EditEmployeeMedicalCoverageModal />

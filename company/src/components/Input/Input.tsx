@@ -52,7 +52,7 @@ const Input = <T extends AllFormsTypes>({
             id={name}
             name={name}
             select
-            label={label}
+            // label={label}
             slotProps={{
               select: {
                 native: true,

@@ -5,13 +5,17 @@ interface FormsTypes {
     | "login"
     | "updatePassword"
     | "editEmployeePersonInfo"
+    | "addEmployeePersonInfo"
     | "editEmployeeJobInfo"
+    | "addEmployeeJobInfo"
     | "editEmployeeMedicalCoverage"
+    | "addEmployeeMedicalCoverage"
     | "filterEmployees"
     | "addMember"
     | "editMember"
     | "filterApprovals"
     | "searchNetworks"
+    | "filterInvoices"
     | "filterProviders";
   index?: number;
 }
@@ -172,6 +176,27 @@ interface FilterApprovalsFormikTypes {
 
 //Approvals
 
+//Invoices
+interface FilterInvoicesFormTypes {
+  name: string;
+  nationalId: string;
+  status: string;
+  date: string;
+}
+
+interface FilterInvoicesFormikTypes {
+  touched: FilterInvoicesFormTypes;
+  errors: FilterInvoicesFormTypes;
+  initialValues: FilterInvoicesFormTypes;
+  validationSchema: unknown;
+  onSubmit: (values: unknown) => void;
+  handleChange: (event: unknown) => void;
+  handleBlur: (event: unknown) => void;
+  values: FilterInvoicesFormTypes;
+}
+
+//Invoices
+
 //Networks
 interface SearchNetworksFormTypes {
   searchNetworks: string;
@@ -218,7 +243,8 @@ type AllFormsTypes =
   | MemberFormTypes
   | FilterApprovalsFormTypes
   | SearchNetworksFormTypes
-  | FilterProvidersFormTypes;
+  | FilterProvidersFormTypes
+  | FilterInvoicesFormTypes;
 
 type AllFormiksTypes =
   | LoginFormikTypes
@@ -230,7 +256,8 @@ type AllFormiksTypes =
   | FilterEmployeesFormikTypes
   | FilterApprovalsFormikTypes
   | SearchNetworksFormikTypes
-  | FilterProvidersFormikTypes;
+  | FilterProvidersFormikTypes
+  | FilterInvoicesFormikTypes;
 
 interface FormiksTypes<T> {
   formik: FormikProps<T>;
@@ -241,13 +268,17 @@ type FormikMap = {
   login: FormikProps<LoginFormTypes>;
   updatePassword: FormikProps<UpdatePasswordFormTypes>;
   editEmployeePersonInfo: FormikProps<EmployeePersonInfoFormTypes>;
+  addEmployeePersonInfo: FormikProps<EmployeePersonInfoFormTypes>;
   editEmployeeJobInfo: FormikProps<EmployeeJobInfoFormTypes>;
+  addEmployeeJobInfo: FormikProps<EmployeeJobInfoFormTypes>;
   editEmployeeMedicalCoverage: FormikProps<EmployeeMedicalCoverageFormTypes>;
+  addEmployeeMedicalCoverage: FormikProps<EmployeeMedicalCoverageFormTypes>;
   filterEmployees: FormikProps<FilterEmployeesFormTypes>;
   addMember: FormikProps<MemberFormTypes>;
   editMember: FormikProps<MemberFormTypes>;
   filterApprovals: FormikProps<FilterApprovalsFormTypes>;
   filterProviders: FormikProps<FilterProvidersFormTypes>;
+  filterInvoices: FormikProps<FilterInvoicesFormTypes>;
   searchNetworks: FormikProps<SearchNetworksFormTypes>;
 };
 
@@ -286,4 +317,6 @@ export type {
   SearchNetworksFormikTypes,
   FilterProvidersFormTypes,
   FilterProvidersFormikTypes,
+  FilterInvoicesFormikTypes,
+  FilterInvoicesFormTypes,
 };
