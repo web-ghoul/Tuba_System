@@ -1,7 +1,7 @@
-import PermissionSection from "../sections/PermissionSection/PermissionSection";
+import PermissionsSection from "../sections/PermissionsSection/PermissionsSection";
 
 const Permissions = () => {
-  return <PermissionSection />;
+  return <PermissionsSection />;
 };
 
 export default Permissions;

@@ -6,6 +6,7 @@ import {
   EmployeePersonInfoFormTypes,
   FilterApprovalsFormTypes,
   FilterEmployeesFormTypes,
+  FilterInvoicesFormTypes,
   FilterProvidersFormTypes,
   FormikMap,
   FormsTypes,
@@ -25,6 +26,7 @@ import FilterApprovalsForm from "./FilterApprovalsForm/FilterApprovalsForm";
 import FilterProvidersForm from "./FilterProvidersForm/FilterProvidersForm";
 import SearchNetworksForm from "./SearchNetworksForm/SearchNetworksForm";
 import UpdatePasswordForm from "./UpdatePasswordForm/UpdatePasswordForm";
+import FilterInvoicesForm from "./FilterInvoicesForm/FilterInvoicesForm";
 
 const Forms = ({ type }: FormsTypes) => {
   const { formik } = useSubmitForm(type as keyof FormikMap);
@@ -43,19 +45,21 @@ const Forms = ({ type }: FormsTypes) => {
       {/* Authentication */}
 
       {/* Employee */}
-      {type === "editEmployeePersonInfo" && (
+      {(type === "addEmployeePersonInfo" ||
+        type === "editEmployeePersonInfo") && (
         <EmployeePersonInfoForm
           formik={formik as FormikProps<EmployeePersonInfoFormTypes>}
           type={type}
         />
       )}
-      {type === "editEmployeeJobInfo" && (
+      {(type === "addEmployeeJobInfo" || type === "editEmployeeJobInfo") && (
         <EmployeeJobInfoForm
           formik={formik as FormikProps<EmployeeJobInfoFormTypes>}
           type={type}
         />
       )}
-      {type === "editEmployeeMedicalCoverage" && (
+      {(type === "addEmployeeMedicalCoverage" ||
+        type === "editEmployeeMedicalCoverage") && (
         <EmployeeMedicalCoverageForm
           formik={formik as FormikProps<EmployeeMedicalCoverageFormTypes>}
           type={type}
@@ -84,6 +88,15 @@ const Forms = ({ type }: FormsTypes) => {
         />
       )}
       {/* Approvals */}
+
+      {/* Invoices */}
+      {type === "filterInvoices" && (
+        <FilterInvoicesForm
+          formik={formik as FormikProps<FilterInvoicesFormTypes>}
+          type={type}
+        />
+      )}
+      {/* Invoices */}
 
       {/* Networks */}
       {type === "searchNetworks" && (

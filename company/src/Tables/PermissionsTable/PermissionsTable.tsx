@@ -1,10 +1,13 @@
 import PrimaryTable from "../PrimaryTable";
 import { TableBody, TableHead, TableRow } from "@mui/material";
 import { StyledTableCell } from "../StyledTableCell";
-import { StyledTableRow } from "../StyledTableRow";
 import ActionMenus from "./ActionMenus";
+import { useNavigate } from "react-router-dom";
+import { WhiteStyledTableRow } from "../WhiteStyledTableRow";
 
 const PermissionsTable = () => {
+  const navigate = useNavigate();
+
   return (
     <PrimaryTable>
       <TableHead>
@@ -15,11 +18,14 @@ const PermissionsTable = () => {
         </TableRow>
       </TableHead>
       <TableBody>
-        <StyledTableRow>
+        <WhiteStyledTableRow>
           <StyledTableCell
             component="th"
             scope="row"
-            className={`!text-primary`}
+            className={`!text-primary transition-all hover:underline hover:cursor-pointer`}
+            onClick={() =>
+              navigate(`${import.meta.env.VITE_PERMISSIONS_ROUTE}/12`)
+            }
           >
             HR
           </StyledTableCell>
@@ -27,7 +33,87 @@ const PermissionsTable = () => {
           <StyledTableCell align="center">
             <ActionMenus />
           </StyledTableCell>
-        </StyledTableRow>
+        </WhiteStyledTableRow>
+        <WhiteStyledTableRow>
+          <StyledTableCell
+            component="th"
+            scope="row"
+            className={`!text-primary transition-all hover:underline hover:cursor-pointer`}
+            onClick={() =>
+              navigate(`${import.meta.env.VITE_PERMISSIONS_ROUTE}/12`)
+            }
+          >
+            HR
+          </StyledTableCell>
+          <StyledTableCell align="center">7</StyledTableCell>
+          <StyledTableCell align="center">
+            <ActionMenus />
+          </StyledTableCell>
+        </WhiteStyledTableRow>
+        <WhiteStyledTableRow>
+          <StyledTableCell
+            component="th"
+            scope="row"
+            className={`!text-primary transition-all hover:underline hover:cursor-pointer`}
+            onClick={() =>
+              navigate(`${import.meta.env.VITE_PERMISSIONS_ROUTE}/12`)
+            }
+          >
+            HR
+          </StyledTableCell>
+          <StyledTableCell align="center">7</StyledTableCell>
+          <StyledTableCell align="center">
+            <ActionMenus />
+          </StyledTableCell>
+        </WhiteStyledTableRow>
+        <WhiteStyledTableRow>
+          <StyledTableCell
+            component="th"
+            scope="row"
+            className={`!text-primary transition-all hover:underline hover:cursor-pointer`}
+            onClick={() =>
+              navigate(`${import.meta.env.VITE_PERMISSIONS_ROUTE}/12`)
+            }
+          >
+            HR
+          </StyledTableCell>
+          <StyledTableCell align="center">7</StyledTableCell>
+          <StyledTableCell align="center">
+            <ActionMenus />
+          </StyledTableCell>
+        </WhiteStyledTableRow>
+        <WhiteStyledTableRow>
+          <StyledTableCell
+            component="th"
+            scope="row"
+            className={`!text-primary transition-all hover:underline hover:cursor-pointer`}
+            onClick={() =>
+              navigate(`${import.meta.env.VITE_PERMISSIONS_ROUTE}/12`)
+            }
+          >
+            HR
+          </StyledTableCell>
+          <StyledTableCell align="center">7</StyledTableCell>
+          <StyledTableCell align="center">
+            <ActionMenus />
+          </StyledTableCell>
+        </WhiteStyledTableRow>
+        <WhiteStyledTableRow>
+          <StyledTableCell
+            component="th"
+            scope="row"
+            className={`!text-primary transition-all hover:underline hover:cursor-pointer`}
+            onClick={() =>
+              navigate(`${import.meta.env.VITE_PERMISSIONS_ROUTE}/12`)
+            }
+          >
+            HR
+          </StyledTableCell>
+          <StyledTableCell align="center">7</StyledTableCell>
+          <StyledTableCell align="center">
+            <ActionMenus />
+          </StyledTableCell>
+        </WhiteStyledTableRow>
       </TableBody>
     </PrimaryTable>
   );

@@ -62,11 +62,17 @@ const CustomTabs = ({ variant, tabsTitles, children }: CustomTabsTypes) => {
                     <Typography variant={"subtitle2"} className={`!font-[700]`}>
                       {i + 1}
                     </Typography>
-                    {tabsTitles.length > i + 1 && (
-                      <Box
-                        className={`absolute left-[50%] translate-x-[-50%] bg-neutral_100 w-[2px] h-[300px] top-[10px] z-[-1]`}
-                      ></Box>
-                    )}
+                    <Box
+                      className={`absolute left-[50%] translate-x-[-50%] ${
+                        i <= value ? "bg-primary" : "bg-neutral_100"
+                      } w-[2px] h-[100px] ${
+                        i > 0 && i < tabsTitles.length - 1
+                          ? "top-[50%] translate-y-[-50%]"
+                          : i === tabsTitles.length - 1
+                          ? "top-[-100px]"
+                          : "top-[10px]"
+                      } z-[-1]`}
+                    ></Box>
                   </Box>
                   <Typography
                     variant="subtitle1"

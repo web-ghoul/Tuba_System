@@ -102,6 +102,10 @@ main {
   border-radius: 100px;
 }
 
+.MuiTabs-indicator {
+  display: none !important;
+}
+
 @layer components {
   .paper {
     @apply !rounded-[12px] !border-none bg-white p-4 border border-gray-300 !shadow-none grid justify-stretch items-center gap-4;

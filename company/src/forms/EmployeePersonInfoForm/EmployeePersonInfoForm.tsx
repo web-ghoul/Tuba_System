@@ -3,9 +3,15 @@ import SubmitButton from "../../components/SubmitButton/SubmitButton";
 import Input from "../../components/Input/Input";
 import { BasicButton } from "../../mui/buttons/BasicButton";
 import { useModals } from "../../contexts/ModalsContext";
-import { EmployeePersonInfoFormTypes, FormiksTypes } from "../../types/forms.types";
+import {
+  EmployeePersonInfoFormTypes,
+  FormiksTypes,
+} from "../../types/forms.types";
 
-const EmployeePersonInfoForm = ({ formik }: FormiksTypes<EmployeePersonInfoFormTypes>) => {
+const EmployeePersonInfoForm = ({
+  formik,
+  type,
+}: FormiksTypes<EmployeePersonInfoFormTypes>) => {
   const { dispatch } = useModals();
   return (
     <Box
@@ -14,7 +20,7 @@ const EmployeePersonInfoForm = ({ formik }: FormiksTypes<EmployeePersonInfoFormT
       <Typography variant="h6" className={`!font-[700]`}>
         المعلومات الشخصية
       </Typography>
-      <Box className={`grid justify-stretch items-start gap-8 grid-cols-2`}>
+      <Box className={`grid justify-stretch items-start gap-6 grid-cols-2`}>
         <Input formik={formik} label={"الاسم"} name={"name"} />
         <Input
           formik={formik}
@@ -52,28 +58,36 @@ const EmployeePersonInfoForm = ({ formik }: FormiksTypes<EmployeePersonInfoFormT
           label={"الجنسية"}
           select
           name={"nationality"}
-          options={[""]}
+          options={["dsad"]}
         />
         <Input
           formik={formik}
           label={"الحالة الاجتماعية"}
           select
           name={"status"}
-          options={[""]}
+          options={["sd"]}
         />
       </Box>
-      <Box className={`grid justify-stretch items-center grid-cols-2 gap-4`}>
-        <SubmitButton variant="gradient" loading={false}>
-          حفظ
-        </SubmitButton>
-        <BasicButton
-          onClick={() =>
-            dispatch({ type: "editEmployeePersonInfoModal", payload: false })
-          }
-        >
-          إلغاء
-        </BasicButton>
-      </Box>
+      {type?.startsWith("add") ? (
+        <Box className={`grid justify-end items-center gap-4`}>
+          <SubmitButton variant="gradient" loading={false}>
+            التالى
+          </SubmitButton>
+        </Box>
+      ) : (
+        <Box className={`grid justify-stretch items-center grid-cols-2 gap-4`}>
+          <SubmitButton variant="gradient" loading={false}>
+            حفظ
+          </SubmitButton>
+          <BasicButton
+            onClick={() =>
+              dispatch({ type: "editEmployeePersonInfoModal", payload: false })
+            }
+          >
+            إلغاء
+          </BasicButton>
+        </Box>
+      )}
     </Box>
   );
 };

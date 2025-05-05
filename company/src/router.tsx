@@ -16,6 +16,8 @@ import Payment from "./pages/Payment.tsx";
 import Permissions from "./pages/Permissions.tsx";
 import Approval from "./pages/Approval.tsx";
 import UpdatePassword from "./pages/UpdatePassword.tsx";
+import AddPermission from "./pages/AddPermission.tsx";
+import AddEmployee from "./pages/AddEmployee.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +43,10 @@ export const router = createBrowserRouter([
       {
         path: `${import.meta.env.VITE_EMPLOYEES_ROUTE}`,
         element: <Employees />,
+      },
+      {
+        path: `${import.meta.env.VITE_EMPLOYEES_ROUTE}/add`,
+        element: <AddEmployee />,
       },
       {
         path: `${import.meta.env.VITE_EMPLOYEES_ROUTE}/:id`,
@@ -81,6 +87,10 @@ export const router = createBrowserRouter([
       {
         path: `${import.meta.env.VITE_PERMISSIONS_ROUTE}`,
         element: <Permissions />,
+      },
+      {
+        path: `${import.meta.env.VITE_PERMISSIONS_ROUTE}/add`,
+        element: <AddPermission />,
       },
       {
         path: "*",

@@ -12,6 +12,7 @@ import useFilterApprovalsSchema from "../forms/FilterApprovalsForm/useFilterAppr
 import useFilterProvidersSchema from "../forms/FilterProvidersForm/useFilterProvidersSchema";
 import useSearchNetworksSchema from "../forms/SearchNetworksForm/useSearchNetworksSchema";
 import useUpdatePasswordSchema from "../forms/UpdatePasswordForm/useUpdatePasswordSchema";
+import useFilterInvoicesSchema from "../forms/FilterInvoicesForm/useFilterInvoicesSchema";
 
 const useSubmitForm = <T extends keyof FormikMap>(
   type: T
@@ -35,6 +36,8 @@ const useSubmitForm = <T extends keyof FormikMap>(
     useFilterApprovalsSchema();
   const { FilterProvidersInitialValues, FilterProvidersSchema } =
     useFilterProvidersSchema();
+  const { FilterInvoicesInitialValues, FilterInvoicesSchema } =
+    useFilterInvoicesSchema();
   const { SearchNetworksInitialValues, SearchNetworksSchema } =
     useSearchNetworksSchema();
 
@@ -50,16 +53,19 @@ const useSubmitForm = <T extends keyof FormikMap>(
           initialValues: UpdatePasswordInitialValues,
           validationSchema: UpdatePasswordSchema,
         };
+      case "addEmployeePersonInfo":
       case "editEmployeePersonInfo":
         return {
           initialValues: EmployeePersonInfoInitialValues,
           validationSchema: EmployeePersonInfoSchema,
         };
+      case "addEmployeeJobInfo":
       case "editEmployeeJobInfo":
         return {
           initialValues: EmployeeJobInfoInitialValues,
           validationSchema: EmployeeJobInfoSchema,
         };
+      case "addEmployeeMedicalCoverage":
       case "editEmployeeMedicalCoverage":
         return {
           initialValues: EmployeeMedicalCoverageInitialValues,
@@ -85,6 +91,11 @@ const useSubmitForm = <T extends keyof FormikMap>(
         return {
           initialValues: FilterProvidersInitialValues,
           validationSchema: FilterProvidersSchema,
+        };
+      case "filterInvoices":
+        return {
+          initialValues: FilterInvoicesInitialValues,
+          validationSchema: FilterInvoicesSchema,
         };
       case "searchNetworks":
         return {
