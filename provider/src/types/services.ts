@@ -64,6 +64,7 @@ export interface AddServiceFormProps {
     editIndex?: number;
     serviceType: string;
     type: string;
+    vat:number;
 }
 export interface ClaimTotalCardProps {
     isVisible: boolean;
@@ -89,3 +90,23 @@ export interface ReadonlyInputProps {
     value?: string;
     percent?: boolean;
 }
+export interface ServiceSubmissionData {
+    service_id: string;
+    service_name: string;
+    is_repeat: boolean;
+    type: string;
+    allowed_times: string | null;
+    transaction: string | null;
+    total_paid: string | null;
+    total_prescription: string | null;
+    description: string;
+    quantity: string;
+    unit_price: string;
+    total: string;
+    base_price: string;
+    base_coverage_rate: string;
+    base_coverage: string;
+    files: File[];
+    is_visit: boolean;
+  }
+  

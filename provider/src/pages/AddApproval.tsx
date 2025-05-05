@@ -13,7 +13,7 @@ const AddApproval: React.FC = () => {
     <PrimaryBox>
       <PrimaryContainer className={`!grid justify-stretch items-start gap-2`}>
         <SearchEmployeeSection onSuccess={setPatientData} />
-        {patientData && <AddApprovalSection />}
+        {patientData && <AddApprovalSection deduct={patientData.deductible_percent} vat ={patientData.vat} />}
       </PrimaryContainer>
     </PrimaryBox>
   );

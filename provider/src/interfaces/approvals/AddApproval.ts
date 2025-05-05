@@ -13,4 +13,5 @@ export interface PatientData {
   deductible_percent?: number;
   max_network_level?: string;
   branch_readonly?: boolean;
+  vat : number ;
 }

@@ -1,33 +1,36 @@
-// ServicesForm.tsx
-import { useForm, FormProvider } from 'react-hook-form';
+// forms/ServicesForm.tsx
+import { FormProvider } from 'react-hook-form';
 import { Button } from '@mui/material';
 import BasicApprovalDetails from '../../components/approval/BasicApprovalDetails';
 import { TabNavigation } from '../../components/approval/TabNavigation';
 import NormalItemsTab from '../../components/approval/NormalItemsTab';
 import ClaimTotalCard from '../../components/approval/ClaimTotalCard';
-import React, { useState } from 'react';
-import { ServiceItem } from '../../types/services';
-const ServicesForm: React.FC = () => {
-  const deduct =20;
-  const [activeTab, setActiveTab] = useState<'normal' | 'drg'>('normal');
-  const [basicDetails, setBasicDetails] = useState({
-    service_type: '',
-    icd10_diagnoses: '',
-    justification: '',
-  });
-  const [claimItems, setClaimItems] = useState<ServiceItem[]>([]);
-  const methods = useForm();
+import React from 'react';
+import { useServicesForm } from '../../hooks/useServicesForm';
+interface ServicesFormProps {
+  deduct : number;
+  vat:number;
+}
+
+const ServicesForm: React.FC<ServicesFormProps> = ({deduct , vat}) => {
+  const {
+    methods,
+    activeTab,
+    setActiveTab,
+    basicDetails,
+    setBasicDetails,
+    claimItems,
+    setClaimItems,
+    onSubmit,
+    loading,
+    setLoading
+  } = useServicesForm(deduct);
+
   const { handleSubmit } = methods;
-  const onSubmit = (data: any) => {
-    const finalData = {
-      ...data,
-      ...basicDetails,
-      items: claimItems,
-    };
-    console.log('Form Data:', finalData);
-    // Send finalData to your API here
-  };
+
+  console.log(loading);
   return (
+    
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid gap-6">
@@ -35,15 +38,25 @@ const ServicesForm: React.FC = () => {
             basicDetails={basicDetails}
             setBasicDetails={setBasicDetails}
           />
+
           <TabNavigation activeTab={activeTab} setActiveTab={setActiveTab} />
+
           <div className="tab-content">
-            {activeTab === 'normal' && <NormalItemsTab deduct={deduct} claimItems={claimItems}
-              setClaimItems={setClaimItems} />}
-            {activeTab === 'drg' && <div className="p-4">Comming Soon....</div>}
+            {activeTab === 'normal' && (
+              <NormalItemsTab
+                deduct={deduct}
+                vat={vat}
+                claimItems={claimItems}
+                setClaimItems={setClaimItems}
+              />
+            )}
+            {activeTab === 'drg' && <div className="p-4">قريباً...</div>}
           </div>
+
           <ClaimTotalCard
             isVisible={true}
-            deduct={20}
+            deduct={deduct}
+            vatRate ={vat}
             claimItems={claimItems}
             labels={{
               claimTotals: 'مجموع المطالبات',
@@ -56,15 +69,21 @@ const ServicesForm: React.FC = () => {
               totalDeductibleCostWithVat: 'المبلغ المغطى  مع الضريبة',
               totalCoveredAmount: 'المبلغ المتحمل',
               totalCoveredAmountWithVat: 'المبلغ المتحمل مع الضريبة',
-              
             }}
           />
-          <Button type="submit" variant="contained" color="primary" className="w-full md:w-1/3 py-2 rounded">
-            إرسال موافقة الخدمات
-          </Button>
+
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            disabled={loading}
+            >
+              {loading ? 'جاري الإرسال...' : 'إرسال موافقة الخدمات'}
+            </Button>
         </div>
       </form>
     </FormProvider>
   );
 };
-export default ServicesForm; 
+
+export default ServicesForm;

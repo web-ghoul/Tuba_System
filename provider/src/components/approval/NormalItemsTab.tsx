@@ -21,8 +21,13 @@ const mockClaim = {
     },
   ],
 };
-
-const NormalItemsTab: React.FC = ({deduct, claimItems ,setClaimItems}) => {
+interface NormalItemsTabProp{
+  deduct:number;
+  claimItems:any;
+  setClaimItems:any;
+  vat:number;
+}
+const NormalItemsTab:React.FC<NormalItemsTabProp>  = ({deduct, vat,claimItems ,setClaimItems}) => {
   const [showRay, setShowRay] = useState(false);
   const [showAnalysis, setShowAnalysis] = useState(false);
   const [showMedication, setShowMedication] = useState(false);
@@ -46,7 +51,8 @@ const NormalItemsTab: React.FC = ({deduct, claimItems ,setClaimItems}) => {
               claim={{ items: claimItems }}
               onClaimUpdate={(updatedClaim) => {
                 setClaimItems(updatedClaim.items);
-              }}  
+              }}
+              vat={vat}  
               deduct={deduct}
               id="ray_table_btn"
             />

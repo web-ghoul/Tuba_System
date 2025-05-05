@@ -3,7 +3,7 @@ import VisitForm from '../../forms/Approvals/VisitForm';
 import { Box } from '@mui/material';
 import ServicesForm from '../../forms/Approvals/ServicesForm';
 
-const AddApprovalSection = () => {
+const AddApprovalSection = ({deduct , vat}) => {
   const [activeTab, setActiveTab] = useState<'visit' | 'claim'>('visit');
   const [showNavigation, setShowNavigation] = useState(false);
   const [showButton, setShowButton] = useState(true); // State to track button visibility
@@ -66,7 +66,7 @@ const AddApprovalSection = () => {
 
       {/* Render forms only if the navigation has been shown */}
       {showNavigation && activeTab === 'visit' && <VisitForm />}
-      {showNavigation && activeTab === 'claim' &&  <ServicesForm /> }
+      {showNavigation && activeTab === 'claim' &&  <ServicesForm deduct={deduct} vat ={vat} /> }
     </div>
     </Box>
   );

@@ -32,7 +32,7 @@ export const ServiceTableHeader: React.FC<ServiceTableHeaderProps> = ({
         <th className="px-4 py-3 text-right border">اسم الخدمة</th>
         <th className="px-4 py-3 text-right border">السعر الأساسي</th>
         <th className="px-4 py-3 text-right border">نسبة التحمل الأساسية</th>
-        <th className="px-4 py-3 text-right border">التغطية الأساسية</th>
+        <th className="px-4 py-3 text-right border"> المبلغ المتحمل</th>
         <th className="px-4 py-3 text-right border">الإجراءات</th>
       </tr>
     </thead>

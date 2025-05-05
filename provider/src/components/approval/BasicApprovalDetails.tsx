@@ -6,6 +6,7 @@ import {
     MenuItem,
     InputLabel,
     FormControl,
+    Autocomplete,
 } from '@mui/material';
 
 interface BasicApprovalDetailsProps {
@@ -70,27 +71,30 @@ const BasicApprovalDetails: React.FC<BasicApprovalDetailsProps> = ({
             {/* ICD10 Diagnoses Select */}
             <FormControl fullWidth required>
                 <InputLabel id="icd10-label">تشخيص ICD10</InputLabel>
-                <Select
-                    labelId="icd10-label"
+                {/* ICD10 Diagnoses Autocomplete */}
+                <Autocomplete
                     id="icd10_diagnoses"
-                    value={basicDetails.icd10_diagnoses}
-                    label="تشخيص ICD10"
-                    onChange={(e) =>
+                    options={icd10Options}
+                    getOptionLabel={(option) => option.label}
+                    value={
+                        icd10Options.find((opt) => opt.value === basicDetails.icd10_diagnoses) || null
+                    }
+                    onChange={(_, newValue) =>
                         setBasicDetails((prev) => ({
                             ...prev,
-                            icd10_diagnoses: e.target.value,
+                            icd10_diagnoses: newValue ? newValue.value : '',
                         }))
                     }
-                >
-                    <MenuItem value="">
-                        <em>اختر التشخيص</em>
-                    </MenuItem>
-                    {icd10Options.map((option) => (
-                        <MenuItem key={option.value} value={option.value}>
-                            {option.label}
-                        </MenuItem>
-                    ))}
-                </Select>
+                    renderInput={(params) => (
+                        <TextField
+                            {...params}
+                            label="تشخيص ICD10"
+                            required
+                            placeholder="اختر التشخيص"
+                        />
+                    )}
+                    fullWidth
+                />
             </FormControl>
 
             {/* Justification TextArea */}

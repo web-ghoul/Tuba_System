@@ -21,12 +21,14 @@ export interface ServiceTableProps {
   claim?: Claim;
   id?: string;
   deduct:number;
+  vat:number;
   onClaimUpdate?: (updatedClaim: Claim) => void;
 }
 
 export const ServiceTable: React.FC<ServiceTableProps> = ({ 
   type, 
   tableId, 
+  vat,
   claim: initialClaim,
   
    
@@ -116,6 +118,7 @@ export const ServiceTable: React.FC<ServiceTableProps> = ({
           <AddServiceForm
             deduct={deduct}
             type={type}
+            vat={vat}
             onClose={handleCloseDialog}
             onAdd={handleAddService}
             onEdit={handleEditService}
