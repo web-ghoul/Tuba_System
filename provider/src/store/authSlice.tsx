@@ -32,7 +32,7 @@ export const authSlice = createSlice({
       state.token = action.payload.token;
       state.userId = action.payload.userId;
       const expirationDate = new Date();
-      expirationDate.setTime(expirationDate.getTime() + 2 * 60 * 60 * 1000);
+      expirationDate.setTime(expirationDate.getTime() + 1 * 60 * 60 * 1000 *24*7);
       Cookies.set(`${import.meta.env.VITE_TOKEN_TITLE}`, action.payload.token, {
         expires: expirationDate,
       });

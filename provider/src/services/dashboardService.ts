@@ -36,7 +36,3 @@ export const getAllClaims = async () => {
 export const getClaim = async (name:string) => {
     return await server.get(`/document/TB Medical Claims Request/${name}?fields="*"`); // or whatever endpoint
 };
-export const getTransactions = async () => {
-
-    return server.get(`/document/TB Provider Transaction?fields="*"`);
-};

@@ -5,6 +5,8 @@ import Header from "./components/Header/Header";
 import Sidebar from "./components/Sidebar/Sidebar";
 import BreadCrumbSection from "./sections/BreadCrumbSection/BreadCrumbSection";
 import ProtectedRoute from "./components/Routers/ProtectedRoute";
+import { PrimaryBox } from "./mui/boxes/PrimaryBox";
+import { PrimaryContainer } from "./mui/containers/PrimaryContainer";
 
 function App() {
   const { pathname } = useLocation();
@@ -14,22 +16,31 @@ function App() {
       <Outlet />
     </Box>
   ) : (
-   <ProtectedRoute>
-    <Box component={"main"} className={` !pt-11`}>
-      <Header />
-      <Box className={`no-pad-box grid justify-stretch items-center !h-full`}>
-        <Sidebar />
-        <Box className={`grid justify-stretch items-center  pr-[260px]`}>
-          {!(pathname === `${import.meta.env.VITE_DASHBOARD_ROUTE}` ||
-            pathname === `${import.meta.env.VITE_LOGIN_ROUTE}`) && (
-              <BreadCrumbSection />
-            )}
-          <Outlet />
-          <Footer />
+    <ProtectedRoute>
+      <Box component={"main"}>
+        <Header />
+        <Box className={`!pb-0 !pt-[20px]  grid justify-stretch items-center !h-full`}>
+          <Sidebar />
+          <Box
+            className={`grid justify-stretch items-stretch self-stretch !content-between pr-[260px]`}
+          > 
+            <PrimaryBox>
+              <PrimaryContainer
+                className={`!grid justify-stretch items-start gap-2`}
+              >
+                {!(
+                  pathname === `${import.meta.env.VITE_DASHBOARD_ROUTE}` ||
+                  pathname === `${import.meta.env.VITE_LOGIN_ROUTE}`
+                ) && <BreadCrumbSection />}
+                <Outlet />
+              </PrimaryContainer>
+            </PrimaryBox>
+            <Footer />
+          </Box>
         </Box>
       </Box>
-    </Box>
-  </ProtectedRoute> 
+
+    </ProtectedRoute>
   );
 }
 

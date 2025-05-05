@@ -11,11 +11,6 @@ interface UseServiceFormProps {
 
 export const useServiceForm = ({ initialData, deductionPercent, type ,vat }: UseServiceFormProps) => {
   // Sample services - in a real app, this would come from an API or props
-  const services: Service[] = [
-    { id: 'service1', name: 'خدمة 1', price: 100 },
-    { id: 'service2', name: 'خدمة 2', price: 150 },
-    { id: 'service3', name: 'خدمة 3', price: 200 },
-  ];
 
   const defaultFormData: FormData = {
     serviceId: '',
@@ -126,7 +121,8 @@ export const useServiceForm = ({ initialData, deductionPercent, type ,vat }: Use
   };
 
   // Handle service selection
-  const handleServiceSelect = (serviceId: string | null) => {
+  const handleServiceSelect = (service: Service | null) => {
+    const serviceId = service?.id;
     if (!serviceId) {
       setFormData(prev => ({
         ...prev,
@@ -140,9 +136,7 @@ export const useServiceForm = ({ initialData, deductionPercent, type ,vat }: Use
       return;
     }
     
-    const selectedService = services.find(service => service.id === serviceId);
-    if (!selectedService) return;
-    
+    const selectedService = service;
     const quantity = parseFloat(formData.quantity) || 1;
     const unitPrice = selectedService.price;
     
@@ -227,7 +221,6 @@ export const useServiceForm = ({ initialData, deductionPercent, type ,vat }: Use
     uploadedFiles,
     setUploadedFiles,
     errors,
-    services,
     handleChange,
     handleServiceSelect,
     handleCheckboxChange,

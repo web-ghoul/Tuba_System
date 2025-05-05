@@ -17,7 +17,7 @@ export const useServicesForm = (deduct:number) => {
     justification: '',
   });
   const [claimItems, setClaimItems] = useState<ServiceItem[]>([]);
-  const [loading, setLoading] = useState(false); // ✅ added loading state
+  const [loading, setLoading] = useState(false); 
 
   const validateBeforeSubmit = (): boolean => {
     if (claimItems.length === 0) {
@@ -30,7 +30,7 @@ export const useServicesForm = (deduct:number) => {
   const onSubmit = async (data: any) => {
     if (!validateBeforeSubmit()) return;
   
-    setLoading(true); // ✅ start loading
+    setLoading(true); 
     try {
       const finalData = {
         ...data,
@@ -48,7 +48,7 @@ export const useServicesForm = (deduct:number) => {
     } catch (err) {
       console.error('Error submitting form', err);
     } finally {
-      setLoading(false); // ✅ end loading
+      setLoading(false); 
     }
   };
   
@@ -63,6 +63,6 @@ export const useServicesForm = (deduct:number) => {
     setClaimItems,
     onSubmit,
     loading,
-    setLoading, // ✅ export setLoading
+    setLoading, 
   };
 };

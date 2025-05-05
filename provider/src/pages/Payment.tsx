@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
-import { Box } from "@mui/material";
-import BalanceCardChart from "../charts/BalanceCardChart";
-import { PrimaryBox } from "../mui/boxes/PrimaryBox";
 import { PrimaryContainer } from "../mui/containers/PrimaryContainer";
 import BalanceChartsSection from "../sections/PaymentSection/BalanceChartsSection";
 import TransactionsTable from "../components/Tables/TransactionsTable";
-import { getMedicalProviderBranchDetails, getTransactions } from "../services/dashboardService"; // Update path accordingly
+import { getMedicalProviderBranchDetails } from "../services/dashboardService"; // Update path accordingly
+import { getTransactions } from "../services/paymentService"; // Update path accordingly
 
 const Payment = () => {
   const [balance, setBalance] = useState(0);

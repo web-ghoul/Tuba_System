@@ -81,7 +81,7 @@ const PatientSearchForm = ({ onSuccess }: Props): JSX.Element => {
 
   return (
     <div className="bg-white rounded-lg shadow-md border p-6 mb-6">
-      <h5 className="text-lg font-bold mb-6">معلومات المريض</h5>
+      <h5 className="text-lg font-bold mb-6">ابحث عن المريض</h5>
       <div className="grid gap-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="mb-4">

@@ -10,12 +10,10 @@ const AddApproval: React.FC = () => {
   const [patientData, setPatientData] = useState<PatientData | null>(null);
 
   return (
-    <PrimaryBox>
-      <PrimaryContainer className={`!grid justify-stretch items-start gap-2`}>
+    <PrimaryContainer className={`!grid justify-stretch items-start mt-0 gap-2`}>
         <SearchEmployeeSection onSuccess={setPatientData} />
-        {patientData && <AddApprovalSection deduct={patientData.deductible_percent} vat ={patientData.vat} />}
-      </PrimaryContainer>
-    </PrimaryBox>
+        {patientData && <AddApprovalSection deduct={patientData.deductible_percent} vat ={patientData.vat} />}  
+    </PrimaryContainer>
   );
 };
 

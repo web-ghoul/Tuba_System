@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useServicesAutoComplete } from '../../hooks/useServicesAutoComplete'; // update path as needed
+import { AutocompleteOption } from '../../hooks/useServicesAutoComplete';
 import {
   Box,
   Typography,
@@ -16,6 +18,7 @@ import AddFilesComponent from '../../components/AddFilesComponent';
 import { useServiceForm } from '../../hooks/useServiceForm';
 
 export const AddServiceForm: React.FC<AddServiceFormProps> = ({
+
   onClose,
   onAdd,
   vat,
@@ -30,7 +33,6 @@ export const AddServiceForm: React.FC<AddServiceFormProps> = ({
     uploadedFiles,
     setUploadedFiles,
     errors,
-    services,
     handleChange,
     handleServiceSelect,
     handleCheckboxChange,
@@ -43,6 +45,13 @@ export const AddServiceForm: React.FC<AddServiceFormProps> = ({
     type,
     vat,
   });
+
+
+  const [searchTerm, setSearchTerm] = useState('');
+  const { options, loading } = useServicesAutoComplete(searchTerm);
+  const [selectedOption, setSelectedOption] = useState<AutocompleteOption | null>(null);
+
+
 
   const handleSubmit = () => {
     if (!validateForm()) {
@@ -74,12 +83,19 @@ export const AddServiceForm: React.FC<AddServiceFormProps> = ({
       <FormControl fullWidth error={!!errors.serviceId}>
         <Autocomplete
           id="services"
-          options={services}
-          value={services.find(service => service.id === formData.serviceId) || null}
-          onChange={(_, newValue) => {
-            handleServiceSelect(newValue?.id || null);
+          options={options}
+          loading={loading}
+          value={selectedOption}
+          onChange={(_, newValue: AutocompleteOption | null) => {
+            console.log("new",newValue);
+            
+            setSelectedOption(newValue);
+            handleServiceSelect(newValue); 
           }}
-          getOptionLabel={(option: Service) => option.name}
+          onInputChange={(_, newInputValue) => {
+            setSearchTerm(newInputValue);
+          }}
+          getOptionLabel={(option: AutocompleteOption) => option.name}
           renderInput={(params) => (
             <TextField
               {...params}
@@ -92,7 +108,9 @@ export const AddServiceForm: React.FC<AddServiceFormProps> = ({
           )}
           noOptionsText="لا توجد خدمات"
         />
+
       </FormControl>
+
       <FormControlLabel
         control={
           <Checkbox
@@ -139,7 +157,7 @@ export const AddServiceForm: React.FC<AddServiceFormProps> = ({
               label="اجمالى فترة صرف (بالاشهر)"
               type="number"
               fullWidth
-              
+
               id="totalPresciption"
               value={formData.totalPresciption}
               onChange={handleChange}
