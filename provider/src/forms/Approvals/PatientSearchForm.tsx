@@ -1,11 +1,13 @@
 import { useState, ChangeEvent, KeyboardEvent } from "react";
 import { useSearchEmployeeSubmit } from "./useSearchEmployeeSubmit";
 import PatientDetailsDisplay from "../../components/approval/PatientDetailsDisplay";
-import {PatientData , FormData } from "../../interfaces/approvals/AddApproval";
+import { PatientData, FormData } from "../../interfaces/approvals/AddApproval";
 
+interface Props {
+  onSuccess: (data: PatientData) => void;
+}
 
-
-const PatientSearchForm = (): JSX.Element => {
+const PatientSearchForm = ({ onSuccess }: Props): JSX.Element => {
   const [formData, setFormData] = useState<FormData>({
     national_id: "",
     coverage_document_number: "",
@@ -19,19 +21,19 @@ const PatientSearchForm = (): JSX.Element => {
   const validateNationalId = (value: string): boolean => {
     // Check if input contains only digits
     const onlyDigitsRegex = /^\d+$/;
-    
+
     // Check if length is between 10 and 15 digits
     return onlyDigitsRegex.test(value) && value.length >= 10 && value.length <= 15;
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const { id, value } = e.target;
-    
+
     // Clear validation error when user is typing
     if (id === "national_id") {
       setValidationError("");
     }
-    
+
     setFormData((prev) => ({
       ...prev,
       [id]: value,
@@ -43,16 +45,18 @@ const PatientSearchForm = (): JSX.Element => {
       setValidationError("الرقم الوطني مطلوب");
       return;
     }
-    
+
     if (!validateNationalId(formData.national_id)) {
       setValidationError("الرقم الوطني يجب أن يكون من 10 إلى 15 رقم فقط");
       return;
     }
-    
+
     const result = await searchEmployee(formData);
     if (result) {
       setPatientData(result);
       setIsSearched(true);
+      onSuccess(result); // Pass data to parent
+
     }
   };
 
@@ -64,6 +68,7 @@ const PatientSearchForm = (): JSX.Element => {
     setPatientData(null);
     setIsSearched(false);
     setValidationError("");
+    onSuccess(false); // Pass data to parent
   };
 
   // Handle Enter key press
@@ -122,7 +127,7 @@ const PatientSearchForm = (): JSX.Element => {
           )}
         </div>
       </div>
-      
+
       {error && (
         <div className="mt-4 p-3 bg-red-100 text-red-700 rounded-md">
           {error}

@@ -1,13 +1,16 @@
-import React from "react";
-import { Box, Typography } from "@mui/material";
-import PatientSearchForm from "../../forms/Approvals/PatientSearchForm"; // Update the path as needed
+// In SearchEmployeeSection.tsx
+import { Box } from "@mui/material";
+import PatientSearchForm from "../../forms/Approvals/PatientSearchForm";
+import { PatientData } from "../../interfaces/approvals/AddApproval";
 
+interface Props {
+  onSuccess: (data: PatientData) => void;
+}
 
-
-const SearchEmployeeSection = () => {
+const SearchEmployeeSection = ({ onSuccess }: Props) => {
   return (
     <Box>
-       <PatientSearchForm />
+      <PatientSearchForm onSuccess={onSuccess} />
     </Box>
   );
 };

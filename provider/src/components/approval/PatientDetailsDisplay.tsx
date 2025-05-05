@@ -25,11 +25,7 @@ const PatientDetailsDisplay: React.FC<PatientDetailsDisplayProps> = ({ patientDa
             نسبة التحمل: {patientData.deductible_percent}%
           </span>
         )}
-        {patientData.max_network_level && (
-          <span className="px-4 py-2 bg-orange-100 text-orange-600 font-bold border border-orange-600 rounded-md">
-            الحد الأقصى لمستوى الشبكة: {patientData.max_network_level}
-          </span>
-        )}
+      
       </div>
 
       <div className="grid grid-cols-4 md:grid-cols-2 lg:grid-cols-4 gap-4">

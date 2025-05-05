@@ -1,54 +1,88 @@
-// components/ClaimForm.tsx
-
-import React, { useState } from 'react';
-// import ServiceTypeSelect from './ServiceTypeSelect';
-// import ICD10Select from './ICD10Select';
-// import JustificationTextarea from './JustificationTextarea';
-import {TabNavigation} from '../../components/approval/TabNavigation';
+// forms/ServicesForm.tsx
+import { FormProvider } from 'react-hook-form';
+import { Button } from '@mui/material';
+import BasicApprovalDetails from '../../components/approval/BasicApprovalDetails';
+import { TabNavigation } from '../../components/approval/TabNavigation';
 import NormalItemsTab from '../../components/approval/NormalItemsTab';
-// import TotalClaim from './TotalClaim';
+import ClaimTotalCard from '../../components/approval/ClaimTotalCard';
+import React from 'react';
+import { useServicesForm } from '../../hooks/useServicesForm';
+interface ServicesFormProps {
+  deduct : number;
+  vat:number;
+}
 
-const ServicesForm: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'normal' | 'drg'>('normal');
+const ServicesForm: React.FC<ServicesFormProps> = ({deduct , vat}) => {
+  const {
+    methods,
+    activeTab,
+    setActiveTab,
+    basicDetails,
+    setBasicDetails,
+    claimItems,
+    setClaimItems,
+    onSubmit,
+    loading,
+    setLoading
+  } = useServicesForm(deduct);
 
+  const { handleSubmit } = methods;
+
+  console.log(loading);
   return (
-    <div id="claim_form_div" className="">
-      <div className="grid gap-6">
-        {/* Service Type */}
-       
+    
+    <FormProvider {...methods}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="grid gap-6">
+          <BasicApprovalDetails
+            basicDetails={basicDetails}
+            setBasicDetails={setBasicDetails}
+          />
 
-        {/* ICD10 Select */}
-        {/* <ICD10Select /> */}
+          <TabNavigation activeTab={activeTab} setActiveTab={setActiveTab} />
 
-        {/* Justification Textarea */}
-        {/* <JustificationTextarea /> */}
+          <div className="tab-content">
+            {activeTab === 'normal' && (
+              <NormalItemsTab
+                deduct={deduct}
+                vat={vat}
+                claimItems={claimItems}
+                setClaimItems={setClaimItems}
+              />
+            )}
+            {activeTab === 'drg' && <div className="p-4">قريباً...</div>}
+          </div>
 
-        {/* Tab Navigation */}
-        <TabNavigation activeTab={activeTab} setActiveTab={setActiveTab} />
+          <ClaimTotalCard
+            isVisible={true}
+            deduct={deduct}
+            vatRate ={vat}
+            claimItems={claimItems}
+            labels={{
+              claimTotals: 'مجموع المطالبات',
+              startSearchText: 'ابدأ باضافة خدمات لعرض مجموع تكلفة الموافقة هنا.',
+              totalCost: 'التكلفة الإجمالية',
+              totalCostVat: 'ضريبة القيمة المضافة',
+              totalCostWithVat: 'المبلغ المغطى مع الضريبة',
+              totalDeductibleCost: 'المبلغ المغطى',
+              vat: 'الضريبة',
+              totalDeductibleCostWithVat: 'المبلغ المغطى  مع الضريبة',
+              totalCoveredAmount: 'المبلغ المتحمل',
+              totalCoveredAmountWithVat: 'المبلغ المتحمل مع الضريبة',
+            }}
+          />
 
-        {/* Tab Content */}
-        <div className="tab-content">
-          {activeTab === 'normal' && <NormalItemsTab />}
-          {activeTab === 'drg' && <div className="p-4">DRG Tab Placeholder</div>}
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            disabled={loading}
+            >
+              {loading ? 'جاري الإرسال...' : 'إرسال موافقة الخدمات'}
+            </Button>
         </div>
-
-        {/* Total Claim Summary */}
-        {/* <TotalClaim /> */}
-
-        {/* Submit Button */}
-        <button
-          id="save_btn"
-          type="button"
-          className="btn my-5 w-full bg-gradient-to-r from-blue-600 to-blue-400 text-white hidden"
-        >
-          <span className="indicator-label">Save</span>
-          <span className="indicator-progress flex items-center gap-2">
-            Please wait
-            <span className="spinner-border spinner-border-sm align-middle ms-2"></span>
-          </span>
-        </button>
-      </div>
-    </div>
+      </form>
+    </FormProvider>
   );
 };
 
