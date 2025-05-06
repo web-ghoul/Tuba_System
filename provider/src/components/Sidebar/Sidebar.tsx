@@ -1,5 +1,5 @@
 import {
-  AccountBoxRounded,
+
 
 
 
@@ -13,10 +13,10 @@ import {
   LogoutRounded,
   
 } from "@mui/icons-material";
-import MoneyBagIcon from "../../assets/money_bag_providers.svg";
+
 import { PrimaryBox } from "../../mui/boxes/PrimaryBox";
 import Item from "./Item";
-import Approvals from "../../pages/Approvals";
+
 
 const Sidebar = () => {
   return (

@@ -9,7 +9,7 @@ interface UseServiceFormProps {
   type: string;
 }
 
-export const useServiceForm = ({ initialData, deductionPercent, type ,vat }: UseServiceFormProps) => {
+export const useServiceForm = ({ initialData, deductionPercent, type  }: UseServiceFormProps) => {
   // Sample services - in a real app, this would come from an API or props
 
   const defaultFormData: FormData = {
@@ -91,7 +91,7 @@ export const useServiceForm = ({ initialData, deductionPercent, type ,vat }: Use
       
       // Recalculate values if necessary
       if (['quantity', 'unitPrice', 'base_coverage_rate'].includes(id)) {
-        const { total, baseCoverage, basePrice, baseRate } = calculateDerivedValues(
+        const { total, baseCoverage, baseRate } = calculateDerivedValues(
           id === 'unitPrice' || id === 'quantity' ? (parseFloat(updatedFormData.quantity || '1') * parseFloat(value || '0')).toFixed(2) : updatedFormData.base_price,
           id === 'base_coverage_rate' ? value : updatedFormData.base_coverage_rate,
           updatedFormData.quantity,

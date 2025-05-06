@@ -4,7 +4,7 @@ import PatientDetailsDisplay from "../../components/approval/PatientDetailsDispl
 import { PatientData, FormData } from "../../interfaces/approvals/AddApproval";
 
 interface Props {
-  onSuccess: (data: PatientData) => void;
+  onSuccess: (data: PatientData | null) => void;
 }
 
 const PatientSearchForm = ({ onSuccess }: Props): JSX.Element => {
@@ -68,7 +68,7 @@ const PatientSearchForm = ({ onSuccess }: Props): JSX.Element => {
     setPatientData(null);
     setIsSearched(false);
     setValidationError("");
-    onSuccess(false); // Pass data to parent
+    onSuccess(null); 
   };
 
   // Handle Enter key press

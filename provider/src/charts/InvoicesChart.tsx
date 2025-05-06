@@ -20,7 +20,7 @@ const InvoiceChart: React.FC = () => {
     useEffect(() => {
         const fetchInvoiceData = async () => {
             try {
-                const res = await getInvoiceStats(localStorage.getItem('providerName')??"");
+                const res = await getInvoiceStats();
                 const data = res?.data?.data || {};
                 setInvoicesPaid(data.paid || 0);
                 setInvoicesUnpaid(data.unpaid || 0);

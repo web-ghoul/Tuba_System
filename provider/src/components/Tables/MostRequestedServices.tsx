@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getMedicalProviderDetails, getMostRequestedServices } from "../../services/dashboardService";
+import { getMostRequestedServices } from "../../services/dashboardService";
 import MostRequestedServicesSkeleton from "../../skeletons/MostRequestedServicesSkeleton";
 
 interface MedicalService {

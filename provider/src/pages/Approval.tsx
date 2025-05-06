@@ -1,15 +1,15 @@
-import { Paper } from "@mui/material";
+
 
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getClaim } from "../services/dashboardService";
-import { ClaimRequestStatusKey } from "../constants/claimStatus";
+
 
 import { Claim } from "../types/approval";
 import { PrimaryBox } from "../mui/boxes/PrimaryBox";
 import { PrimaryContainer } from "../mui/containers/PrimaryContainer";
 import ApprovalDetailsSection from "../components/approval/ApprovalDetailsSectionComponent";
-import ServiceDetailsSection from "../components/approval/ServiceDetailsSectionComponent";
+ import ServiceDetailsSection  from "../components/approval/ServiceDetailsSectionComponent";
 import CoverageDetailsSection from "../components/approval/CoverageDetailsSectionComponent";
 import FilesSection from "../components/approval/FilesSectionComponent";
 import ItemsSection from "../components/approval/ItemsSectionComponent";
@@ -18,7 +18,8 @@ import TotalsSection from "../components/approval/TotalsSectionComponent";
 const ApprovalPage: React.FC = () => {
     const { id } = useParams(); // from route like /approval/:claimId
     const [claim, setClaim] = useState<Claim | null>(null);
-    const [loading, setLoading] = useState<boolean>(false);
+    const [, setLoading] = useState<boolean>(false);
+
 
     useEffect(() => {
         const fetchClaims = async () => {
@@ -47,11 +48,11 @@ const ApprovalPage: React.FC = () => {
 
             <PrimaryContainer className={`!grid justify-stretch items-start gap-2`}>
                 <ApprovalDetailsSection claim ={claim} hasFurtherDataItems={false} />
-                <ServiceDetailsSection  />
-                <CoverageDetailsSection />
+                <ServiceDetailsSection serviceDetails={null} />
+                <CoverageDetailsSection  coverageDetails={null} />
                 <FilesSection items = {claim.items} />
                 <ItemsSection  claim={claim} />
-                <TotalsSection  claim={claim} />
+                <TotalsSection  claim={{ ...claim, total_price_base: claim.total_price_base.toString() }} />
 
 
 

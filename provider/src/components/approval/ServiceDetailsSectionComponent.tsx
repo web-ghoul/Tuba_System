@@ -5,7 +5,7 @@ import { ServiceDetails } from '../../types/claimRecord';
 
 
 interface Props {
-    serviceDetails: ServiceDetails;
+    serviceDetails: ServiceDetails | null;
 }
 
 // Mock data for development and testing
@@ -22,7 +22,7 @@ const mockServiceDetails: ServiceDetails = {
 
 const ServiceDetailsSection: React.FC<Props> = ({ serviceDetails = mockServiceDetails }) => {
     // For demo purposes, we'll use a fixed branch_id if not provided in the serviceDetails
-    const currentBranch = serviceDetails.branch_id || "الفرع الرئيسي";
+    const currentBranch = serviceDetails?.branch_id || "الفرع الرئيسي";
 
     return (
         <Paper className="p-4 border rounded-lg shadow-md bg-white ">
@@ -34,7 +34,7 @@ const ServiceDetailsSection: React.FC<Props> = ({ serviceDetails = mockServiceDe
                         <div className="w-1/4 px-1">
                             <div className="h-full flex flex-row gap-2 py-5 text-center border-r border-gray-300 rtl:border-r-0 rtl:border-l">
                                 <span className="block text-gray-500 text-sm mb-1">نوع الخدمة:</span>
-                                <span className="font-medium">{serviceDetails.service_type}</span>
+                                <span className="font-medium"></span>
                             </div>
                         </div>
 
@@ -42,7 +42,7 @@ const ServiceDetailsSection: React.FC<Props> = ({ serviceDetails = mockServiceDe
                         <div className="w-1/4 ">
                             <div className="h-full p-3 flex flex-row gap-2 py-5 text-center border-r border-gray-300 rtl:border-r-0 rtl:border-l">
                                 <span className="block text-gray-500 text-sm mb-1">الشخص المؤمن:</span>
-                                <span className="font-medium">{serviceDetails.covered_person_doc.name1}</span>
+                                <span className="font-medium"></span>
                             </div>
                         </div>
 
@@ -50,7 +50,7 @@ const ServiceDetailsSection: React.FC<Props> = ({ serviceDetails = mockServiceDe
                         <div className="w-1/4 ">
                             <div className="h-full p-3 flex flex-row gap-2 py-5 text-center border-r border-gray-300 rtl:border-r-0 rtl:border-l">
                                 <span className="block text-gray-500 text-sm mb-1">الشركة:</span>
-                                <span className="font-medium">{serviceDetails.company_doc.name1}</span>
+                                <span className="font-medium"></span>
                             </div>
                         </div>
 
@@ -67,12 +67,6 @@ const ServiceDetailsSection: React.FC<Props> = ({ serviceDetails = mockServiceDe
             </div>
         </Paper>
     );
-};
-
-// Example usage:
-const App = () => {
-    // In a real application, you would fetch this data from an API
-    return <ServiceDetailsSection serviceDetails={mockServiceDetails} />;
 };
 
 export default ServiceDetailsSection;

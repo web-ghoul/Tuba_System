@@ -27,7 +27,7 @@ export const getBranchesClaims = async () => {
 };
 
 // Example in dashboardService.ts
-export const getInvoiceStats = async (name :string) => {
+export const getInvoiceStats = async () => {
     return await server.get(`/document/Purchase Invoice`); // or whatever endpoint
 };
 export const getAllClaims = async () => {

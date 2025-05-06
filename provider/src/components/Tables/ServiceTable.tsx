@@ -3,8 +3,6 @@ import {
   DialogContent, 
   DialogTitle, 
   IconButton, 
-  Checkbox,
-  Tooltip,
   Typography
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
@@ -13,7 +11,7 @@ import { useServiceTable } from '../../hooks/useServiceTable';
 import { ServiceTableHeader } from '../../components/approval/ServiceTableHeader';
 import { ServiceTableRow } from '../../components/approval/ServiceTableRow';
 import { ServiceTableFooter } from '../../components/approval/ServiceTableFooter';
-import { Claim, ServiceItem } from '../../types/services'
+import { Claim } from '../../types/services'
 
 export interface ServiceTableProps {
   type: string;
@@ -27,17 +25,17 @@ export interface ServiceTableProps {
 
 export const ServiceTable: React.FC<ServiceTableProps> = ({ 
   type, 
-  tableId, 
+ 
   vat,
   claim: initialClaim,
   
    
-  id,
+ 
   deduct,
   onClaimUpdate 
 }) => {
   const {
-    claim,
+   
     filteredItems,
     selectedItems,
     canEdit,

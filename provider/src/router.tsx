@@ -4,11 +4,11 @@
   import Error from "./pages/Error.tsx";
   import Login from "./pages/Login.tsx";
   import Payment from "./pages/Payment.tsx";
-  import ProtectedRoute from "./components/Routers/ProtectedRoute.tsx";
+
   import GuestRoute from "./components/Routers/GuestRoute.tsx";
   import Approvals from "./pages/Approvals.tsx";
   import Approval from "./pages/Approval.tsx";
-import { FrappeProvider } from "frappe-react-sdk";
+
 import AddApproval from "./pages/AddApproval.tsx";
 
   export const router = createBrowserRouter([

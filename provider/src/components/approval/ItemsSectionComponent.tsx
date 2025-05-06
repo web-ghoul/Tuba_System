@@ -55,13 +55,13 @@ const mockClaim: Claim = {
 
 type Claim = {
     workflow_state: string;
-    items?: Item[];
+    items?: any;
 };
 
 
 
 interface ItemsSectionProps {
-    claim: Claim;
+    claim: any;
 }
 
 const ItemsSection: React.FC<ItemsSectionProps> = ({ claim = mockClaim }) => {
@@ -138,7 +138,7 @@ const ItemsSection: React.FC<ItemsSectionProps> = ({ claim = mockClaim }) => {
 
                 {/* Card Body */}
                 <div className="p-4">
-                    {claim.items?.map((item, index) => (
+                    {claim.items?.map((item: { item_name: any; claim: any; price_taxed: any; covered_taxed: any; deductible_taxed: any; status: any; rejection_reason_description: any; name: any; is_visit?: number | undefined; }, index: number | null | undefined) => (
                         <div
                             key={index}
                             className="grid grid-cols-12 my-5 pb-4 border-b border-gray-200"
@@ -166,7 +166,7 @@ const ItemsSection: React.FC<ItemsSectionProps> = ({ claim = mockClaim }) => {
                                 <div className="col-span-2 h-full text-right">
                                     <button
                                         onClick={() => handleOpenModal('view_rejection_reason', {
-                                            id: index + 1,
+                                            id: (index ?? 0) + 1,
                                             data: item.rejection_reason_description || ''
                                         })}
                                         className="flex justify-center items-center px-2 py-1 rounded-md text-white bg-blue-600 hover:bg-blue-700"

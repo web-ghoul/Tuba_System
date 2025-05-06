@@ -17,7 +17,7 @@ interface ClaimItem {
 }
 
 interface FilesProps {
-    items?: ClaimItem[];
+    items?: any;
 }
 
 // File component that replaces the Blade @include('components.file')
@@ -38,7 +38,7 @@ const FilesSection: React.FC<FilesProps> = ({ items = mockClaimItems }) => {
     const getAllFiles = (): FileItem[] => {
         const files: FileItem[] = [];
 
-        items?.forEach(item => {
+        items?.forEach((item: { justification_attachments: string; }) => {
             if (item.justification_attachments) {
                 const filePaths = item.justification_attachments.split(',');
 

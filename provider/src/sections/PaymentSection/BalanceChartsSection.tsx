@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 
 import BalanceCardChart from "../../charts/BalanceCardChart";
 type BalanceChartsSectionProps = {
@@ -7,7 +7,7 @@ type BalanceChartsSectionProps = {
     loading: boolean;
   };
   
-const BalanceChartsSection = ({balance,recieved,loading} :BalanceChartsSectionProps)  => {
+const BalanceChartsSection = ({balance,recieved} :BalanceChartsSectionProps)  => {
     return (
         <Box className="flex justify-center w-full ">
             <div className="w-full md:w-1/2">

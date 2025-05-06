@@ -11,9 +11,9 @@ import {
   Checkbox,
   FormControlLabel,
   Autocomplete,
-  FormHelperText
+
 } from '@mui/material';
-import { AddServiceFormProps, Service } from '../../types/services';
+import { AddServiceFormProps } from '../../types/services';
 import AddFilesComponent from '../../components/AddFilesComponent';
 import { useServiceForm } from '../../hooks/useServiceForm';
 

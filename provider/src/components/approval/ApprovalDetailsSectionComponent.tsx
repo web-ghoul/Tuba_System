@@ -1,7 +1,6 @@
 
 // ApprovalDetails.tsx
 import React from 'react';
-import { PrimaryContainer } from '../../mui/containers/PrimaryContainer';
 import { Paper } from '@mui/material';
 
 interface Claim {
@@ -32,7 +31,6 @@ const mockClaim: Claim = {
 
 const ApprovalDetailsSection: React.FC<Props> = ({ 
     claim = mockClaim, // Use mock data as default value
-    hasFurtherDataItems = true // Default value for testing
 }) => {
     return (
         <Paper className="p-4 border rounded-lg shadow-md bg-white">

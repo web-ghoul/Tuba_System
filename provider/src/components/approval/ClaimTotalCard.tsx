@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ClaimTotalCardProps, ServiceItem } from '../../types/services';
+import { ClaimTotalCardProps } from '../../types/services';
 import { ReadonlyInput } from './ReadonlyInput';
 
 

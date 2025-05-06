@@ -22,7 +22,7 @@ export const useIcd10Autocomplete = (searchTerm: string) => {
       );
   
       if (Array.isArray(data.data)) {
-        const mapped = data.data.map((item) => ({
+        const mapped = data.data.map((item: { name1: any; name: any; }) => ({
           label: item.name1,
           value: item.name,
         }));

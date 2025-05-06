@@ -4,11 +4,11 @@ import HeroBannerSection from "../sections/HeroBannerSection/HeroBannerSection";
 import BalanceAndClaimsSection from "../sections/DashboardSection/BalanceAndClaimsSection";
 import LineChartSection from "../sections/DashboardSection/LineChartSection";
 import BranchesDougnutChartSection from "../sections/DashboardSection/DougnutChartsSection";
-import { getAllClaims, getClaim, getMedicalProviderDetails } from "../services/dashboardService";
+import {  getClaim } from "../services/dashboardService";
 import { useEffect, useState } from "react";
 
 const Dashboard = () => {
-  const [providerDetails, setProviderDetails] = useState<any | null>(null);
+  const [, setProviderDetails] = useState<any | null>(null);
 
   useEffect(() => {
     const fetchProviderDetails = async () => {

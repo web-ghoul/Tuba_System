@@ -1,14 +1,13 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useContext } from "react";
 import Input from "../../components/Input/Input";
 import SubmitButton from "../../components/SubmitButton/SubmitButton";
 import { FormsContext } from "../../contexts/FormsContext";
-import { ModalsContext } from "../../contexts/ModalsContext";
 import { FormiksTypes } from "../../types/forms.types";
 
 const LoginForm = ({ register, errors }: FormiksTypes) => {
   const { formsLoading } = useContext(FormsContext);
-  const { handleOpenForgotPasswordModal } = useContext(ModalsContext);
+
 
   return (
     <Box

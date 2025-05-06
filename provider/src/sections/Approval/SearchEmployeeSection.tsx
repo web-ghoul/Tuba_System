@@ -8,9 +8,15 @@ interface Props {
 }
 
 const SearchEmployeeSection = ({ onSuccess }: Props) => {
+  const handleSuccess = (data: PatientData | null) => {
+    if (data) {
+      onSuccess(data);
+    }
+  };
+
   return (
     <Box>
-      <PatientSearchForm onSuccess={onSuccess} />
+      <PatientSearchForm onSuccess={handleSuccess} />
     </Box>
   );
 };

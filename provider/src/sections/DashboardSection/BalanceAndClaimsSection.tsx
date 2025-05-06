@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import MostRequestedServices from "../../components/Tables/MostRequestedServices";
 import InvoicesChart from "../../charts/InvoicesChart";
 

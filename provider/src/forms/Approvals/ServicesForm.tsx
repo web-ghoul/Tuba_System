@@ -8,7 +8,7 @@ import ClaimTotalCard from '../../components/approval/ClaimTotalCard';
 import React from 'react';
 import { useServicesForm } from '../../hooks/useServicesForm';
 interface ServicesFormProps {
-  deduct : number;
+  deduct : number | null;
   vat:number;
 }
 
@@ -23,8 +23,8 @@ const ServicesForm: React.FC<ServicesFormProps> = ({deduct , vat}) => {
     setClaimItems,
     onSubmit,
     loading,
-    setLoading
-  } = useServicesForm(deduct);
+   
+  } = useServicesForm(deduct ?? 0);
 
   const { handleSubmit } = methods;
 

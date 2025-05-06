@@ -27,7 +27,7 @@ const PrimaryTable: React.FC<PrimaryTableProps> = ({ data }) => {
         </tr>
       </thead>
       <tbody className="fw-semibold text-gray-600">
-        {data.map((item, index) => {
+        {data.map((item) => {
           const statusInfo = CLAIM_REQUEST_STATUSES[item.workflow_state];
           return (
             <tr key={item.name}>

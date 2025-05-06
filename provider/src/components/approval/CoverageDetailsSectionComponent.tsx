@@ -7,7 +7,7 @@ import { CoverageDetails } from '../../types/claimRecord';
 
 
 interface Props {
-    coverageDetails: CoverageDetails ;
+    coverageDetails: CoverageDetails | null;
 }
 
 // Mock data for development and testing
@@ -27,7 +27,7 @@ const CoverageDetailsSection: React.FC<Props> = ({ coverageDetails = mockCoverag
                         <div className="w-1/2 px-2">
                             <div className="h-full p-3 flex flex-row gap-2 text-center border-r border-gray-300 rtl:border-r-0 rtl:border-l">
                                 <span className="block text-gray-500 text-sm mb-1">رقم وثيقة التغطية:</span>
-                                <span className="font-medium text-info">{coverageDetails.coverage_document_number}</span>
+                                <span className="font-medium text-info">{coverageDetails?.coverage_document_number}</span>
                             </div>
                         </div>
 
@@ -35,7 +35,7 @@ const CoverageDetailsSection: React.FC<Props> = ({ coverageDetails = mockCoverag
                         <div className="w-1/2 px-2">
                             <div className="h-full p-3 flex flex-row gap-2 text-center">
                                 <span className="block text-gray-500 text-sm mb-1">وثيقة التغطية:</span>
-                                <span className="font-medium text-info">{coverageDetails.coverage_document}</span>
+                                <span className="font-medium text-info">{coverageDetails?.coverage_document}</span>
                             </div>
                         </div>
                     </div>

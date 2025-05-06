@@ -1,5 +1,4 @@
-import { Box, Typography } from "@mui/material";
-import MostRequestedServices from "../../components/Tables/MostRequestedServices";
+import { Box } from "@mui/material";
 import BranchClaimsChart from "../../charts/BranchClaimsChart";
 import ClaimsStatusChart from "../../charts/ClaimRequestStatusChart";
 const BranchesDougnutChartSection = () => {

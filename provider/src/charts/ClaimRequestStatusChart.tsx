@@ -25,7 +25,7 @@ const visibleKeys: ClaimRequestStatusKey[] = [
 const ClaimsStatusChart: React.FC = () => {
     const [loading, setLoading] = useState(true);
     const [claims, setClaims] = useState<any[]>([]); // replace `any` with your Claim type
-    const [error, setError] = useState(null);
+    // const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchClaims = async () => {
@@ -70,7 +70,7 @@ const ClaimsStatusChart: React.FC = () => {
     const filteredItems = (Object.entries(CLAIM_REQUEST_STATUSES) as [ClaimRequestStatusKey, typeof CLAIM_REQUEST_STATUSES[ClaimRequestStatusKey]][])
         .filter(([key]) => visibleKeys.includes(key));
 
-    const total = Object.values(countsByStatus).reduce((sum, count) => sum + count, 0);
+    // const total = Object.values(countsByStatus).reduce((sum, count) => sum + count, 0);
 
     const data = {
         labels: filteredItems.map(([_, { label }]) => label),

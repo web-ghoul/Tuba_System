@@ -17,7 +17,7 @@ interface FormErrors {
 
 const VisitForm = () => {
   const [justification, setJustification] = useState<string>('');
-  const [specialization, setSpecialization] = useState<Specialization | null>(null); // null for Autocomplete
+  const [specialization, setSpecialization] = useState<Specialization | undefined>(undefined); // undefined for Autocomplete
   const [errors, setErrors] = useState<FormErrors>({
     justification: '',
     specialization: ''
@@ -52,7 +52,7 @@ const VisitForm = () => {
     e.preventDefault();
     
     if (validateForm()) {
-      submitVisit({ justification, specialization });
+      submitVisit({ justification, specialization: specialization ?? null });
     }
   };
 
@@ -95,8 +95,8 @@ const VisitForm = () => {
               options={specializationOptions}
               getOptionLabel={(option) => option.label}
               value={specialization}
-              onChange={(e, newValue) => {
-                setSpecialization(newValue);
+              onChange={(_, newValue) => {
+                setSpecialization(newValue as Specialization | undefined);
                 if (newValue) {
                   setErrors({...errors, specialization: ''});
                 }

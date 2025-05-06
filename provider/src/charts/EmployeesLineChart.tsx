@@ -12,7 +12,7 @@ import {
 import { Line } from 'react-chartjs-2';
 import { Download } from 'lucide-react';
 import { getEmployeesMonthsLineChart } from '../services/dashboardService'; // adjust path if needed
-import LineChartSkeleton from '../skeletons/lineChartSkeleton';
+import LineChartSkeleton from '../skeletons/LineChartSkeleton';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Filler);
 

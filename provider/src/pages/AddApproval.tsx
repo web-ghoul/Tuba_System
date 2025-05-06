@@ -1,6 +1,5 @@
 // In AddApproval.tsx
 import { useState } from "react";
-import { PrimaryBox } from "../mui/boxes/PrimaryBox";
 import { PrimaryContainer } from "../mui/containers/PrimaryContainer";
 import AddApprovalSection from "../sections/Approval/AddApprovalSection";
 import SearchEmployeeSection from "../sections/Approval/SearchEmployeeSection";

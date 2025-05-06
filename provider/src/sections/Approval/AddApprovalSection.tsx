@@ -3,7 +3,12 @@ import VisitForm from '../../forms/Approvals/VisitForm';
 import { Box } from '@mui/material';
 import ServicesForm from '../../forms/Approvals/ServicesForm';
 
-const AddApprovalSection = ({deduct , vat}) => {
+interface AddApprovalSectionProps {
+  deduct: number | any ; // Replace 'number' with the appropriate type if needed
+  vat: number;    // Replace 'number' with the appropriate type if needed
+}
+
+const AddApprovalSection = ({ deduct, vat }: AddApprovalSectionProps) => {
   const [activeTab, setActiveTab] = useState<'visit' | 'claim'>('visit');
   const [showNavigation, setShowNavigation] = useState(false);
   const [showButton, setShowButton] = useState(true); // State to track button visibility

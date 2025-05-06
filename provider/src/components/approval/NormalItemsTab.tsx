@@ -1,28 +1,10 @@
 import React, { useState } from 'react';
 import { ServiceTable } from '../../components/Tables/ServiceTable'; // Adjust the path if needed
 
-// Mock example data; replace this with actual props or context
-const mockClaim = {
-  workflow_state: 'Pending',
-  items: [
-    {
-      item_name: 'X-Ray Chest',
-      price_base: 100,
-      deductible_base: 10,
-      covered_base: 90,
-      workflow_state: 'Approved',
-    },
-    {
-      item_name: 'Blood Test',
-      price_base: 200,
-      deductible_base: 40,
-      covered_base: 160,
-      workflow_state: 'Pending',
-    },
-  ],
-};
+
+
 interface NormalItemsTabProp{
-  deduct:number;
+  deduct:number | any;
   claimItems:any;
   setClaimItems:any;
   vat:number;
@@ -73,6 +55,7 @@ const NormalItemsTab:React.FC<NormalItemsTabProp>  = ({deduct, vat,claimItems ,s
           <div className="p-4">
             <ServiceTable
               type="analysis"
+              vat ={vat}
               tableId="analysis_items_table"
               claim={{ items: claimItems }}
               onClaimUpdate={(updatedClaim) => {
@@ -97,6 +80,7 @@ const NormalItemsTab:React.FC<NormalItemsTabProp>  = ({deduct, vat,claimItems ,s
         {showMedication && (
           <div className="p-4">
             <ServiceTable
+             vat ={vat}
               type="medication"
               tableId="medication_items_table"
               // claimItems = {claimItems}

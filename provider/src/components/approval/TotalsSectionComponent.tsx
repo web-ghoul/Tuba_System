@@ -18,7 +18,7 @@ type ClaimTotals = {
 };
 
 interface TotalsSectionProps {
-  claim: ClaimTotals;
+  claim: ClaimTotals | any;
 }
 const mockClaim = {
     workflow_state: 'Approved',

@@ -7,7 +7,7 @@ import useAxios from '../../hooks/useAxios';
 import { login as loginAction } from '../../store/authSlice';
 import { AppDispatch } from '../../store/store';
 import { LoginFormTypes } from '../../types/forms.types';
-import Cookies from 'js-cookie';
+
 
 const useLoginSubmit = () => {
   const { server } = useAxios();

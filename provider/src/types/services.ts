@@ -82,7 +82,7 @@ export interface ClaimTotalCardProps {
     };
     claimItems?: ServiceItem[];
     vatRate?: number;
-    deduct :number;
+    deduct :number | any;
 }
 export interface ReadonlyInputProps {
     label: string;

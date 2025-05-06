@@ -22,7 +22,7 @@ export const useServicesAutoComplete = (searchTerm: string) => {
             );
 
             if (Array.isArray(data.data)) {
-                const mapped = data.data.map((item) => ({
+                const mapped = data.data.map((item: { name: any; claim_item_name: any; resell_price_sar: any; }) => ({
                     id: item.name,
                     name: item.claim_item_name,
                     price:item.resell_price_sar,

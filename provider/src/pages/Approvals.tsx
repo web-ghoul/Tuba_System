@@ -3,7 +3,7 @@ import PrimaryTable from '../components/Tables/PrimaryTable';
 import { PrimaryContainer } from '../mui/containers/PrimaryContainer';
 import { ClaimRecord, Filters } from '../types/claimRecord';
 import {CLAIM_REQUEST_STATUSES} from '../constants/claimStatus'; // adjust the path if needed
-import { Box, Button, TextField, MenuItem, Typography, IconButton, Popover, CircularProgress } from '@mui/material';
+import { Box, Button, TextField, MenuItem, Typography, Popover, CircularProgress } from '@mui/material';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import GetAppIcon from '@mui/icons-material/GetApp';
 import SearchOffIcon from '@mui/icons-material/SearchOff';

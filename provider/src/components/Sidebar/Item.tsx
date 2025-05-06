@@ -68,7 +68,7 @@ const Item: React.FC<ItemProps> = ({ icon, title, link, logout, exact = false })
     <NavLink
       to={link}
       end={exact}
-      className={({ isActive }) => `block relative group cursor-pointer transition-all duration-200`}
+      className={({}) => `block relative group cursor-pointer transition-all duration-200`}
     >
       {({ isActive: navLinkActive }) => {
         // Use our custom isActive logic or NavLink's isActive
